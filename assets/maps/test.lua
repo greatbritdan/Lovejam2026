@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 3,
-  nextobjectid = 5,
+  nextobjectid = 7,
   properties = {},
   tilesets = {},
   layers = {
@@ -72,10 +72,38 @@ return {
           name = "",
           type = "ground",
           shape = "rectangle",
-          x = 224,
+          x = 160,
           y = 96,
-          width = 112,
+          width = 48,
           height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 5,
+          name = "",
+          type = "ground",
+          shape = "rectangle",
+          x = 112,
+          y = 96,
+          width = 48,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["oneway"] = "up"
+          }
+        },
+        {
+          id = 6,
+          name = "",
+          type = "ground",
+          shape = "rectangle",
+          x = 112,
+          y = 0,
+          width = 48,
+          height = 48,
           rotation = 0,
           visible = true,
           properties = {}

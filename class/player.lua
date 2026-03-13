@@ -31,14 +31,16 @@ function player:initialize(world, x, y, w, h, props)
     self:AddCounters("rook")
 
     self.anim = nil
-    self.animtime = 0
+    self.animtime = nil
+    self.animcheck = nil
+    self.animwait = nil
 end
 
 function player:Update(dt)
     self:UpdateAnim(dt)
     if self.controlsenabled then
-        if IN:down("special") and self.counterspecial then
-            self:Special(self.counterspecial)
+        if IN:pressed("special") then
+            self:MovementRook()
         else
             self:Movement(dt)
             self:Hop()
@@ -106,6 +108,30 @@ function player:Movement(dt)
     end
 end
 
+function player:MovementRook(t)
+    local up = IN:down("up")
+    local left = IN:down("left")
+    local right = IN:down("right")
+
+    self:NewAnim(function()
+        self.controlsenabled = false
+        self.G = 0
+        if up then self.VY = -self.rookboostspeed; self.VX = 0 end
+        if left then self.VX = -self.rookboostspeed; self.VY = 0 end
+        if right then self.VX = self.rookboostspeed; self.VY = 0 end
+        self:Wait(0.5, function()
+            if up then return self.VY ~= -self.rookboostspeed end
+            if left then return self.VX ~= -self.rookboostspeed end
+            if right then return self.VX ~= self.rookboostspeed end
+        end)
+        self.G = 512
+        if up then self.VY = 0 end
+        if left or right then self.VX = 0 end
+        self:Wait(5, function() return self.grounded end)
+        self.controlsenabled = true
+    end)
+end
+
 function player:Hop()
     if IN:pressed("jump") and self.grounded then
         self.VY = -self.hopspeed
@@ -113,49 +139,14 @@ function player:Hop()
     end
 end
 
-function player:Special(t)
-    if not self.grounded then return end
-    if IN:pressed("right") and t == "rook" then
-        self.controlsenabled = false
-        self.G = 0; self.VY = 0
-        self.VX = self.rookboostspeed
-        self:NewAnim(function()
-            self:Wait(0.5)
-            self.G = 512
-            self.VX = 0
-            self.controlsenabled = true
-        end)
-    elseif IN:pressed("left") and t == "rook" then
-        self.controlsenabled = false
-        self.G = 0; self.VY = 0
-        self.VX = -self.rookboostspeed
-        self:NewAnim(function()
-            self:Wait(0.5)
-            self.G = 512
-            self.VX = 0
-            self.controlsenabled = true
-        end)
-    elseif IN:pressed("jump") and t == "rook" then
-        self.controlsenabled = false
-        self.G = 0; self.VX = 0
-        self.VY = -self.rookboostspeed
-        self:NewAnim(function()
-            self:Wait(0.5)
-            self.G = 512
-            self.VY = 0
-            self.controlsenabled = true
-        end)
-    end
-end
-
 function player:Draw()
-    love.graphics.draw(Counterimg, Counterquads[1], self.X+8, self.Y+(self.H-4)+2, self.R, 1, 1, 8, 14)
+    love.graphics.draw(Counterimg, Counterquads["counter"], self.X+8, self.Y+(self.H-4)+2, self.R, 1, 1, 8, 14)
     local offsety = math.sin(-math.abs(self.R))*6
     for i = 1, self.counters do
-        love.graphics.draw(Counterimg, Counterquads[1], self.X+8, self.Y+(self.H-4)+2-(i*4)+offsety, 0, 1, 1, 8, 14)
+        love.graphics.draw(Counterimg, Counterquads["counter"], self.X+8, self.Y+(self.H-4)+2-(i*4)+offsety, 0, 1, 1, 8, 14)
     end
     if self.counterspecial then
-        love.graphics.draw(Counterimg, Counterquads[2], self.X+8, self.Y+(self.H-4)+2-(self.counters*4)-4+offsety, 0, 1, 1, 8, 14)
+        love.graphics.draw(Counterimg, Counterquads[self.counterspecial], self.X+8, self.Y+(self.H-4)+2-(self.counters*4)-4+offsety, 0, 1, 1, 8, 14)
     end
 end
 
@@ -169,8 +160,11 @@ end
 
 -----------------
 
-function player:Wait(delay)
-    self.animtime = delay; coroutine.yield()
+function player:Wait(delay, checkfunc)
+    self.animtime = delay;
+    self.animcheck = checkfunc;
+    self.animwait = true
+    coroutine.yield()
 end
 function player:NewAnim(func)
     self.animtime = 0
@@ -178,9 +172,20 @@ function player:NewAnim(func)
     coroutine.resume(self.anim)
 end
 function player:UpdateAnim(dt)
-    if self.animtime > 0 then
-        self.animtime = self.animtime - dt
-        if self.animtime <= 0 then
+    if self.animwait then
+        if self.animtime and self.animtime > 0 then
+            self.animtime = self.animtime - dt
+            if self.animtime <= 0 then
+                self.animtime = nil
+            end
+        end
+        if self.animcheck then
+            if self.animcheck() then
+                self.animcheck = nil
+            end
+        end
+        if (not self.animtime) or (not self.animcheck) then
+            self.animwait = nil
             coroutine.resume(self.anim)
         end
     end
