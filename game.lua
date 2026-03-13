@@ -9,6 +9,13 @@ MAP.Register = function(t, data)
     end
 end
 
+DEBUG:NewCommand("f1",function()
+    GAME.PLAYER:AddCounters(1)
+end)
+DEBUG:NewCommand("f2",function()
+    GAME.PLAYER:AddCounters(-1)
+end)
+
 local layers
 function scene.LoadScene()
     GAME.STARTX, GAME.STARTY = 1.5, 10
@@ -16,7 +23,7 @@ function scene.LoadScene()
     GAME.MAP = MAP:new("assets/maps/test.lua")
     layers = GAME.MAP.layers
 
-    layers["objects"]:AddObject("player", GAME.STARTX, GAME.STARTY, 16, 4)
+    GAME.PLAYER = layers["objects"]:AddObject("player", GAME.STARTX, GAME.STARTY, 16, 4)
 end
 function scene.UnloadScene()
 end
@@ -27,7 +34,7 @@ function scene.Update(dt)
 end
 
 function scene.Draw()
-    layers["objects"]:Draw(0, 0, love.keyboard.isDown("tab"))
+    layers["objects"]:Draw(0, 0, true) --love.keyboard.isDown("tab"))
 end
 
 return scene

@@ -8,7 +8,8 @@ return {
         controls = {
             left = {"sc:a"},
             right = {"sc:d"},
-            jump = {"sc:space"}
+            jump = {"sc:space"},
+            special = {"sc:lshift"}
         }
     }
 }

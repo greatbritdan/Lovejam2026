@@ -151,6 +151,7 @@ function _layer:AddObject(class, x, y, w, h, props)
     if object then
         table.insert(self.objects, object)
     end
+    return object
 end
 
 function _layer:Rebatch()
