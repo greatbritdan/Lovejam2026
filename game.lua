@@ -13,16 +13,13 @@ MAP.Register = function(t, data, layer)
     end
 end
 
-DEBUG:NewCommand("f1",function()
-    GAME.PLAYER:AddCounters(1)
-end)
-DEBUG:NewCommand("f2",function()
-    GAME.PLAYER:AddCounters(-1)
-end)
+DEBUG:NewCommand("f1",function() GAME.PLAYER:AddCounters(1) end)
+DEBUG:NewCommand("f2",function() GAME.PLAYER:AddCounters(-1) end)
 
 local layers
 function scene.LoadScene()
     GAME.STARTX, GAME.STARTY = 1.5, 10
+    GAME.SX, GAME.SY = 0, 0
     GAME.WORLD = BUMP.newWorld(16)
     GAME.MAP = MAP:new("assets/maps/test.lua")
     layers = GAME.MAP.layers
@@ -33,16 +30,18 @@ function scene.UnloadScene()
 end
 
 function scene.Update(dt)
+    GAME.SX = math.min(math.max(0, GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2)), (GAME.MAP.W*GAME.MAP.TW)-ENV.width)
+
     layers["objects"]:Run("Update",{dt})
     layers["objects"]:Run("PhysicsUpdate",{dt})
 end
 
 function scene.Draw()
     love.graphics.setColor(1,1,1,.5)
-    layers["tilesback"]:Draw(0, 0)
+    layers["tilesback"]:Draw(GAME.SX, GAME.SY)
     love.graphics.setColor(1,1,1)
-    layers["tiles"]:Draw(0, 0)
-    layers["objects"]:Draw(0, 0, false) --love.keyboard.isDown("tab"))
+    layers["tiles"]:Draw(GAME.SX, GAME.SY)
+    layers["objects"]:Draw(GAME.SX, GAME.SY, false) --love.keyboard.isDown("tab"))
 end
 
 return scene

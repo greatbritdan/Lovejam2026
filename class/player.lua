@@ -20,6 +20,8 @@ function player:initialize(world, x, y, w, h, props)
     self.movehopspeed = 92
 
     self.rookboostspeed = 312
+    self.rookcollide = nil
+    self.rookdouble = nil
 
     self.controlsenabled = true
 
@@ -29,38 +31,91 @@ function player:initialize(world, x, y, w, h, props)
     self.counters = 0
     self.counterspecial = nil
     self:AddCounters(3)
-    self:AddCounters("rook")
 
     self.anim = nil
     self.animtime = nil
     self.animcheck = nil
     self.animwait = nil
-
-    self.rep = nil
 end
 
 function player:Update(dt)
     self:UpdateAnim(dt)
 
     if self.controlsenabled then
-        if IN:pressed("special") and (IN:down("up") or IN:down("left") or IN:down("right")) then
-            self:MovementRook()
+        if IN:pressed("special") then
+            self:SpecialRook()
         else
             self:Movement(dt)
             self:Hop()
         end
     end
 
-    if self.rep then
-        self.rep.timer = self.rep.timer + dt
-        if self.rep.timer >= self.rep.time then
-            self.rep.timer = self.rep.timer - self.rep.time
-            self.rep.X, self.rep.Y = self.X, self.Y
-        end
-    end
+    self:UpdateRook(dt)
 
     self:UpdateState(dt)
     self:UpdateHeight()
+end
+
+function player:Draw()
+    if self.rookdouble then
+        love.graphics.setColor(1,1,1,1-(self.rookdouble.timer*10))
+        self:DrawSelf(self.rookdouble.X, self.rookdouble.Y)
+    end
+    love.graphics.setColor(1,1,1)
+    self:DrawSelf(self.X, self.Y)
+end
+
+function player:DrawSelf(x, y)
+    x, y = x+8, y+(self.H-4)+2
+    love.graphics.draw(Counterimg, Counterquads["counter"], x, y, self.R, 1, 1, 8, 14)
+
+    y = y + math.sin(-math.abs(self.R))*6
+    for i = 1, self.counters do
+        love.graphics.draw(Counterimg, Counterquads["counter"], x, y-(i*4), 0, 1, 1, 8, 14)
+    end
+    if self.counterspecial then
+        love.graphics.draw(Counterimg, Counterquads[self.counterspecial], x, y-(self.counters*4)-4, 0, 1, 1, 8, 14)
+    end
+end
+
+function player:Collide()
+    if self.rookdouble then self.rookcollide = true end
+    return false, false
+end
+
+function player:Movement(dt)
+    local left, right = IN:down("left"), IN:down("right")
+    
+    self.F = self.idlefriction
+    if left and (not right) then
+        self.VX = math.max(self.VX - (self.moveacc * dt), -self.movespeed)
+        self.F = self.movefriction
+        if (not self.moving) and self.grounded then
+            self.moving = 1/self.turnspeed
+            self.movingdir = -1
+            self.VY = -self.movehopspeed
+        end
+        self.DIR = -1
+    elseif right and (not left) then
+        self.VX = math.min(self.VX + (self.moveacc * dt), self.movespeed)
+        self.F = self.movefriction
+        if (not self.moving) and self.grounded then
+            self.moving = 1/self.turnspeed
+            self.movingdir = 1
+            self.VY = -self.movehopspeed
+        end
+        self.DIR = 1
+    end
+    if (left and self.VX > 0) or (right and self.VX < 0) then
+        self.F = self.tunrfriction
+    end
+end
+
+function player:Hop()
+    if IN:pressed("jump") and self.grounded then
+        self.VY = -self.hopspeed
+        self.jumping = 1/self.turnspeed
+    end
 end
 
 function player:UpdateState(dt)
@@ -93,96 +148,51 @@ function player:UpdateHeight()
     end
 end
 
-function player:Movement(dt)
-    local left, right = IN:down("left"), IN:down("right")
-    
-    self.F = self.idlefriction
-    if left and (not right) then
-        self.VX = math.max(self.VX - (self.moveacc * dt), -self.movespeed)
-        self.F = self.movefriction
-        if (not self.moving) and self.grounded then
-            self.moving = 1/self.turnspeed
-            self.movingdir = -1
-            self.VY = -self.movehopspeed
-        end
-        self.DIR = -1
-    elseif right and (not left) then
-        self.VX = math.min(self.VX + (self.moveacc * dt), self.movespeed)
-        self.F = self.movefriction
-        if (not self.moving) and self.grounded then
-            self.moving = 1/self.turnspeed
-            self.movingdir = 1
-            self.VY = -self.movehopspeed
-        end
-        self.DIR = 1
-    end
-    if (left and self.VX > 0) or (right and self.VX < 0) then
-        self.F = self.tunrfriction
-    end
-end
-
-function player:MovementRook(t)
-    local up = IN:down("up")
-    local left = IN:down("left")
-    local right = IN:down("right")
-
-    self:NewAnim(function()
-        self.rep = {timer=0, time=0.1, X=self.X, Y=self.Y}
-        self.controlsenabled = false
-        self.G = 0
-        self.VX, self.VY = 0, 0
-        if up then self.VY = -self.rookboostspeed
-        elseif left then self.VX = -self.rookboostspeed
-        elseif right then self.VX = self.rookboostspeed
-        end
-        self:Wait(0.3, function()
-            if up then return self.VY ~= -self.rookboostspeed
-            elseif left then return self.VX ~= -self.rookboostspeed
-            elseif right then return self.VX ~= self.rookboostspeed
-            end
-        end)
-        self.G = 512
-        self.VX, self.VY = 0, 0
-        self.rep = nil
-        self:Wait(5, function() return self.grounded end)
-        self.controlsenabled = true
-    end)
-end
-
-function player:Hop()
-    if IN:pressed("jump") and self.grounded then
-        self.VY = -self.hopspeed
-        self.jumping = 1/self.turnspeed
-    end
-end
-
-function player:Draw()
-    if self.rep then
-        love.graphics.setColor(1,1,1,1-(self.rep.timer*10))
-        self:DrawSelf(self.rep.X, self.rep.Y)
-    end
-    love.graphics.setColor(1,1,1)
-    self:DrawSelf(self.X, self.Y)
-end
-
-function player:DrawSelf(x, y)
-    x, y = x+8, y+(self.H-4)+2
-    love.graphics.draw(Counterimg, Counterquads["counter"], x, y, self.R, 1, 1, 8, 14)
-
-    y = y + math.sin(-math.abs(self.R))*6
-    for i = 1, self.counters do
-        love.graphics.draw(Counterimg, Counterquads["counter"], x, y-(i*4), 0, 1, 1, 8, 14)
-    end
-    if self.counterspecial then
-        love.graphics.draw(Counterimg, Counterquads[self.counterspecial], x, y-(self.counters*4)-4, 0, 1, 1, 8, 14)
-    end
-end
-
 function player:AddCounters(t)
     if tonumber(t) then
         self.counters = self.counters + t
     else
         self.counterspecial = t
+    end
+end
+
+----------
+-- ROOK --
+----------
+
+function player:SpecialRook()
+    if self.counterspecial ~= "rook" then return end
+
+    local dash, sx, sy = false, 0, 0
+    if IN:down("up") then dash, sx, sy = true, 0, -self.rookboostspeed end
+    if IN:down("left") then dash, sx, sy = true, -self.rookboostspeed, 0 end
+    if IN:down("right") then dash, sx, sy = true, self.rookboostspeed, 0 end
+    if dash then
+        self:NewAnim(function()
+            self.rookcollide = false
+            self.rookdouble = {timer=0, time=0.1, X=self.X, Y=self.Y}
+            self.controlsenabled = false
+            self.G = 0
+            self.VX, self.VY = sx, sy
+            self:Wait(0.4, function() return self.rookcollide end)
+            self.G = 512
+            self.VX, self.VY = 0, 0
+            self.rookdouble = nil
+            self:Wait(2.5, function() return self.grounded end)
+            self.controlsenabled = true
+        end)
+    end
+end
+
+function player:UpdateRook(dt)
+    if self.counterspecial ~= "rook" then return end
+
+    if self.rookdouble then
+        self.rookdouble.timer = self.rookdouble.timer + dt
+        if self.rookdouble.timer >= self.rookdouble.time then
+            self.rookdouble.timer = self.rookdouble.timer - self.rookdouble.time
+            self.rookdouble.X, self.rookdouble.Y = self.X, self.Y
+        end
     end
 end
 

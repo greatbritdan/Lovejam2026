@@ -49,7 +49,6 @@ end
 
 -- TILESET --
 function _tileset:initialize(map, path, gidx)
-    print(path)
     self.map = map
     self.path = path
     local d = love.filesystem.load(path)(); self.data = d
