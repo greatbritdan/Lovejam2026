@@ -26,11 +26,13 @@ function player:initialize(world, x, y, w, h, props)
     self.controlsenabled = true
 
     self.collideid = "player"
-    self.collidelookup = {"tile"}
+    self.collidelookup = {"tile","counter"}
 
     self.counters = 0
     self.counterspecial = nil
-    self:AddCounters(3)
+    self:AddCounters(props.counters or 3)
+    self:AddCounters(props.counterspecial)
+    self:UpdateHeight()
 
     self.anim = nil
     self.animtime = nil
@@ -40,7 +42,6 @@ end
 
 function player:Update(dt)
     self:UpdateAnim(dt)
-
     if self.controlsenabled then
         if IN:pressed("special") then
             self:SpecialRook()
@@ -49,11 +50,8 @@ function player:Update(dt)
             self:Hop()
         end
     end
-
     self:UpdateRook(dt)
-
     self:UpdateState(dt)
-    self:UpdateHeight()
 end
 
 function player:Draw()
@@ -78,8 +76,11 @@ function player:DrawSelf(x, y)
     end
 end
 
-function player:Collide()
+function player:Collide(other, nx, ny)
     if self.rookdouble then self.rookcollide = true end
+    if other.collideid == "counter" then
+        return other:Collide(self, -nx, -ny)
+    end
     return false, false
 end
 
@@ -149,9 +150,10 @@ function player:UpdateHeight()
 end
 
 function player:AddCounters(t)
+    print(t)
     if tonumber(t) then
         self.counters = self.counters + t
-    else
+    elseif tostring(t) then
         self.counterspecial = t
     end
 end

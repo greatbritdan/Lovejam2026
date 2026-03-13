@@ -6,10 +6,10 @@ MAP.Register = function(t, data, layer)
         if data.props.collision and layer.class == "tiles" then -- ignore background tiles
             return OBJECTS.tile:new(GAME.WORLD, data.X, data.Y, data.W, data.H, data.props)
         end
-    elseif data.class == "spawn" then
-        GAME.STARTX, GAME.STARTY = data.X, data.Y; return nil -- don't create object
     elseif t == "object" then
-        return OBJECTS[data.class]:new(GAME.WORLD, data.X, data.Y, data.W, data.H, data.props)
+        local object = OBJECTS[data.class]:new(GAME.WORLD, data.X, data.Y, data.W, data.H, data.props)
+        if data.class == "player" then GAME.PLAYER = object end
+        return object
     end
 end
 
@@ -18,13 +18,14 @@ DEBUG:NewCommand("f2",function() GAME.PLAYER:AddCounters(-1) end)
 
 local layers
 function scene.LoadScene()
-    GAME.STARTX, GAME.STARTY = 1.5, 10
     GAME.SX, GAME.SY = 0, 0
     GAME.WORLD = BUMP.newWorld(16)
     GAME.MAP = MAP:new("assets/maps/test.lua")
     layers = GAME.MAP.layers
 
-    GAME.PLAYER = layers["objects"]:AddObject("player", GAME.STARTX, GAME.STARTY, 16, 4)
+    if not GAME.PLAYER then
+        GAME.PLAYER = layers["objects"]:AddObject("player", 1.5, 10, 16, 4)
+    end
 end
 function scene.UnloadScene()
 end
@@ -42,6 +43,7 @@ function scene.Draw()
     love.graphics.setColor(1,1,1)
     layers["tiles"]:Draw(GAME.SX, GAME.SY)
     layers["objects"]:Draw(GAME.SX, GAME.SY, false) --love.keyboard.isDown("tab"))
+    love.graphics.draw(Shadowimg, 0, 0)
 end
 
 return scene

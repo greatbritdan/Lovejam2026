@@ -65,6 +65,12 @@ return {
       }
     },
     {
+      id = 15,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
       id = 16,
       properties = {
         ["collision"] = true,

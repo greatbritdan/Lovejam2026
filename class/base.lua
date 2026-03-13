@@ -45,7 +45,7 @@ function base:PhysicsUpdate(dt)
 
     local wasgrounded = self.grounded
     self.grounded = false
-    local oldx, oldy = self.X, self.Y
+    self.oldX, self.oldY = self.X, self.Y
     local newx, newy = self.newX, self.newY
 
     if self.riding and self.riding.movedX then
@@ -65,7 +65,11 @@ function base:PhysicsUpdate(dt)
 
     if (not wasgrounded) and self.grounded and self.Land then self:Land() end
     if wasgrounded and (not self.grounded) and self.Fall then self:Fall() end
-    self.movedX, self.movedY = self.X - oldx, self.Y - oldy
+    self.movedX, self.movedY = self.X - self.oldX, self.Y - self.oldY
+
+    if self.DELETE then
+        self:Release(); GAME.MAP.layers["objects"]:RemoveObject(self)
+    end
 end
 
 function base:PhysicsFilter(other)
@@ -80,6 +84,7 @@ function base:PhysicsFilter(other)
 end
 
 function base:PhysicsMove(newx, newy, isriding)
+    self.owX, self.owY = nil, nil
     local filter = function(self, other)
         if isriding and self.riding == other then return false end
         return self:PhysicsFilter(other)
@@ -98,8 +103,9 @@ function base:PhysicsMove(newx, newy, isriding)
     end
 
     if keeppos then
-        self.X, self.Y = newx, newy
-        self.world:update(self, self.X, self.Y)
+        print("true")
+        self.X, self.Y = self.owX or newx, self.owY or newy
+        self.world:update(self, self.X, self.Y, self.W, self.H)
     else
         self.X, self.Y = nextx, nexty
     end

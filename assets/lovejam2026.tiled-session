@@ -32,7 +32,7 @@
         "maps/test.tmx"
     ],
     "project": "lovejam2026.tiled-project",
-    "property.type": "string",
+    "property.type": "int",
     "recentFiles": [
         "tilesets/Chess.tsx",
         "maps/test.tmx"

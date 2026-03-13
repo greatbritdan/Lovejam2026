@@ -154,6 +154,16 @@ function _layer:AddObject(class, x, y, w, h, props)
     return object
 end
 
+function _layer:RemoveObject(object)
+    for i,obj in pairs(self.objects) do
+        if obj == object then
+            table.remove(self.objects, i)
+            return i
+        end
+    end
+    return nil
+end
+
 function _layer:Rebatch()
     if self.type == "tilelayer" then
         self.batches = {}
