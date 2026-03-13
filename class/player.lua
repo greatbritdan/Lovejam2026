@@ -17,6 +17,9 @@ function player:initialize(world, x, y, w, h, props)
     self.tunrfriction = 512
     self.hopspeed = 212
     self.turnspeed = 2
+
+    self.rookboostspeed = 312
+
     self.controlsenabled = true
 
     self.collideid = "player"
@@ -26,9 +29,13 @@ function player:initialize(world, x, y, w, h, props)
     self.counterspecial = nil
     self:AddCounters(3)
     self:AddCounters("rook")
+
+    self.anim = nil
+    self.animtime = 0
 end
 
 function player:Update(dt)
+    self:UpdateAnim(dt)
     if self.controlsenabled then
         if IN:down("special") and self.counterspecial then
             self:Special(self.counterspecial)
@@ -55,6 +62,19 @@ function player:UpdateState(dt)
         if self.moving <= 0 then
             self.moving = nil
         end 
+    end
+end
+
+function player:UpdateHeight()
+    local h = (4*(1+self.counters))
+    if self.counterspecial then h = h + 16 end
+    if self.jumping or self.moving then
+        h = h + 6
+    end
+    if h ~= self.H then
+        self.Y = self.Y - (h-self.H)
+        self.H = h
+        self:Move(self.X,self.Y,self.W,self.H)
     end
 end
 
@@ -93,9 +113,38 @@ function player:Hop()
     end
 end
 
-function player:Special()
-    if IN:pressed("jump") and t == "rook" then
-        print("boost")
+function player:Special(t)
+    if not self.grounded then return end
+    if IN:pressed("right") and t == "rook" then
+        self.controlsenabled = false
+        self.G = 0; self.VY = 0
+        self.VX = self.rookboostspeed
+        self:NewAnim(function()
+            self:Wait(0.5)
+            self.G = 512
+            self.VX = 0
+            self.controlsenabled = true
+        end)
+    elseif IN:pressed("left") and t == "rook" then
+        self.controlsenabled = false
+        self.G = 0; self.VY = 0
+        self.VX = -self.rookboostspeed
+        self:NewAnim(function()
+            self:Wait(0.5)
+            self.G = 512
+            self.VX = 0
+            self.controlsenabled = true
+        end)
+    elseif IN:pressed("jump") and t == "rook" then
+        self.controlsenabled = false
+        self.G = 0; self.VX = 0
+        self.VY = -self.rookboostspeed
+        self:NewAnim(function()
+            self:Wait(0.5)
+            self.G = 512
+            self.VY = 0
+            self.controlsenabled = true
+        end)
     end
 end
 
@@ -118,16 +167,25 @@ function player:AddCounters(t)
     end
 end
 
-function player:UpdateHeight()
-    local h = (4*(1+self.counters))
-    if self.counterspecial then h = h + 16 end
-    if self.jumping or self.moving then
-        h = h + 6
+-----------------
+
+function player:Wait(delay)
+    self.animtime = delay; coroutine.yield()
+end
+function player:NewAnim(func)
+    self.animtime = 0
+    self.anim = coroutine.create(func)
+    coroutine.resume(self.anim)
+end
+function player:UpdateAnim(dt)
+    if self.animtime > 0 then
+        self.animtime = self.animtime - dt
+        if self.animtime <= 0 then
+            coroutine.resume(self.anim)
+        end
     end
-    if h ~= self.H then
-        self.Y = self.Y - (h-self.H)
-        self.H = h
-        self:Move(self.X,self.Y,self.W,self.H)
+    if self.anim and coroutine.status(self.anim) == "dead" then
+        self.anim = nil
     end
 end
 
