@@ -9,7 +9,7 @@ function love.load()
     Font = love.graphics.newImageFont("assets/graphics/smallfont.png","abcdefghijklmnopqrstuvwxyz 0123456789.,!?'():/%$-=",1)
     love.graphics.setFont(Font)
 
-    Counterimg, Counterquads = LoadSprites{path="assets/graphics/counter.png", xquads=2, yquads=2, xquadnames={"counter","rook"}}
+    Counterimg, Counterquads = LoadSprites{path="assets/graphics/counter.png", xquads=3, yquads=2, xquadnames={"counter","rook","knight"}}
     Shadowimg = LoadSprites{path="assets/backgrounds/shadow.png", noquads=true}
 
     -- Load Libraries --

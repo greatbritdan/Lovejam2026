@@ -48,6 +48,7 @@ function player:Update(dt)
     if self.controlsenabled then
         if IN:pressed("special") and self.specialcontrolsenabled then
             self:SpecialRook()
+            self:SpecialKnight()
         else
             self:Movement(dt)
             if IN:pressed("split") then
@@ -60,6 +61,7 @@ function player:Update(dt)
         end
     end
     self:UpdateRook(dt)
+    self:UpdateKnight(dt)
     self:UpdateState(dt)
 end
 
@@ -67,6 +69,10 @@ function player:Draw()
     if self.rookdouble then
         love.graphics.setColor(1,1,1,1-(self.rookdouble.timer*10))
         self:DrawSelf(self.rookdouble.X, self.rookdouble.Y)
+    end
+    if self.knightdouble then
+        love.graphics.setColor(1,1,1,.5)
+        self:DrawSelf(self.knightdouble.X, self.knightdouble.Y)
     end
     love.graphics.setColor(1,1,1)
     self:DrawSelf(self.X, self.Y)
@@ -79,14 +85,14 @@ function player:DrawSelf(x, y)
     local scalex, scaley = 1, 1
     if math.abs(self.R) >= math.pi/2 then scaley = -1 end
     if math.abs(self.R) >= math.pi/2 then scalex = -1 end
-    love.graphics.draw(Counterimg, Counterquads[1]["counter"], x, y, self.R, scalex, scaley, 8, 14)
+    love.graphics.draw(Counterimg, Counterquads[1]["counter"], x, y, self.R, scalex, scaley, 8, 30)
 
     y = y + math.sin(-math.abs(self.R))*6
     for i = 1, self.counters do
-        love.graphics.draw(Counterimg, Counterquads[1]["counter"], x, y-(i*4), 0, 1, 1, 8, 14)
+        love.graphics.draw(Counterimg, Counterquads[1]["counter"], x, y-(i*4), 0, 1, 1, 8, 30)
     end
     if self.counterspecial then
-        love.graphics.draw(Counterimg, Counterquads[1][self.counterspecial], x, y-(self.counters*4)-4, 0, 1, 1, 8, 14)
+        love.graphics.draw(Counterimg, Counterquads[1][self.counterspecial], x, y-(self.counters*4)-4, 0, 1, 1, 8, 30)
     end
 end
 
@@ -245,6 +251,33 @@ function player:UpdateRook(dt)
             self.rookdouble.timer = self.rookdouble.timer - self.rookdouble.time
             self.rookdouble.X, self.rookdouble.Y = self.X, self.Y
         end
+    end
+end
+
+------------
+-- KNIGHT --
+------------
+
+function player:SpecialKnight()
+    if self.counterspecial ~= "knight" then return end
+
+    local dir = false
+    if IN:down("up") then
+        local cols = self:PhysicsCheck{X=self.X+(self.DIR*48), Y=self.Y-96}
+        if #cols == 0 then
+            self.X, self.Y = self.X+(self.DIR*48), self.Y-96
+            self.world:update(self, self.X, self.Y, self.W, self.H)
+        end
+    end
+end
+
+function player:UpdateKnight(dt)
+    if self.counterspecial ~= "knight" then return end
+
+    self.knightdouble = nil
+    if IN:down("up") then
+        self.knightdouble = {}
+        self.knightdouble.X, self.knightdouble.Y = self.X+(self.DIR*48), self.Y-96
     end
 end
 

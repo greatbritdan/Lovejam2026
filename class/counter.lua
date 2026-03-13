@@ -24,10 +24,10 @@ end
 function counter:DrawSelf(x, y)
     x, y = x+6, y+(self.H-4)+2
     if self.counterspecial then
-        love.graphics.draw(Counterimg, Counterquads[2][self.counterspecial], x, y, 0, 1, 1, 8, 14)
+        love.graphics.draw(Counterimg, Counterquads[2][self.counterspecial], x, y, 0, 1, 1, 8, 30)
     else
         for i = 1, self.counters do
-            love.graphics.draw(Counterimg, Counterquads[2]["counter"], x, y-((i-1)*4), 0, 1, 1, 8, 14)
+            love.graphics.draw(Counterimg, Counterquads[2]["counter"], x, y-((i-1)*4), 0, 1, 1, 8, 30)
         end
     end
 end

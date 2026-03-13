@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="13">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="14">
  <editorsettings>
   <export target="test.lua" format="lua"/>
  </editorsettings>
@@ -1642,6 +1642,11 @@
   <object id="12" type="counter" x="354" y="145" width="12" height="15">
    <properties>
     <property name="counterspecial" value="rook"/>
+   </properties>
+  </object>
+  <object id="13" type="counter" x="322" y="145" width="12" height="15">
+   <properties>
+    <property name="counterspecial" value="knight"/>
    </properties>
   </object>
  </objectgroup>

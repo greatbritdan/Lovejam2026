@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 13,
+  nextobjectid = 14,
   properties = {},
   tilesets = {
     {
@@ -229,6 +229,21 @@ return {
           visible = true,
           properties = {
             ["counterspecial"] = "rook"
+          }
+        },
+        {
+          id = 13,
+          name = "",
+          type = "counter",
+          shape = "rectangle",
+          x = 322,
+          y = 145,
+          width = 12,
+          height = 15,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["counterspecial"] = "knight"
           }
         }
       }
