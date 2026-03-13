@@ -3,7 +3,7 @@ GAME = {}
 
 MAP.Register = function(t, data)
     if data.class == "spawn" then
-        GAME.STARTX, GAME.STARTY = x, y; return nil -- don't create object
+        GAME.STARTX, GAME.STARTY = data.X, data.Y; return nil -- don't create object
     else
         return OBJECTS[data.class]:new(GAME.WORLD, data.X, data.Y, data.W, data.H, data.props)
     end
@@ -15,6 +15,8 @@ function scene.LoadScene()
     GAME.WORLD = BUMP.newWorld(16)
     GAME.MAP = MAP:new("assets/maps/test.lua")
     layers = GAME.MAP.layers
+
+    layers["objects"]:AddObject("player", GAME.STARTX, GAME.STARTY, 16, 4)
 end
 function scene.UnloadScene()
 end

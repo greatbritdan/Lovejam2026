@@ -44,10 +44,10 @@ return {
         {
           id = 2,
           name = "",
-          type = "ground",
+          type = "spawn",
           shape = "rectangle",
           x = 16,
-          y = 176,
+          y = 128,
           width = 16,
           height = 16,
           rotation = 0,

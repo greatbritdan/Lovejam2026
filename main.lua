@@ -24,6 +24,7 @@ function love.load()
     OBJECTS = {}
     require("class.base")
     require("class.ground")
+    require("class.player")
 
     SCENE:LoadScene("game")
 end

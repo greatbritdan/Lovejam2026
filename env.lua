@@ -5,6 +5,9 @@ return {
     windowwidth = w*s, windowheight = h*s,
     
     controls = {
-        controls = {}
+        controls = {
+            left = {"sc:a"},
+            right = {"sc:d"}
+        }
     }
 }
