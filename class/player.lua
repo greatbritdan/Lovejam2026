@@ -35,10 +35,13 @@ function player:initialize(world, x, y, w, h, props)
     self.animtime = nil
     self.animcheck = nil
     self.animwait = nil
+
+    self.rep = nil
 end
 
 function player:Update(dt)
     self:UpdateAnim(dt)
+
     if self.controlsenabled then
         if IN:pressed("special") and (IN:down("up") or IN:down("left") or IN:down("right")) then
             self:MovementRook()
@@ -47,6 +50,15 @@ function player:Update(dt)
             self:Hop()
         end
     end
+
+    if self.rep then
+        self.rep.timer = self.rep.timer + dt
+        if self.rep.timer >= self.rep.time then
+            self.rep.timer = self.rep.timer - self.rep.time
+            self.rep.X, self.rep.Y = self.X, self.Y
+        end
+    end
+
     self:UpdateState(dt)
     self:UpdateHeight()
 end
@@ -71,9 +83,9 @@ end
 function player:UpdateHeight()
     local h = (4*(1+self.counters))
     if self.counterspecial then h = h + 15 end
-    if self.jumping or self.moving then
-        h = h + 6
-    end
+    --[[if self.jumping or self.moving then
+        h = h + 6 -- TODO: redo this with better collision detection, too many teleports
+    end]]
     if h ~= self.H then
         self.Y = self.Y - (h-self.H)
         self.H = h
@@ -115,11 +127,13 @@ function player:MovementRook(t)
     local right = IN:down("right")
 
     self:NewAnim(function()
+        self.rep = {timer=0, time=0.1, X=self.X, Y=self.Y}
         self.controlsenabled = false
         self.G = 0
-        if up then self.VY = -self.rookboostspeed; self.VX = 0
-        elseif left then self.VX = -self.rookboostspeed; self.VY = 0
-        elseif right then self.VX = self.rookboostspeed; self.VY = 0
+        self.VX, self.VY = 0, 0
+        if up then self.VY = -self.rookboostspeed
+        elseif left then self.VX = -self.rookboostspeed
+        elseif right then self.VX = self.rookboostspeed
         end
         self:Wait(0.3, function()
             if up then return self.VY ~= -self.rookboostspeed
@@ -128,9 +142,8 @@ function player:MovementRook(t)
             end
         end)
         self.G = 512
-        if up then self.VY = 0
-        elseif left or right then self.VX = 0
-        end
+        self.VX, self.VY = 0, 0
+        self.rep = nil
         self:Wait(5, function() return self.grounded end)
         self.controlsenabled = true
     end)
@@ -144,13 +157,24 @@ function player:Hop()
 end
 
 function player:Draw()
-    love.graphics.draw(Counterimg, Counterquads["counter"], self.X+8, self.Y+(self.H-4)+2, self.R, 1, 1, 8, 14)
-    local offsety = math.sin(-math.abs(self.R))*6
+    if self.rep then
+        love.graphics.setColor(1,1,1,1-(self.rep.timer*10))
+        self:DrawSelf(self.rep.X, self.rep.Y)
+    end
+    love.graphics.setColor(1,1,1)
+    self:DrawSelf(self.X, self.Y)
+end
+
+function player:DrawSelf(x, y)
+    x, y = x+8, y+(self.H-4)+2
+    love.graphics.draw(Counterimg, Counterquads["counter"], x, y, self.R, 1, 1, 8, 14)
+
+    y = y + math.sin(-math.abs(self.R))*6
     for i = 1, self.counters do
-        love.graphics.draw(Counterimg, Counterquads["counter"], self.X+8, self.Y+(self.H-4)+2-(i*4)+offsety, 0, 1, 1, 8, 14)
+        love.graphics.draw(Counterimg, Counterquads["counter"], x, y-(i*4), 0, 1, 1, 8, 14)
     end
     if self.counterspecial then
-        love.graphics.draw(Counterimg, Counterquads[self.counterspecial], self.X+8, self.Y+(self.H-4)+2-(self.counters*4)-4+offsety, 0, 1, 1, 8, 14)
+        love.graphics.draw(Counterimg, Counterquads[self.counterspecial], x, y-(self.counters*4)-4, 0, 1, 1, 8, 14)
     end
 end
 
