@@ -15,15 +15,16 @@ function player:initialize(world, x, y, w, h, props)
     self.movefriction = 0
     self.idlefriction = 384
     self.tunrfriction = 512
-    self.hopspeed = 212
-    self.turnspeed = 2
+    self.hopspeed = 192
+    self.turnspeed = 3
+    self.movehopspeed = 92
 
     self.rookboostspeed = 312
 
     self.controlsenabled = true
 
     self.collideid = "player"
-    self.collidelookup = {"ground"}
+    self.collidelookup = {"tile"}
 
     self.counters = 0
     self.counterspecial = nil
@@ -39,7 +40,7 @@ end
 function player:Update(dt)
     self:UpdateAnim(dt)
     if self.controlsenabled then
-        if IN:pressed("special") then
+        if IN:pressed("special") and (IN:down("up") or IN:down("left") or IN:down("right")) then
             self:MovementRook()
         else
             self:Movement(dt)
@@ -69,7 +70,7 @@ end
 
 function player:UpdateHeight()
     local h = (4*(1+self.counters))
-    if self.counterspecial then h = h + 16 end
+    if self.counterspecial then h = h + 15 end
     if self.jumping or self.moving then
         h = h + 6
     end
@@ -90,7 +91,7 @@ function player:Movement(dt)
         if (not self.moving) and self.grounded then
             self.moving = 1/self.turnspeed
             self.movingdir = -1
-            self.VY = -120
+            self.VY = -self.movehopspeed
         end
         self.DIR = -1
     elseif right and (not left) then
@@ -99,7 +100,7 @@ function player:Movement(dt)
         if (not self.moving) and self.grounded then
             self.moving = 1/self.turnspeed
             self.movingdir = 1
-            self.VY = -120
+            self.VY = -self.movehopspeed
         end
         self.DIR = 1
     end
@@ -116,17 +117,20 @@ function player:MovementRook(t)
     self:NewAnim(function()
         self.controlsenabled = false
         self.G = 0
-        if up then self.VY = -self.rookboostspeed; self.VX = 0 end
-        if left then self.VX = -self.rookboostspeed; self.VY = 0 end
-        if right then self.VX = self.rookboostspeed; self.VY = 0 end
-        self:Wait(0.5, function()
-            if up then return self.VY ~= -self.rookboostspeed end
-            if left then return self.VX ~= -self.rookboostspeed end
-            if right then return self.VX ~= self.rookboostspeed end
+        if up then self.VY = -self.rookboostspeed; self.VX = 0
+        elseif left then self.VX = -self.rookboostspeed; self.VY = 0
+        elseif right then self.VX = self.rookboostspeed; self.VY = 0
+        end
+        self:Wait(0.3, function()
+            if up then return self.VY ~= -self.rookboostspeed
+            elseif left then return self.VX ~= -self.rookboostspeed
+            elseif right then return self.VX ~= self.rookboostspeed
+            end
         end)
         self.G = 512
-        if up then self.VY = 0 end
-        if left or right then self.VX = 0 end
+        if up then self.VY = 0
+        elseif left or right then self.VX = 0
+        end
         self:Wait(5, function() return self.grounded end)
         self.controlsenabled = true
     end)

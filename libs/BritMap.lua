@@ -49,6 +49,7 @@ end
 
 -- TILESET --
 function _tileset:initialize(map, path, gidx)
+    print(path)
     self.map = map
     self.path = path
     local d = love.filesystem.load(path)(); self.data = d
@@ -134,7 +135,7 @@ function _layer:AddTile(id, x, y, cause)
         tile=id, image=data.image, quad=data.quad, props=data.props, tileset=data.tileset
     }
     local obj
-    if self.map.Register then obj = self.map.Register("tile", tile) end
+    if self.map.Register then obj = self.map.Register("tile", tile, self) end
     if obj then tile.obj = obj end
     self.grid[y][x] = tile
 
@@ -147,7 +148,7 @@ function _layer:AddObject(class, x, y, w, h, props)
         X=x, Y=y, W=w, H=h,
         class=class, props=props
     }
-    if self.map.Register then object = self.map.Register("object", object) end
+    if self.map.Register then object = self.map.Register("object", object, self) end
     if object then
         table.insert(self.objects, object)
     end

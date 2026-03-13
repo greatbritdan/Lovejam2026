@@ -113,11 +113,6 @@ function base:PhysicsResolve(other, nx, ny)
     if (ny < 0 and self.VY > 0) or (ny > 0 and self.VY < 0) then self.VY = 0 end
 end
 
-function base:Draw()
-    love.graphics.setColor(1,1,1)
-    love.graphics.rectangle("line", self.X, self.Y, self.W, self.H)
-end
-
 local displaysize = 4
 function base:PhysicsDraw()
     local color = {.6,1,.6,.35}

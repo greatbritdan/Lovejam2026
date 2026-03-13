@@ -1,10 +1,14 @@
 local scene = {}
 GAME = {}
 
-MAP.Register = function(t, data)
-    if data.class == "spawn" then
+MAP.Register = function(t, data, layer)
+    if t == "tile" then
+        if data.props.collision and layer.class == "tiles" then -- ignore background tiles
+            return OBJECTS.tile:new(GAME.WORLD, data.X, data.Y, data.W, data.H, data.props)
+        end
+    elseif data.class == "spawn" then
         GAME.STARTX, GAME.STARTY = data.X, data.Y; return nil -- don't create object
-    else
+    elseif t == "object" then
         return OBJECTS[data.class]:new(GAME.WORLD, data.X, data.Y, data.W, data.H, data.props)
     end
 end
@@ -34,7 +38,11 @@ function scene.Update(dt)
 end
 
 function scene.Draw()
-    layers["objects"]:Draw(0, 0, true) --love.keyboard.isDown("tab"))
+    love.graphics.setColor(1,1,1,.5)
+    layers["tilesback"]:Draw(0, 0)
+    love.graphics.setColor(1,1,1)
+    layers["tiles"]:Draw(0, 0)
+    layers["objects"]:Draw(0, 0, false) --love.keyboard.isDown("tab"))
 end
 
 return scene

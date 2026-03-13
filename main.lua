@@ -1,9 +1,11 @@
-local console
+local canvas
 function love.load()
+    
     math.randomseed(os.time());math.random();math.random()
 
     -- Load Graphics --
     love.graphics.setDefaultFilter("nearest","nearest")
+    canvas = love.graphics.newCanvas(ENV.width, ENV.height)
     Font = love.graphics.newImageFont("assets/graphics/smallfont.png","abcdefghijklmnopqrstuvwxyz 0123456789.,!?'():/%$-=",1)
     love.graphics.setFont(Font)
 
@@ -25,7 +27,7 @@ function love.load()
 
     OBJECTS = {}
     require("class.base")
-    require("class.ground")
+    require("class.tile")
     require("class.player")
 
     SCENE:LoadScene("game")
@@ -42,12 +44,16 @@ function love.update(dt)
 end
 
 function love.draw()
+    --[[love.graphics.setCanvas(canvas)
+    love.graphics.clear()]]
     love.graphics.push()
-    love.graphics.scale(ENV.scale,ENV.scale)
+    love.graphics.scale(ENV.scale, ENV.scale)
     SCENE:Draw()
     UI:Draw(DEBUG.ENABLED)
     DEBUG:Draw()
     love.graphics.pop()
+    --[[love.graphics.setCanvas()
+    love.graphics.draw(canvas, 0, 0, 0, ENV.scale, ENV.scale)]]
 end
 
 function love.mousepressed(x,y,b)
