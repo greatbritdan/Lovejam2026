@@ -38,11 +38,15 @@ function scene.Update(dt)
 end
 
 function scene.Draw()
-    love.graphics.setColor(1,1,1,.5)
-    layers["tilesback"]:Draw(GAME.SX, GAME.SY)
     love.graphics.setColor(1,1,1)
+    layers["background3"]:Draw(GAME.SX, GAME.SY)
+    layers["background2"]:Draw(GAME.SX, GAME.SY)
+    layers["background1"]:Draw(GAME.SX, GAME.SY)
+    
+    layers["tilesback"]:Draw(GAME.SX, GAME.SY)
     layers["tiles"]:Draw(GAME.SX, GAME.SY)
-    layers["objects"]:Draw(GAME.SX, GAME.SY, true) --love.keyboard.isDown("tab"))
+    layers["objects"]:Draw(GAME.SX, GAME.SY, false)
+    love.graphics.setColor(1,1,1)
     love.graphics.draw(Shadowimg, 0, 0)
 end
 

@@ -114,29 +114,17 @@ function base:PhysicsMove(newx, newy, isriding)
 end
 
 function base:PhysicsCheck(args)
+    args = args or {}
     local filter = function(self, other)
         return self:PhysicsFilter(other)
     end
-    -- This code is dumb and I hate it, TODO: not this.
+
     local oldx, oldy, oldw, oldh = self.X, self.Y, self.W, self.H
-
-    if args.X then self.X = args.X end
-    if args.Y then self.Y = args.Y end
-    if args.W then self.W = args.W end
-    if args.H then self.H = args.H end
-    if args.X or args.Y or args.W or args.H then
-        self.world:update(self, self.X, self.Y, self.W, self.H)
-    end
-
+    self.X, self.Y, self.W, self.H = args.X or self.X, args.Y or self.Y, args.W or self.W, args.H or self.H
+    self.world:update(self, self.X, self.Y, self.W, self.H)
     local nextx, nexty, cols = self.world:check(self, self.X, self.Y, filter)
-    
-    if args.X then self.X = oldx end
-    if args.Y then self.Y = oldy end
-    if args.W then self.W = oldw end
-    if args.H then self.H = oldh end
-    if args.X or args.Y or args.W or args.H then
-        self.world:update(self, self.X, self.Y, self.W, self.H)
-    end
+    self.X, self.Y, self.W, self.H = oldx, oldy, oldw, oldh
+    self.world:update(self, self.X, self.Y, self.W, self.H)
 
     return cols
 end

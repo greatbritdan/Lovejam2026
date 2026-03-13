@@ -10,7 +10,7 @@ function player:initialize(world, x, y, w, h, props)
     self.G = 512
     self.F = 256
 
-    self.movespeed = 192
+    self.movespeed = 128
     self.moveacc = 256
     self.movefriction = nil
     self.idlefriction = 384
@@ -19,12 +19,12 @@ function player:initialize(world, x, y, w, h, props)
     self.turnspeed = 3
     self.movehopspeed = 92
 
-    self.rookboostspeed = 512
-    self.rookboostspeedy = 312
+    self.rookboostspeed = 384
     self.rookcollide = nil
     self.rookdouble = nil
 
     self.controlsenabled = true
+    self.specialcontrolsenabled = true
 
     self.collideid = "player"
     self.collidelookup = {"tile","counter"}
@@ -44,7 +44,7 @@ end
 function player:Update(dt)
     self:UpdateAnim(dt)
     if self.controlsenabled then
-        if IN:pressed("special") then
+        if IN:pressed("special") and self.specialcontrolsenabled then
             self:SpecialRook()
         else
             self:Movement(dt)
@@ -176,7 +176,7 @@ function player:SpecialRook()
     if self.counterspecial ~= "rook" then return end
 
     local dash, sx, sy = false, 0, 0
-    if IN:down("up") then dash, sx, sy = true, 0, -self.rookboostspeedy end
+    if IN:down("up") then dash, sx, sy = true, 0, -self.rookboostspeed end
     if IN:down("left") then dash, sx, sy = true, -self.rookboostspeed, 0 end
     if IN:down("right") then dash, sx, sy = true, self.rookboostspeed, 0 end
     if dash then
@@ -187,11 +187,13 @@ function player:SpecialRook()
             self.G = 0
             self.VX, self.VY = sx, sy
             self:Wait(0.4, function() return self.rookcollide end)
+            self.specialcontrolsenabled = false
+            self.controlsenabled = true
             self.G = 512
             self.VX, self.VY = 0, 0
             self.rookdouble = nil
             self:Wait(2.5, function() return self.grounded end)
-            self.controlsenabled = true
+            self.specialcontrolsenabled = true
         end)
     end
 end
