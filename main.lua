@@ -7,6 +7,8 @@ function love.load()
     Font = love.graphics.newImageFont("assets/graphics/smallfont.png","abcdefghijklmnopqrstuvwxyz 0123456789.,!?'():/%$-=",1)
     love.graphics.setFont(Font)
 
+    Counterimg = LoadSprites{path="assets/graphics/counter.png", noquads=true}
+
     -- Load Libraries --
     Class = require("libs.middleclass")
     JSON = require("libs.JSON")

@@ -7,7 +7,8 @@ return {
     controls = {
         controls = {
             left = {"sc:a"},
-            right = {"sc:d"}
+            right = {"sc:d"},
+            jump = {"sc:space"}
         }
     }
 }

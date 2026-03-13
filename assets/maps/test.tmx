@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="25" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="3">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="25" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="5">
  <editorsettings>
   <export target="test.lua" format="lua"/>
  </editorsettings>
  <objectgroup id="2" name="Objects" class="objects">
   <object id="1" type="ground" x="0" y="192" width="400" height="64"/>
   <object id="2" type="spawn" x="16" y="128" width="16" height="16"/>
+  <object id="3" type="ground" x="160" y="160" width="240" height="32"/>
+  <object id="4" type="ground" x="64" y="112" width="96" height="16"/>
  </objectgroup>
 </map>

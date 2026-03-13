@@ -27,7 +27,7 @@ function scene.Update(dt)
 end
 
 function scene.Draw()
-    layers["objects"]:Draw(0, 0, DEBUG.ENABLED)
+    layers["objects"]:Draw(0, 0, love.keyboard.isDown("tab"))
 end
 
 return scene
