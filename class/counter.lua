@@ -22,7 +22,7 @@ function counter:Draw()
 end
 
 function counter:DrawSelf(x, y)
-    x, y = x+8, y+(self.H-4)+2
+    x, y = x+6, y+(self.H-4)+2
     if self.counterspecial then
         love.graphics.draw(Counterimg, Counterquads[self.counterspecial], x, y, 0, 1, 1, 8, 14)
     else
@@ -42,19 +42,20 @@ function counter:Collide(other, nx, ny)
         end
         if self.counterspecial and ny == -1 then
             other:AddCounters(self.counterspecial)
+            other.owY = other.Y-15
             got = true
         end
         if got then
             other:UpdateHeight()
             self.DELETE = true
-            return true, true
+            return true, "ignore"
         end
     end
     return false, false
 end
 
 function counter:UpdateHeight()
-    local h = (4*(1+self.counters))
+    local h = (4*self.counters)
     if self.counterspecial then h = h + 15 end
     if h ~= self.H then
         self.Y = self.Y - (h-self.H)

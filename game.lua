@@ -24,7 +24,7 @@ function scene.LoadScene()
     layers = GAME.MAP.layers
 
     if not GAME.PLAYER then
-        GAME.PLAYER = layers["objects"]:AddObject("player", 1.5, 10, 16, 4)
+        GAME.PLAYER = layers["objects"]:AddObject("player", 1.625, 10, 12, 4)
     end
 end
 function scene.UnloadScene()
@@ -42,7 +42,7 @@ function scene.Draw()
     layers["tilesback"]:Draw(GAME.SX, GAME.SY)
     love.graphics.setColor(1,1,1)
     layers["tiles"]:Draw(GAME.SX, GAME.SY)
-    layers["objects"]:Draw(GAME.SX, GAME.SY, false) --love.keyboard.isDown("tab"))
+    layers["objects"]:Draw(GAME.SX, GAME.SY, true) --love.keyboard.isDown("tab"))
     love.graphics.draw(Shadowimg, 0, 0)
 end
 

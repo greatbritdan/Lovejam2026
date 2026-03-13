@@ -40,7 +40,7 @@ function base:PhysicsUpdate(dt)
     if self.F then
         if self.VX > 0 then self.VX = self.VX - (self.F * dt) end
         if self.VX < 0 then self.VX = self.VX + (self.F * dt) end
-        if math.abs(self.VX) < 0.5 then self.VX = 0 end
+        if math.abs(self.VX) < 1 then self.VX = 0 end
     end
 
     local wasgrounded = self.grounded
@@ -102,13 +102,43 @@ function base:PhysicsMove(newx, newy, isriding)
         end
     end
 
-    if keeppos then
-        print("true")
-        self.X, self.Y = self.owX or newx, self.owY or newy
+    if keeppos == "ignore" then
+        self.X, self.Y = self.owX or self.oldX, self.owY or self.oldY
+        self.world:update(self, self.X, self.Y, self.W, self.H)
+    elseif keeppos then
+        self.X, self.Y = newx, newy
         self.world:update(self, self.X, self.Y, self.W, self.H)
     else
         self.X, self.Y = nextx, nexty
     end
+end
+
+function base:PhysicsCheck(args)
+    local filter = function(self, other)
+        return self:PhysicsFilter(other)
+    end
+    -- This code is dumb and I hate it, TODO: not this.
+    local oldx, oldy, oldw, oldh = self.X, self.Y, self.W, self.H
+
+    if args.X then self.X = args.X end
+    if args.Y then self.Y = args.Y end
+    if args.W then self.W = args.W end
+    if args.H then self.H = args.H end
+    if args.X or args.Y or args.W or args.H then
+        self.world:update(self, self.X, self.Y, self.W, self.H)
+    end
+
+    local nextx, nexty, cols = self.world:check(self, self.X, self.Y, filter)
+    
+    if args.X then self.X = oldx end
+    if args.Y then self.Y = oldy end
+    if args.W then self.W = oldw end
+    if args.H then self.H = oldh end
+    if args.X or args.Y or args.W or args.H then
+        self.world:update(self, self.X, self.Y, self.W, self.H)
+    end
+
+    return cols
 end
 
 function base:PhysicsResolve(other, nx, ny)

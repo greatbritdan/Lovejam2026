@@ -12,14 +12,15 @@ function player:initialize(world, x, y, w, h, props)
 
     self.movespeed = 192
     self.moveacc = 256
-    self.movefriction = 0
+    self.movefriction = nil
     self.idlefriction = 384
     self.tunrfriction = 512
     self.hopspeed = 192
     self.turnspeed = 3
     self.movehopspeed = 92
 
-    self.rookboostspeed = 312
+    self.rookboostspeed = 512
+    self.rookboostspeedy = 312
     self.rookcollide = nil
     self.rookdouble = nil
 
@@ -64,8 +65,13 @@ function player:Draw()
 end
 
 function player:DrawSelf(x, y)
-    x, y = x+8, y+(self.H-4)+2
-    love.graphics.draw(Counterimg, Counterquads["counter"], x, y, self.R, 1, 1, 8, 14)
+    x, y = x+6, y+(self.H-4)+2
+
+    y = y + math.sin(-math.abs(self.R))*6
+    local scalex, scaley = 1, 1
+    if math.abs(self.R) >= math.pi/2 then scaley = -1 end
+    if math.abs(self.R) >= math.pi/2 then scalex = -1 end
+    love.graphics.draw(Counterimg, Counterquads["counter"], x, y, self.R, scalex, scaley, 8, 14)
 
     y = y + math.sin(-math.abs(self.R))*6
     for i = 1, self.counters do
@@ -94,7 +100,7 @@ function player:Movement(dt)
         if (not self.moving) and self.grounded then
             self.moving = 1/self.turnspeed
             self.movingdir = -1
-            self.VY = -self.movehopspeed
+            --self.VY = -self.movehopspeed
         end
         self.DIR = -1
     elseif right and (not left) then
@@ -103,7 +109,7 @@ function player:Movement(dt)
         if (not self.moving) and self.grounded then
             self.moving = 1/self.turnspeed
             self.movingdir = 1
-            self.VY = -self.movehopspeed
+            --self.VY = -self.movehopspeed
         end
         self.DIR = 1
     end
@@ -114,8 +120,12 @@ end
 
 function player:Hop()
     if IN:pressed("jump") and self.grounded then
-        self.VY = -self.hopspeed
-        self.jumping = 1/self.turnspeed
+        local cols = self:PhysicsCheck{H=self.H+12, Y=self.Y-12}
+        if #cols == 0 then
+            self.VY = -self.hopspeed
+            self.jumping = 1/self.turnspeed
+            self:UpdateHeight()
+        end
     end
 end
 
@@ -126,6 +136,7 @@ function player:UpdateState(dt)
         self.R = math.pi*(-self.DIR)*self.jumping*self.turnspeed
         if self.jumping <= 0 then
             self.jumping = nil
+            self:UpdateHeight()
         end
     elseif self.moving then
         self.moving = self.moving - dt
@@ -139,9 +150,9 @@ end
 function player:UpdateHeight()
     local h = (4*(1+self.counters))
     if self.counterspecial then h = h + 15 end
-    --[[if self.jumping or self.moving then
-        h = h + 6 -- TODO: redo this with better collision detection, too many teleports
-    end]]
+    if self.jumping or self.moving then
+        h = h + 12 -- TODO: redo this with better collision detection, too many teleports
+    end
     if h ~= self.H then
         self.Y = self.Y - (h-self.H)
         self.H = h
@@ -150,7 +161,6 @@ function player:UpdateHeight()
 end
 
 function player:AddCounters(t)
-    print(t)
     if tonumber(t) then
         self.counters = self.counters + t
     elseif tostring(t) then
@@ -166,7 +176,7 @@ function player:SpecialRook()
     if self.counterspecial ~= "rook" then return end
 
     local dash, sx, sy = false, 0, 0
-    if IN:down("up") then dash, sx, sy = true, 0, -self.rookboostspeed end
+    if IN:down("up") then dash, sx, sy = true, 0, -self.rookboostspeedy end
     if IN:down("left") then dash, sx, sy = true, -self.rookboostspeed, 0 end
     if IN:down("right") then dash, sx, sy = true, self.rookboostspeed, 0 end
     if dash then

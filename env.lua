@@ -6,11 +6,11 @@ return {
     
     controls = {
         controls = {
-            left = {"sc:a"},
-            right = {"sc:d"},
-            up = {"sc:w"},
-            jump = {"sc:space"},
-            special = {"sc:e"}
+            left = {"sc:a", "sc:left", "axis:leftx-", "button:dpleft"},
+            right = {"sc:d", "sc:right", "axis:leftx+", "button:dpright"},
+            up = {"sc:w", "sc:up", "axis:lefty-", "button:dpup"},
+            jump = {"sc:space", "sc:z", "button:a"},
+            special = {"sc:e", "sc:x", "button:b"},
         }
     }
 }
