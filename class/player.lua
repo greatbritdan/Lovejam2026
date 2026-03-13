@@ -23,6 +23,8 @@ function player:initialize(world, x, y, w, h, props)
     self.rookcollide = nil
     self.rookdouble = nil
 
+    self.knightdouble = nil
+
     self.controlsenabled = true
     self.specialcontrolsenabled = true
 
@@ -48,7 +50,13 @@ function player:Update(dt)
             self:SpecialRook()
         else
             self:Movement(dt)
-            self:Hop()
+            if IN:pressed("split") then
+                self:SplitCounters()
+            elseif IN:pressed("merge") then
+                self:MergeCounters()
+            elseif IN:pressed("jump") and self.grounded then
+                self:Hop()
+            end
         end
     end
     self:UpdateRook(dt)
@@ -71,14 +79,14 @@ function player:DrawSelf(x, y)
     local scalex, scaley = 1, 1
     if math.abs(self.R) >= math.pi/2 then scaley = -1 end
     if math.abs(self.R) >= math.pi/2 then scalex = -1 end
-    love.graphics.draw(Counterimg, Counterquads["counter"], x, y, self.R, scalex, scaley, 8, 14)
+    love.graphics.draw(Counterimg, Counterquads[1]["counter"], x, y, self.R, scalex, scaley, 8, 14)
 
     y = y + math.sin(-math.abs(self.R))*6
     for i = 1, self.counters do
-        love.graphics.draw(Counterimg, Counterquads["counter"], x, y-(i*4), 0, 1, 1, 8, 14)
+        love.graphics.draw(Counterimg, Counterquads[1]["counter"], x, y-(i*4), 0, 1, 1, 8, 14)
     end
     if self.counterspecial then
-        love.graphics.draw(Counterimg, Counterquads[self.counterspecial], x, y-(self.counters*4)-4, 0, 1, 1, 8, 14)
+        love.graphics.draw(Counterimg, Counterquads[1][self.counterspecial], x, y-(self.counters*4)-4, 0, 1, 1, 8, 14)
     end
 end
 
@@ -119,13 +127,11 @@ function player:Movement(dt)
 end
 
 function player:Hop()
-    if IN:pressed("jump") and self.grounded then
-        local cols = self:PhysicsCheck{H=self.H+12, Y=self.Y-12}
-        if #cols == 0 then
-            self.VY = -self.hopspeed
-            self.jumping = 1/self.turnspeed
-            self:UpdateHeight()
-        end
+    local cols = self:PhysicsCheck{H=self.H+12, Y=self.Y-12}
+    if #cols == 0 then
+        self.VY = -self.hopspeed
+        self.jumping = 1/self.turnspeed
+        self:UpdateHeight()
     end
 end
 
@@ -147,24 +153,56 @@ function player:UpdateState(dt)
     end
 end
 
-function player:UpdateHeight()
+function player:UpdateHeight(ignorey)
     local h = (4*(1+self.counters))
     if self.counterspecial then h = h + 15 end
-    if self.jumping or self.moving then
+    if (self.jumping or self.moving) and not ignorey then
         h = h + 12 -- TODO: redo this with better collision detection, too many teleports
     end
     if h ~= self.H then
-        self.Y = self.Y - (h-self.H)
+        if not ignorey then
+            self.Y = self.Y - (h-self.H)
+        end
         self.H = h
         self:Move(self.X,self.Y,self.W,self.H)
     end
 end
+
+--------------
+-- COUNTERS --
+--------------
 
 function player:AddCounters(t)
     if tonumber(t) then
         self.counters = self.counters + t
     elseif tostring(t) then
         self.counterspecial = t
+    end
+end
+
+function player:SplitCounters()
+    local t = math.floor(self.counters/2)
+    if t == 0 then
+        if self.counters <= 0 then return end
+        t = 1
+    end
+    GAME.MAP.layers["objects"]:AddObject("counter", self.X, self.Y+self.H-(t*4), 12, t*4, {counters=t})
+    self:AddCounters(-t)
+    self:UpdateHeight(true)
+end
+
+function player:MergeCounters()
+    if self.riding and self.riding.collideid == "counter" then
+        local t
+        if self.riding.counters > 0 then
+            t = self.riding.counters
+        elseif self.riding.counterspecial then
+            t = self.riding.counterspecial
+        end
+        self.riding:Release()
+        GAME.MAP.layers["objects"]:RemoveObject(self.riding)
+        self:AddCounters(t)
+        self:UpdateHeight(true)
     end
 end
 

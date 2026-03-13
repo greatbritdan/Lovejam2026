@@ -15,7 +15,7 @@
    <image source="../backgrounds/Chess1.png" width="400" height="256"/>
   </imagelayer>
  </group>
- <layer id="3" name="Tiles (Background)" class="tilesback" width="50" height="16">
+ <layer id="3" name="Tiles (Background)" class="tilesback" width="50" height="16" tintcolor="#ff0000">
   <data>
    <tile/>
    <tile/>
@@ -198,12 +198,12 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="90"/>
    <tile/>
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="91"/>
    <tile/>
    <tile/>
    <tile/>
@@ -248,12 +248,12 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="106"/>
    <tile/>
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="107"/>
    <tile/>
    <tile/>
    <tile/>
@@ -300,8 +300,8 @@
    <tile gid="130"/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="82"/>
+   <tile gid="81"/>
    <tile/>
    <tile/>
    <tile/>
@@ -350,9 +350,9 @@
    <tile gid="113"/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="81"/>
+   <tile gid="82"/>
+   <tile gid="81"/>
    <tile/>
    <tile/>
    <tile gid="129"/>
@@ -399,12 +399,12 @@
    <tile/>
    <tile gid="130"/>
    <tile/>
+   <tile gid="81"/>
+   <tile gid="82"/>
+   <tile gid="81"/>
+   <tile gid="82"/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="88"/>
    <tile gid="146"/>
    <tile/>
    <tile/>
@@ -449,10 +449,10 @@
    <tile/>
    <tile gid="145"/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="83"/>
+   <tile gid="84"/>
+   <tile gid="85"/>
+   <tile gid="86"/>
    <tile/>
    <tile/>
    <tile/>
@@ -499,10 +499,10 @@
    <tile/>
    <tile gid="146"/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="99"/>
+   <tile gid="100"/>
+   <tile gid="101"/>
+   <tile gid="102"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1145,17 +1145,11 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="66"/>
+   <tile gid="17"/>
+   <tile gid="18"/>
+   <tile gid="17"/>
+   <tile gid="18"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1191,6 +1185,17 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="17"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="49"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1240,12 +1245,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="50"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1279,6 +1279,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="17"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1294,8 +1295,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="65"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1493,9 +1493,9 @@
    <tile gid="20"/>
    <tile/>
    <tile/>
+   <tile gid="33"/>
    <tile/>
-   <tile/>
-   <tile gid="1"/>
+   <tile gid="49"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1538,14 +1538,14 @@
    <tile gid="2"/>
    <tile gid="1"/>
    <tile gid="2"/>
-   <tile gid="1"/>
+   <tile gid="65"/>
    <tile/>
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="34"/>
    <tile/>
-   <tile/>
-   <tile gid="2"/>
+   <tile gid="34"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1588,14 +1588,14 @@
    <tile gid="1"/>
    <tile gid="2"/>
    <tile/>
-   <tile gid="2"/>
+   <tile gid="50"/>
    <tile/>
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="65"/>
    <tile/>
-   <tile/>
-   <tile gid="1"/>
+   <tile gid="33"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1624,9 +1624,9 @@
   </data>
  </layer>
  <objectgroup id="2" name="Objects" class="objects">
-  <object id="2" type="player" x="74" y="176" width="12" height="16">
+  <object id="2" type="player" x="74" y="160" width="12" height="32">
    <properties>
-    <property name="counters" type="int" value="4"/>
+    <property name="counters" type="int" value="8"/>
    </properties>
   </object>
   <object id="9" type="counter" x="170" y="64" width="12" height="16">
@@ -1639,7 +1639,7 @@
     <property name="counters" type="int" value="4"/>
    </properties>
   </object>
-  <object id="12" type="counter" x="226" y="97" width="12" height="15">
+  <object id="12" type="counter" x="354" y="145" width="12" height="15">
    <properties>
     <property name="counterspecial" value="rook"/>
    </properties>

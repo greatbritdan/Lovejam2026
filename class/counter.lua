@@ -9,7 +9,7 @@ function counter:initialize(world, x, y, w, h, props)
     self.F = 256
 
     self.collideid = "counter"
-    self.collidelookup = {"tile","player"}
+    self.collidelookup = {"tile","player","counter"}
 
     self.counters = props.counters or 0
     self.counterspecial = props.counterspecial or nil
@@ -24,30 +24,18 @@ end
 function counter:DrawSelf(x, y)
     x, y = x+6, y+(self.H-4)+2
     if self.counterspecial then
-        love.graphics.draw(Counterimg, Counterquads[self.counterspecial], x, y, 0, 1, 1, 8, 14)
+        love.graphics.draw(Counterimg, Counterquads[2][self.counterspecial], x, y, 0, 1, 1, 8, 14)
     else
         for i = 1, self.counters do
-            love.graphics.draw(Counterimg, Counterquads["counter"], x, y-((i-1)*4), 0, 1, 1, 8, 14)
+            love.graphics.draw(Counterimg, Counterquads[2]["counter"], x, y-((i-1)*4), 0, 1, 1, 8, 14)
         end
     end
 end
 
 function counter:Collide(other, nx, ny)
     if other.collideid == "player" then
-        local got = false
-        if self.counters > 0 and ny == 1 then
-            other:AddCounters(self.counters)
-            other.owX = self.X
-            got = true
-        end
-        if self.counterspecial and ny == -1 then
-            other:AddCounters(self.counterspecial)
-            other.owY = other.Y-15
-            got = true
-        end
-        if got then
-            other:UpdateHeight()
-            self.DELETE = true
+        if ny == -1 then
+            self.owX = other.X+other.W
             return true, "ignore"
         end
     end
