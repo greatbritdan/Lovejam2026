@@ -1,0 +1,42 @@
+Theme: Counter
+
+Game about counting
+Game about fighing and countering attacks
+Game about a counter board game piece
+
+Platformer Game where the timer is constantly counting down and you have to complete certain objectives to gain time.
+
+--Fighting Game where you can only damage by countering attacks.--
+
+Puzzle Game where your goal is to not complete an objective and to cause as much trouble as possible, or unsolve puzzles.
+
+You're a sentient flat counter, as in a board game peace, and you can go around and stack on other counters to get taller, and are also able to split, you can use counters as platforms to get higher or to push down buttons or block enemies, but also there could be special counters (like a chess piece for example) that aren't flat (so you can only have 1) that give special abilities, the whole world could be themed like a board game. 
+
+Peices:
+
+Counter: small and flat, can stack. Each counter adds 1 to weight
+
+Rook (Chess): allows dashing forward or upwards. Adds 4 to weight
+Knight (Chess): allows telepoorting up and forwards. Adds 4 to weight
+Bishop (Chess): allows dashing forward and upwards. Adds 4 to weight
+
+Dice: rolling the dice will flip between 1 and 6, when the dice is 6 all counters double in height. Adds 4 to weight
+
+Iron (Monopoly): 5x the weight. Adds 10 to weight
+
+Marble: allows spawning marbles that roll the direction you are facing. Adds 4 to weight
+
+Levels:
+Only 2 or 3, plus a boss battle?
+
+
+
+Final Idea:
+
+You are a counter peice who has fallen from your game and must find your way back, you can take the form of more than 1 counter, and gain special abilities by using chess peices. You must navigate through 3 world, a chess board, connect 4 jungle and a jenga tower in order to fight the final boss (???).
+
+You can tower up using other flat counters, as well as split to create platforms or press switches to open doors.
+
+You can also take on a special ability using chess peices darted throughout, like a rook to dash horizontally/vertically, and a knight to teleport.
+
+Obsticales such as marbles and (???) can block your path and break your stack, but can be blocked with counters or other obsticales

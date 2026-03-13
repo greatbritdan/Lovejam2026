@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="25" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="3">
+ <editorsettings>
+  <export target="test.lua" format="lua"/>
+ </editorsettings>
+ <objectgroup id="2" name="Objects" class="objects">
+  <object id="1" type="ground" x="0" y="192" width="400" height="64"/>
+  <object id="2" type="ground" x="16" y="176" width="16" height="16"/>
+ </objectgroup>
+</map>

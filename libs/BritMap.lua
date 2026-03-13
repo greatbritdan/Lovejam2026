@@ -148,7 +148,9 @@ function _layer:AddObject(class, x, y, w, h, props)
         class=class, props=props
     }
     if self.map.Register then object = self.map.Register("object", object) end
-    table.insert(self.objects, object)
+    if object then
+        table.insert(self.objects, object)
+    end
 end
 
 function _layer:Rebatch()

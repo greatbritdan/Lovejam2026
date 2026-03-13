@@ -21,6 +21,10 @@ function love.load()
     SAVE = require("libs.BritSaveManager")
     DEBUG = require("libs.BritDebug")
 
+    OBJECTS = {}
+    require("class.base")
+    require("class.ground")
+
     SCENE:LoadScene("game")
 end
 
