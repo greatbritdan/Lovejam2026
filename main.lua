@@ -13,6 +13,17 @@ function love.load()
     Switchimg, Switchquads = LoadSprites{path="assets/graphics/switch.png", xquads=3}
     Shadowimg = LoadSprites{path="assets/backgrounds/shadow.png", noquads=true}
 
+    -- Load Audio --
+    Landsounds = {
+        love.audio.newSource("assets/audio/land.ogg","static"),
+        love.audio.newSource("assets/audio/land2.ogg","static"),
+        love.audio.newSource("assets/audio/land3.ogg","static")
+    }
+    Flipsounds = {
+        love.audio.newSource("assets/audio/flip.ogg","static")
+    }
+    Jumpsound = love.audio.newSource("assets/audio/jump.ogg","static")
+
     -- Load Libraries --
     Class = require("libs.middleclass")
     JSON = require("libs.JSON")
@@ -36,6 +47,11 @@ function love.load()
     require("class.door")
 
     SCENE:LoadScene("game")
+end
+
+function playsound(v)
+    v:stop()
+    v:play()
 end
 
 function love.update(dt)

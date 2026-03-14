@@ -104,6 +104,12 @@ function player:Collide(other, nx, ny)
     return false, false
 end
 
+function player:Land()
+    if self.grounded then
+        playsound(Landsounds[math.random(#Landsounds)])
+    end
+end
+
 function player:Movement(dt)
     local left, right = IN:down("left"), IN:down("right")
     
@@ -113,8 +119,8 @@ function player:Movement(dt)
         self.F = self.movefriction
         if (not self.moving) and self.grounded then
             self.moving = 1/self.turnspeed
+            playsound(Flipsounds[math.random(#Flipsounds)])
             self.movingdir = -1
-            --self.VY = -self.movehopspeed
         end
         self.DIR = -1
     elseif right and (not left) then
@@ -122,8 +128,8 @@ function player:Movement(dt)
         self.F = self.movefriction
         if (not self.moving) and self.grounded then
             self.moving = 1/self.turnspeed
+            playsound(Flipsounds[math.random(#Flipsounds)])
             self.movingdir = 1
-            --self.VY = -self.movehopspeed
         end
         self.DIR = 1
     end
@@ -137,6 +143,7 @@ function player:Hop()
     if #cols == 0 then
         self.VY = -self.hopspeed
         self.jumping = 1/self.turnspeed
+        playsound(Jumpsound)
         self:UpdateHeight()
     end
 end
@@ -170,6 +177,7 @@ function player:UpdateState(dt)
         self.R = math.pi*(-self.movingdir)*self.moving*self.turnspeed
         if self.moving <= 0 then
             self.moving = nil
+            self:Land()
         end 
     end
 end
@@ -202,6 +210,7 @@ function player:AddCounters(t)
 end
 
 function player:SplitCounters()
+    if not self.grounded then return end
     local t = math.floor(self.counters/2)
     if t == 0 then
         if self.counters <= 0 then return end
