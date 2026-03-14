@@ -13,31 +13,27 @@ MAP.Register = function(t, data, layer)
     end
 end
 
-DEBUG:NewCommand("f1",function() GAME.PLAYER:AddCounters(1) end)
-DEBUG:NewCommand("f2",function() GAME.PLAYER:AddCounters(-1) end)
-
 local layers
 function scene.LoadScene()
-    GAME.SX, GAME.SY = 0, 0
     GAME.WORLD = BUMP.newWorld(16)
-    GAME.MAP = MAP:new("assets/maps/test.lua")
-    layers = GAME.MAP.layers
+    GAME.MAP = MAP:new("assets/maps/level1.lua")
 
-    if not GAME.PLAYER then
-        GAME.PLAYER = layers["objects"]:AddObject("player",  0, 0, 2, 4)
-    end
+    layers = GAME.MAP.layers
+    GAME.SX, GAME.SY = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2), 0
 end
 function scene.UnloadScene()
 end
 
 function scene.Update(dt)
-    GAME.SX = math.min(math.max(0, GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2)), (GAME.MAP.W*GAME.MAP.TW)-ENV.width)
+    local tx = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2)
+    local dx = tx-GAME.SX
+    GAME.SX = math.min(math.max(0, GAME.SX+(dx*(4*dt))), (GAME.MAP.W*GAME.MAP.TW)-ENV.width)
 
     layers["objects"]:Run("Update",{dt})
     layers["objects"]:Run("PhysicsUpdate",{dt})
 end
 
-function scene.Draw()z
+function scene.Draw()
     love.graphics.setColor(1,1,1)
     layers["background3"]:Draw(GAME.SX, GAME.SY)
     layers["background2"]:Draw(GAME.SX, GAME.SY)
@@ -48,8 +44,6 @@ function scene.Draw()z
     layers["objects"]:Draw(GAME.SX, GAME.SY, false)
     love.graphics.setColor(1,1,1)
     love.graphics.draw(Shadowimg, 0, 0)
-
-    --love.graphics.print("this is the epic font!!!")
 end
 
 return scene
