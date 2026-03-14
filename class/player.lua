@@ -30,7 +30,7 @@ function player:initialize(world, x, y, w, h, props)
     self.specialcooldown = nil
 
     self.collideid = "player"
-    self.collidelookup = {"tile","counter"}
+    self.collidelookup = {"tile","counter","switch","door"}
 
     self.counters = 0
     self.counterspecial = nil

@@ -10,6 +10,7 @@ function love.load()
     love.graphics.setFont(Font)
 
     Counterimg, Counterquads = LoadSprites{path="assets/graphics/counter.png", xquads=3, yquads=3, xquadnames={"counter","rook","knight"}}
+    Switchimg, Switchquads = LoadSprites{path="assets/graphics/switch.png", xquads=3}
     Shadowimg = LoadSprites{path="assets/backgrounds/shadow.png", noquads=true}
 
     -- Load Libraries --
@@ -31,6 +32,8 @@ function love.load()
     require("class.tile")
     require("class.counter")
     require("class.player")
+    require("class.switch")
+    require("class.door")
 
     SCENE:LoadScene("game")
 end

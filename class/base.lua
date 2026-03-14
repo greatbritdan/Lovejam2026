@@ -50,6 +50,7 @@ function base:PhysicsUpdate(dt)
 
     if self.riding and self.riding.movedX then
         self:PhysicsMove(self.X + self.riding.movedX, self.Y + self.riding.movedY, true)
+        self.riding.rider = nil
     end
     self.riding = nil
 
@@ -66,10 +67,6 @@ function base:PhysicsUpdate(dt)
     if (not wasgrounded) and self.grounded and self.Land then self:Land() end
     if wasgrounded and (not self.grounded) and self.Fall then self:Fall() end
     self.movedX, self.movedY = self.X - self.oldX, self.Y - self.oldY
-
-    if self.DELETE then
-        self:Release(); GAME.MAP.layers["objects"]:RemoveObject(self)
-    end
 end
 
 function base:PhysicsFilter(other)
@@ -129,9 +126,23 @@ function base:PhysicsCheck(args)
     return cols
 end
 
+function base:PhysicsCheckAABB(args)
+    args = args or {}
+    args.X, args.Y, args.W, args.H = args.X or self.X, args.Y or self.Y, args.W or self.W, args.H or self.H
+    local ret = {}
+    for _,obj in pairs(GAME.MAP.layers["objects"].objects) do
+        if (not args.include) or TableContains(obj.collideid, args.include) then
+            if AABB(obj.X, obj.Y, obj.W, obj.H, args.X, args.Y, args.W, args.H) then
+                table.insert(ret, obj)
+            end
+        end
+    end
+    return ret
+end
+
 function base:PhysicsResolve(other, nx, ny)
     if (ny < 0 and self.VY > 0) then
-        self.grounded = true; self.riding = other
+        self.grounded = true; self.riding = other; other.rider = self
     end
     if (nx < 0 and self.VX > 0) or (nx > 0 and self.VX < 0) then self.VX = 0 end
     if (ny < 0 and self.VY > 0) or (ny > 0 and self.VY < 0) then self.VY = 0 end

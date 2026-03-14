@@ -9,7 +9,7 @@ function counter:initialize(world, x, y, w, h, props)
     self.F = 256
 
     self.collideid = "counter"
-    self.collidelookup = {"tile","player","counter"}
+    self.collidelookup = {"tile","player","counter","switch","door"}
 
     self.counters = props.counters or 0
     self.counterspecial = props.counterspecial or nil
@@ -36,6 +36,16 @@ function counter:Collide(other, nx, ny)
     if other.collideid == "player" then
         if ny == -1 then
             self.owX = other.X+other.W
+            return true, "ignore"
+        end
+    end
+    if other.collideid == "counter" then
+        if (not self.counterspecial) and (not other.counterspecial) then
+            -- Merge counters
+            self.counters = self.counters + other.counters
+            self:UpdateHeight()
+            other:Release()
+            GAME.MAP.layers["objects"]:RemoveObject(other)
             return true, "ignore"
         end
     end
