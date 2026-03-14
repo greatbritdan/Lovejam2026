@@ -38,7 +38,7 @@ end
 function switch:Draw()
     local i = ((self.triggered) and 3) or ((self.countersgot > 0) and 2) or 1
     love.graphics.setColor(1,1,1)
-    love.graphics.draw(Switchimg, Switchquads[i], self.X, self.Y-8)
+    love.graphics.draw(Switchimg, Switchquads[i], self.X, self.Y-7)
     if i == 2 then
         local w = math.floor((self.W-4)*(self.countersgot/self.countersneeded))
         love.graphics.setColor(89/255,193/255,53/255)

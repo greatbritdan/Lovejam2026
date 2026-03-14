@@ -9,21 +9,7 @@ function text:initialize(world, x, y, w, h, props)
 end
 
 function text:Update(dt)
-    if self.updating then
-        if self.triggered then
-            self.opacity = self.opacity - (dt*3)
-            if self.opacity <= 0 then
-                self.opacity = 0
-                self.updating = false
-            end
-        else
-            self.opacity = self.opacity + (dt*3)
-            if self.opacity >= 1 then
-                self.opacity = 1
-                self.updating = false
-            end
-        end
-    end
+    if self.action and self.action:update(dt) then self.action = nil end
 end
 
 function text:Draw()
@@ -34,7 +20,11 @@ end
 function text:Trigger(id, state)
     if self.triggerid == id then
         self.triggered = state
-        self.updating = true
+        if state then
+            self.action = TWEEN.new(self.opacity/3, self, {opacity=0}, "linear")
+        else
+            self.action = TWEEN.new((1-self.opacity)/3, self, {opacity=1}, "linear")
+        end
     end
 end
 
@@ -49,18 +39,28 @@ function trigger:initialize(world, x, y, w, h, props)
 
     self.triggered = false
     self.triggerid = props.linkid or 0
-    self.oneshot = props.oneshot or false
+    self.triggermode = props.mode or "toggle"
 end
 
 function trigger:Update(dt)
-    if self.oneshot and self.triggered then return end
+    if self.triggermode ~= "toggle" and self.triggered then return end
 
     local hits = self:PhysicsCheckAABB{include={"player"}}
-    if #hits > 0 and (not self.triggered) then
-        self:SendTrigger(true)
-    end
-    if #hits == 0 and self.triggered then
-        self:SendTrigger(false)
+    if self.triggermode == "toggle" then
+        if #hits > 0 and (not self.triggered) then
+            self:SendTrigger(true)
+        end
+        if #hits == 0 and self.triggered then
+            self:SendTrigger(false)
+        end
+    elseif self.triggermode == "on" then
+        if #hits > 0 and (not self.triggered) then
+            self:SendTrigger(true)
+        end
+    elseif self.triggermode == "off" then
+        if #hits > 0 and (not self.triggered) then
+            self:SendTrigger(false)
+        end        
     end
 end
 
