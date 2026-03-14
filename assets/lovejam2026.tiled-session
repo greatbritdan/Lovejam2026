@@ -7,15 +7,32 @@
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "maps/level1.tmx": {
+            "expandedGroupLayers": [
+                5
+            ],
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 5.5,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 374.5454545454545,
+                "y": 104.54545454545455
+            }
+        },
         "maps/test.tmx": {
             "expandedGroupLayers": [
                 5
             ],
-            "scale": 4,
-            "selectedLayer": 3,
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 182.75,
-                "y": 116.75
+                "x": 338,
+                "y": 214
             }
         },
         "tilesets/Chess.tsx": {
@@ -31,13 +48,13 @@
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 25,
+    "map.width": 100,
     "openFiles": [
         "maps/test.tmx",
         "tilesets/Chess.tsx"
     ],
     "project": "lovejam2026.tiled-project",
-    "property.type": "int",
+    "property.type": "bool",
     "recentFiles": [
         "tilesets/Chess.tsx",
         "maps/test.tmx"

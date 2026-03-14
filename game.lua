@@ -6,7 +6,7 @@ MAP.Register = function(t, data, layer)
         if data.props.collision and layer.class == "tiles" then -- ignore background tiles
             return OBJECTS.tile:new(GAME.WORLD, data.X, data.Y, data.W, data.H, data.props)
         end
-    elseif t == "object" then
+    elseif t == "object" and OBJECTS[data.class] then
         local object = OBJECTS[data.class]:new(GAME.WORLD, data.X, data.Y, data.W, data.H, data.props)
         if data.class == "player" then GAME.PLAYER = object end
         return object
@@ -20,11 +20,11 @@ local layers
 function scene.LoadScene()
     GAME.SX, GAME.SY = 0, 0
     GAME.WORLD = BUMP.newWorld(16)
-    GAME.MAP = MAP:new("assets/maps/test.lua")
+    GAME.MAP = MAP:new("assets/maps/level1.lua")
     layers = GAME.MAP.layers
 
     if not GAME.PLAYER then
-        GAME.PLAYER = layers["objects"]:AddObject("player", 1.625, 10, 12, 4)
+        GAME.PLAYER = layers["objects"]:AddObject("player",  0, 0, 2, 4)
     end
 end
 function scene.UnloadScene()
@@ -49,7 +49,7 @@ function scene.Draw()
     love.graphics.setColor(1,1,1)
     love.graphics.draw(Shadowimg, 0, 0)
 
-    love.graphics.print("this is the epic font!!!")
+    --love.graphics.print("this is the epic font!!!")
 end
 
 return scene

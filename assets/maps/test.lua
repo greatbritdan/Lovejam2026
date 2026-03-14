@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 17,
+  nextobjectid = 19,
   properties = {},
   tilesets = {
     {
@@ -292,6 +292,21 @@ return {
           properties = {
             ["dist"] = 32,
             ["linkid"] = 1
+          }
+        },
+        {
+          id = 18,
+          name = "",
+          type = "text",
+          shape = "point",
+          x = 48,
+          y = 128,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["text"] = "uhh, meow?"
           }
         }
       }

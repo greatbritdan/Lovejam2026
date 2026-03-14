@@ -165,4 +165,14 @@ function base:PhysicsDraw()
     end
 end
 
+-------------------------
+
+function base:SendTrigger(state, id)
+    id = id or self.triggerid
+    self.triggered = state
+    if id > 0 then
+        GAME.MAP.layers["objects"]:Run("Trigger",{id, state})
+    end
+end
+
 OBJECTS.base = base

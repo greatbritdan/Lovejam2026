@@ -53,6 +53,7 @@ function love.load()
     require("class.player")
     require("class.switch")
     require("class.door")
+    require("class.misc")
 
     SCENE:LoadScene("game")
 end

@@ -27,16 +27,10 @@ function switch:Update(dt)
         end
     end
     if c >= self.countersneeded and (not self.triggered) then
-        self.triggered = true
-        if self.triggerid > 0 then
-            GAME.MAP.layers["objects"]:Run("Trigger",{self.triggerid, true})
-        end
+        self:SendTrigger(true)
     end
     if c < self.countersneeded and self.triggered then
-        self.triggered = false
-        if self.triggerid > 0 then
-            GAME.MAP.layers["objects"]:Run("Trigger",{self.triggerid, false})
-        end
+        self:SendTrigger(false)
     end
     self.countersgot = c
 end
@@ -52,7 +46,6 @@ function switch:Draw()
         love.graphics.setColor(1,1,1)
         love.graphics.printf(self.countersgot.."/"..self.countersneeded, self.X+3, self.Y+2, self.W-4, "center")
     end
-    --love.graphics.print(self.countersgot.." of "..self.countersneeded, self.X+2, self.Y+2)
 end
 
 OBJECTS.switch = switch

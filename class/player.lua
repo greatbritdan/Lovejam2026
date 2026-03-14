@@ -7,6 +7,7 @@ function player:initialize(world, x, y, w, h, props)
     self.BY = 0
 
     self.static = false
+    self.grounded = true
     self.G = 512
     self.F = 256
 
@@ -34,7 +35,7 @@ function player:initialize(world, x, y, w, h, props)
 
     self.counters = 0
     self.counterspecial = nil
-    self:AddCounters(props.counters or 3)
+    self:AddCounters(props.counters or 0)
     self:AddCounters(props.counterspecial)
     self:UpdateHeight()
 
