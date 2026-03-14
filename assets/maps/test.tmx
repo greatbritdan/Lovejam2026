@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="16">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="17">
  <editorsettings>
   <export target="test.lua" format="lua"/>
  </editorsettings>
@@ -1146,7 +1146,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="68"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1196,7 +1196,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="67"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1337,8 +1337,8 @@
    <tile gid="4"/>
    <tile gid="5"/>
    <tile gid="6"/>
-   <tile gid="3"/>
-   <tile gid="4"/>
+   <tile gid="52"/>
+   <tile gid="51"/>
    <tile gid="2"/>
    <tile gid="1"/>
    <tile gid="3"/>
@@ -1387,8 +1387,8 @@
    <tile gid="20"/>
    <tile gid="21"/>
    <tile gid="22"/>
-   <tile gid="19"/>
-   <tile gid="20"/>
+   <tile gid="1"/>
+   <tile gid="2"/>
    <tile gid="1"/>
    <tile gid="2"/>
    <tile gid="19"/>
@@ -1649,7 +1649,7 @@
     <property name="counterspecial" value="knight"/>
    </properties>
   </object>
-  <object id="14" type="switch" x="256" y="152" width="32" height="8">
+  <object id="14" type="switch" x="256" y="160" width="32" height="8">
    <properties>
     <property name="counters" type="int" value="8"/>
     <property name="linkid" type="int" value="1"/>
@@ -1658,6 +1658,12 @@
   <object id="15" type="door" x="373" y="0" width="6" height="160">
    <properties>
     <property name="dist" type="int" value="96"/>
+    <property name="linkid" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="16" type="door" x="405.091" y="128" width="5.81818" height="32">
+   <properties>
+    <property name="dist" type="int" value="32"/>
     <property name="linkid" type="int" value="1"/>
    </properties>
   </object>

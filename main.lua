@@ -11,6 +11,7 @@ function love.load()
 
     Counterimg, Counterquads = LoadSprites{path="assets/graphics/counter.png", xquads=3, yquads=3, xquadnames={"counter","rook","knight"}}
     Switchimg, Switchquads = LoadSprites{path="assets/graphics/switch.png", xquads=3}
+    Doorimg, Doorquads = LoadSprites{path="assets/graphics/door.png", yquads=3}
     Shadowimg = LoadSprites{path="assets/backgrounds/shadow.png", noquads=true}
 
     -- Load Audio --

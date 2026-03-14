@@ -13,6 +13,12 @@ function door:initialize(world, x, y, w, h, props)
     self.moving = true
     self.startY = self.Y
     self.dist = props.dist or 4
+
+    self.batch = love.graphics.newSpriteBatch(Doorimg, self.H/16)
+    for i = 1, self.H/16 do
+        local q = (i == 1 and 1) or (i == self.H/16 and 3) or 2
+        self.batch:add(Doorquads[q], 0, (i-1)*16)
+    end
 end
 
 function door:Update(dt)
@@ -35,7 +41,8 @@ function door:Update(dt)
 end
 
 function door:Draw()
-    love.graphics.rectangle("fill", self.X, self.Y, self.W, self.H)
+    love.graphics.setColor(1,1,1)
+    love.graphics.draw(self.batch, self.X, self.Y)
 end
 
 function door:Trigger(id, state)
