@@ -117,18 +117,18 @@ function player:Movement(dt)
     if left and (not right) then
         self.VX = math.max(self.VX - (self.moveacc * dt), -self.movespeed)
         self.F = self.movefriction
-        if (not self.moving) and self.grounded then
+        if (not self.moving) and (not self.jumping) and self.grounded then
             self.moving = 1/self.turnspeed
-            playsound(Flipsounds[math.random(#Flipsounds)])
+            playsound(Flipsounds[math.random(#Flipsounds)], .6)
             self.movingdir = -1
         end
         self.DIR = -1
     elseif right and (not left) then
         self.VX = math.min(self.VX + (self.moveacc * dt), self.movespeed)
         self.F = self.movefriction
-        if (not self.moving) and self.grounded then
+        if (not self.moving) and (not self.jumping) and self.grounded then
             self.moving = 1/self.turnspeed
-            playsound(Flipsounds[math.random(#Flipsounds)])
+            playsound(Flipsounds[math.random(#Flipsounds)], .6)
             self.movingdir = 1
         end
         self.DIR = 1

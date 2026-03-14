@@ -20,7 +20,9 @@ function love.load()
         love.audio.newSource("assets/audio/land3.ogg","static")
     }
     Flipsounds = {
-        love.audio.newSource("assets/audio/flip.ogg","static")
+        love.audio.newSource("assets/audio/flip.ogg","static"),
+        love.audio.newSource("assets/audio/flip2.ogg","static"),
+        love.audio.newSource("assets/audio/flip3.ogg","static")
     }
     Jumpsound = love.audio.newSource("assets/audio/jump.ogg","static")
 
@@ -38,6 +40,8 @@ function love.load()
     SAVE = require("libs.BritSaveManager")
     DEBUG = require("libs.BritDebug")
 
+    VOLUME = 0.5
+
     OBJECTS = {}
     require("class.base")
     require("class.tile")
@@ -49,7 +53,9 @@ function love.load()
     SCENE:LoadScene("game")
 end
 
-function playsound(v)
+function playsound(v,vol)
+    vol = vol or 1
+    v:setVolume(vol*VOLUME)
     v:stop()
     v:play()
 end
