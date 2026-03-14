@@ -46,9 +46,11 @@ function switch:Draw()
     love.graphics.setColor(1,1,1)
     love.graphics.draw(Switchimg, Switchquads[i], self.X, self.Y-8)
     if i == 2 then
-        local w = (self.W-4)*(self.countersgot/self.countersneeded)
+        local w = math.floor((self.W-4)*(self.countersgot/self.countersneeded))
         love.graphics.setColor(89/255,193/255,53/255)
-        love.graphics.rectangle("fill", self.X+2, self.Y+2, w, self.H-4)
+        love.graphics.rectangle("fill", self.X+2, self.Y+2, w, self.H-3)
+        love.graphics.setColor(1,1,1)
+        love.graphics.printf(self.countersgot.."/"..self.countersneeded, self.X+3, self.Y+2, self.W-4, "center")
     end
     --love.graphics.print(self.countersgot.." of "..self.countersneeded, self.X+2, self.Y+2)
 end

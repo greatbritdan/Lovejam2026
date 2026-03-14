@@ -48,6 +48,8 @@ function scene.Draw()
     layers["objects"]:Draw(GAME.SX, GAME.SY, false)
     love.graphics.setColor(1,1,1)
     love.graphics.draw(Shadowimg, 0, 0)
+
+    love.graphics.print("this is the epic font!!!")
 end
 
 return scene

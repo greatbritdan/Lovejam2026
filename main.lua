@@ -6,13 +6,16 @@ function love.load()
     -- Load Graphics --
     love.graphics.setDefaultFilter("nearest","nearest")
     canvas = love.graphics.newCanvas(ENV.width, ENV.height)
-    Font = love.graphics.newImageFont("assets/graphics/smallfont.png","abcdefghijklmnopqrstuvwxyz 0123456789.,!?'():/%$-=",1)
-    love.graphics.setFont(Font)
+    --Font = love.graphics.newImageFont("assets/graphics/smallfont.png","abcdefghijklmnopqrstuvwxyz 0123456789.,!?'():/%$-=",1)
+    --love.graphics.setFont(Font)
 
     Counterimg, Counterquads = LoadSprites{path="assets/graphics/counter.png", xquads=3, yquads=3, xquadnames={"counter","rook","knight"}}
     Switchimg, Switchquads = LoadSprites{path="assets/graphics/switch.png", xquads=3}
     Doorimg, Doorquads = LoadSprites{path="assets/graphics/door.png", yquads=3}
     Shadowimg = LoadSprites{path="assets/backgrounds/shadow.png", noquads=true}
+
+    Font = love.graphics.newImageFont("assets/graphics/newfont.png","abcdefghijklmnopqrstuvwxyz1234567890.,!? /",1)
+    love.graphics.setFont(Font)
 
     -- Load Audio --
     Landsounds = {
