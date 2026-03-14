@@ -4,7 +4,6 @@ function player:initialize(world, x, y, w, h, props)
     OBJECTS.base.initialize(self, world, x, y, w, h)
     self.DIR = 1
     self.R = 0
-    self.BY = 0
 
     self.static = false
     self.grounded = true
@@ -31,7 +30,7 @@ function player:initialize(world, x, y, w, h, props)
     self.specialcooldown = nil
 
     self.collideid = "player"
-    self.collidelookup = {"tile","counter","switch","door"}
+    self.collidelookup = {"tile","counter","switch","door","marble"}
 
     self.counters = 0
     self.counterspecial = nil
@@ -207,6 +206,8 @@ function player:AddCounters(t)
         self.counters = self.counters + t
     elseif tostring(t) then
         self.counterspecial = t
+        self.rookdouble = nil
+        self.knightdouble = nil
     end
 end
 

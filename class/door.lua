@@ -4,7 +4,7 @@ function door:initialize(world, x, y, w, h, props)
     OBJECTS.base.initialize(self, world, x, y, w, h)
 
     self.collideid = "door"
-    self.collidelookup = {"player","counter"}
+    self.collidelookup = {"player","counter","marble"}
 
     self.triggered = false
     self.triggerid = props.linkid or 0
@@ -36,7 +36,6 @@ function door:Update(dt)
                 self.moving = false
             end
         end
-        self.world:update(self, self.X, self.Y, self.W, self.H)
     end
 end
 
@@ -48,6 +47,12 @@ end
 function door:Trigger(id, state)
     if id == self.triggerid then
         self.triggered = state
+        -- Update world straight away to avoid softlocks
+        if self.triggered then
+            self.world:update(self, self.X, self.startY-self.dist, self.W, self.H)
+        else
+            self.world:update(self, self.X, self.startY, self.W, self.H)
+        end
         self.moving = true
     end
 end

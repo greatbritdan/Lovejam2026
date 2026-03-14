@@ -2,14 +2,14 @@ return {
   version = "1.10",
   luaversion = "5.1",
   tiledversion = "1.11.2",
-  name = "Chess",
+  name = "Connect",
   class = "",
   tilewidth = 16,
   tileheight = 16,
   spacing = 0,
   margin = 0,
   columns = 16,
-  image = "chess.png",
+  image = "connect.png",
   imagewidth = 256,
   imageheight = 256,
   objectalignment = "unspecified",
@@ -59,12 +59,6 @@ return {
       }
     },
     {
-      id = 5,
-      properties = {
-        ["collision"] = true
-      }
-    },
-    {
       id = 15,
       properties = {
         ["collision"] = true
@@ -75,37 +69,6 @@ return {
       properties = {
         ["collision"] = true,
         ["oneway"] = "up"
-      }
-    },
-    {
-      id = 17,
-      properties = {
-        ["collision"] = true,
-        ["oneway"] = "up"
-      }
-    },
-    {
-      id = 18,
-      properties = {
-        ["collision"] = true
-      }
-    },
-    {
-      id = 19,
-      properties = {
-        ["collision"] = true
-      }
-    },
-    {
-      id = 20,
-      properties = {
-        ["collision"] = true
-      }
-    },
-    {
-      id = 21,
-      properties = {
-        ["collision"] = true
       }
     },
     {
@@ -122,12 +85,6 @@ return {
     },
     {
       id = 34,
-      properties = {
-        ["collision"] = true
-      }
-    },
-    {
-      id = 35,
       properties = {
         ["collision"] = true
       }
@@ -151,12 +108,6 @@ return {
       }
     },
     {
-      id = 51,
-      properties = {
-        ["collision"] = true
-      }
-    },
-    {
       id = 64,
       properties = {
         ["collision"] = true
@@ -170,12 +121,6 @@ return {
     },
     {
       id = 66,
-      properties = {
-        ["collision"] = true
-      }
-    },
-    {
-      id = 67,
       properties = {
         ["collision"] = true
       }

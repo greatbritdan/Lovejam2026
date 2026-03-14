@@ -5,7 +5,7 @@ function tile:initialize(world, x, y, w, h, props)
     self.oneway = props.oneway
 
     self.collideid = "tile"
-    self.collidelookup = {"player","counter"}
+    self.collidelookup = {"player","counter","marble"}
 end
 
 OBJECTS.tile = tile

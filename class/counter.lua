@@ -9,7 +9,7 @@ function counter:initialize(world, x, y, w, h, props)
     self.F = 256
 
     self.collideid = "counter"
-    self.collidelookup = {"tile","player","counter","switch","door"}
+    self.collidelookup = {"tile","player","counter","switch","door","marble"}
 
     self.counters = props.counters or 0
     self.counterspecial = props.counterspecial or nil

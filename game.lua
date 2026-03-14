@@ -20,7 +20,7 @@ local layers
 function scene.LoadScene()
     GAME.SX, GAME.SY = 0, 0
     GAME.WORLD = BUMP.newWorld(16)
-    GAME.MAP = MAP:new("assets/maps/level1.lua")
+    GAME.MAP = MAP:new("assets/maps/test.lua")
     layers = GAME.MAP.layers
 
     if not GAME.PLAYER then
@@ -37,7 +37,7 @@ function scene.Update(dt)
     layers["objects"]:Run("PhysicsUpdate",{dt})
 end
 
-function scene.Draw()
+function scene.Draw()z
     love.graphics.setColor(1,1,1)
     layers["background3"]:Draw(GAME.SX, GAME.SY)
     layers["background2"]:Draw(GAME.SX, GAME.SY)

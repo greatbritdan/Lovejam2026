@@ -14,11 +14,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 4,
-            "selectedLayer": 5,
+            "scale": 3,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 610.75,
-                "y": 125.5
+                "x": 1115.5,
+                "y": 105.66666666666664
             }
         },
         "maps/test.tmx": {
@@ -31,8 +31,8 @@
             "scale": 3,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 317.33333333333326,
-                "y": 190
+                "x": 295.16666666666663,
+                "y": 82.66666666666664
             }
         },
         "tilesets/Chess.tsx": {
@@ -40,7 +40,7 @@
             "scaleInEditor": 8
         }
     },
-    "last.exportedFilePath": "C:/Users/alway/Desktop/Lovejam2026/assets/maps",
+    "last.exportedFilePath": "C:/Users/alway/Desktop/Lovejam2026/assets/tilesets",
     "last.imagePath": "C:/Users/alway/Desktop/Lovejam2026/assets/tilesets",
     "lastUsedTilesetExportFilter": "Lua files (*.lua)",
     "map.height": 16,
@@ -56,6 +56,7 @@
     "project": "lovejam2026.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "maps/level1.tmx",
         "tilesets/Chess.tsx",
         "maps/test.tmx"
     ],
