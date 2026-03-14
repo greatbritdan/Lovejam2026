@@ -121,6 +121,18 @@ return {
       }
     },
     {
+      id = 34,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
+      id = 35,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
       id = 48,
       properties = {
         ["collision"] = true
@@ -128,6 +140,18 @@ return {
     },
     {
       id = 49,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
+      id = 50,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
+      id = 51,
       properties = {
         ["collision"] = true
       }

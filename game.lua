@@ -45,7 +45,7 @@ function scene.Draw()
     
     layers["tilesback"]:Draw(GAME.SX, GAME.SY)
     layers["tiles"]:Draw(GAME.SX, GAME.SY)
-    layers["objects"]:Draw(GAME.SX, GAME.SY, true)
+    layers["objects"]:Draw(GAME.SX, GAME.SY, false)
     love.graphics.setColor(1,1,1)
     love.graphics.draw(Shadowimg, 0, 0)
 end

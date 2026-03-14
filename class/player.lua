@@ -27,6 +27,7 @@ function player:initialize(world, x, y, w, h, props)
 
     self.controlsenabled = true
     self.specialcontrolsenabled = true
+    self.specialcooldown = nil
 
     self.collideid = "player"
     self.collidelookup = {"tile","counter"}
@@ -46,10 +47,8 @@ end
 function player:Update(dt)
     self:UpdateAnim(dt)
     if self.controlsenabled then
-        if IN:pressed("special") and self.specialcontrolsenabled then
-            self:SpecialRook()
-            self:SpecialKnight()
-        else
+        local used = self:SpecialUpdate(dt)
+        if not used then
             self:Movement(dt)
             if IN:pressed("split") then
                 self:SplitCounters()
@@ -92,7 +91,8 @@ function player:DrawSelf(x, y)
         love.graphics.draw(Counterimg, Counterquads[1]["counter"], x, y-(i*4), 0, 1, 1, 8, 30)
     end
     if self.counterspecial then
-        love.graphics.draw(Counterimg, Counterquads[1][self.counterspecial], x, y-(self.counters*4)-4, 0, 1, 1, 8, 30)
+        local i = (self.specialcooldown) and 3 or 1
+        love.graphics.draw(Counterimg, Counterquads[i][self.counterspecial], x, y-(self.counters*4)-4, 0, 1, 1, 8, 30)
     end
 end
 
@@ -139,6 +139,21 @@ function player:Hop()
         self.jumping = 1/self.turnspeed
         self:UpdateHeight()
     end
+end
+
+function player:SpecialUpdate(dt)
+    if not self.specialcontrolsenabled then return end
+    if self.specialcooldown then
+        self.specialcooldown = self.specialcooldown - dt
+        if self.specialcooldown <= 0 then
+            self.specialcooldown = nil
+        end
+    end
+    if IN:pressed("special") and (not self.specialcooldown) then
+        if self:SpecialRook() then return true end
+        if self:SpecialKnight() then return true end
+    end
+    return false
 end
 
 function player:UpdateState(dt)
@@ -224,14 +239,15 @@ function player:SpecialRook()
     if IN:down("left") then dash, sx, sy = true, -self.rookboostspeed, 0 end
     if IN:down("right") then dash, sx, sy = true, self.rookboostspeed, 0 end
     if dash then
+        self.specialcooldown = 3
         self:NewAnim(function()
             self.rookcollide = false
             self.rookdouble = {timer=0, time=0.1, X=self.X, Y=self.Y}
             self.controlsenabled = false
+            self.specialcontrolsenabled = false
             self.G = 0
             self.VX, self.VY = sx, sy
             self:Wait(0.4, function() return self.rookcollide end)
-            self.specialcontrolsenabled = false
             self.controlsenabled = true
             self.G = 512
             self.VX, self.VY = 0, 0
@@ -239,6 +255,7 @@ function player:SpecialRook()
             self:Wait(2.5, function() return self.grounded end)
             self.specialcontrolsenabled = true
         end)
+        return true
     end
 end
 
@@ -265,8 +282,10 @@ function player:SpecialKnight()
     if IN:down("up") then
         local cols = self:PhysicsCheck{X=self.X+(self.DIR*48), Y=self.Y-96}
         if #cols == 0 then
+            self.specialcooldown = 3
             self.X, self.Y = self.X+(self.DIR*48), self.Y-96
             self.world:update(self, self.X, self.Y, self.W, self.H)
+            return true
         end
     end
 end
@@ -275,6 +294,7 @@ function player:UpdateKnight(dt)
     if self.counterspecial ~= "knight" then return end
 
     self.knightdouble = nil
+    if (not self.specialcontrolsenabled) or self.specialcooldown then return end
     if IN:down("up") then
         self.knightdouble = {}
         self.knightdouble.X, self.knightdouble.Y = self.X+(self.DIR*48), self.Y-96

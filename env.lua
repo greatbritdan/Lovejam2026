@@ -6,14 +6,14 @@ return {
     
     controls = {
         controls = {
-            left = {"sc:a", "sc:left", "axis:leftx-", "button:dpleft"},
-            right = {"sc:d", "sc:right", "axis:leftx+", "button:dpright"},
-            up = {"sc:w", "sc:up", "axis:lefty-", "button:dpup"},
-            down = {"sc:s", "sc:down", "axis:lefty+", "button:dpdown"},
-            jump = {"sc:space", "sc:z", "button:a"},
-            special = {"sc:e", "sc:x", "button:b"},
-            split = {"axis:triggerleft+"},
-            merge = {"axis:triggerright+"},
+            left = {"sc:a", "axis:leftx-", "button:dpleft"},
+            right = {"sc:d", "axis:leftx+", "button:dpright"},
+            up = {"sc:w", "axis:lefty-", "button:dpup"},
+            down = {"sc:s", "axis:lefty+", "button:dpdown"},
+            jump = {"sc:space", "button:a"},
+            special = {"sc:lshift", "button:b"},
+            split = {"sc:q", "axis:triggerleft+"},
+            merge = {"sc:e", "axis:triggerright+"},
         }
     }
 }

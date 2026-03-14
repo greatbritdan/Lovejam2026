@@ -9,7 +9,7 @@ function love.load()
     Font = love.graphics.newImageFont("assets/graphics/smallfont.png","abcdefghijklmnopqrstuvwxyz 0123456789.,!?'():/%$-=",1)
     love.graphics.setFont(Font)
 
-    Counterimg, Counterquads = LoadSprites{path="assets/graphics/counter.png", xquads=3, yquads=2, xquadnames={"counter","rook","knight"}}
+    Counterimg, Counterquads = LoadSprites{path="assets/graphics/counter.png", xquads=3, yquads=3, xquadnames={"counter","rook","knight"}}
     Shadowimg = LoadSprites{path="assets/backgrounds/shadow.png", noquads=true}
 
     -- Load Libraries --
@@ -41,6 +41,12 @@ function love.update(dt)
     dt = dt * DEBUG.framespeed
     SCENE:Update(dt)
     UI:Update(dt)
+
+    if IN._activeDevice == "joy" then
+        love.mouse.setVisible(false)
+    elseif IN._activeDevice == "kbm" then
+        love.mouse.setVisible(true)
+    end
     IN:update()
     collectgarbage("collect")
 end
