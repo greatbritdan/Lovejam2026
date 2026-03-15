@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 77,
+  nextobjectid = 78,
   properties = {},
   tilesets = {
     {
@@ -176,7 +176,7 @@ return {
           type = "player",
           shape = "rectangle",
           x = 194,
-          y = 188,
+          y = -4,
           width = 12,
           height = 4,
           rotation = 0,

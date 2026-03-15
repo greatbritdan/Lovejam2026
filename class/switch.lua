@@ -20,6 +20,7 @@ function switch:Update(dt)
         c = c + v.counters
         if v.counterspecial then c = c + 1 end
         if v.collideid == "player" then c = c + 1 end
+        -- Yeah sure, players on counters should count.
         if v.rider and v.rider.counters then
             c = c + v.rider.counters
             if v.rider.counterspecial then c = c + 1 end

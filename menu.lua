@@ -13,6 +13,7 @@ UI.Callback = function(e)
     else
         if id == "maptest" then MAPNAME = "test" end
         if id == "maplevel1" then  MAPNAME = "level1" end
+        if id == "maplevel2" then  MAPNAME = "level2" end
         SCENE:StartTransition("game")
     end
 end

@@ -131,7 +131,7 @@ function base:PhysicsCheckAABB(args)
     args.X, args.Y, args.W, args.H = args.X or self.X, args.Y or self.Y, args.W or self.W, args.H or self.H
     local ret = {}
     for _,obj in pairs(GAME.MAP.layers["objects"].objects) do
-        if (not args.include) or TableContains(obj.collideid, args.include) then
+        if obj ~= self and (not obj.checkignore) and ((not args.include) or TableContains(obj.collideid, args.include)) then
             if AABB(obj.X, obj.Y, obj.W, obj.H, args.X, args.Y, args.W, args.H) then
                 table.insert(ret, obj)
             end
@@ -161,7 +161,6 @@ function base:PhysicsDraw()
         if self.oneway == "right" then love.graphics.rectangle("fill", self.X, self.Y+(self.W-displaysize), displaysize, self.H) end
     else
         love.graphics.setColor(color)
-        self.W, self.H = self.W or 0, self.H or 0
         love.graphics.rectangle("fill", self.X, self.Y, self.W, self.H)
     end
 end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="122" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="77">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="122" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="78">
  <editorsettings>
   <export target="level1.lua" format="lua"/>
  </editorsettings>
@@ -3928,7 +3928,7 @@
   </data>
  </layer>
  <objectgroup id="2" name="Objects" class="objects">
-  <object id="2" type="player" x="194" y="188" width="12" height="4">
+  <object id="2" type="player" x="194" y="-4" width="12" height="4">
    <properties>
     <property name="counters" type="int" value="0"/>
    </properties>

@@ -1,7 +1,9 @@
 local text = Class("text", OBJECTS.base)
 
 function text:initialize(world, x, y, w, h, props)
-    self.X, self.Y = x, y
+    self.X, self.Y, self.W, self.H = x, y, w, h
+    self.checkignore = true
+    
     self.text = props.text or "no text?"
     self.opacity = 1
 
@@ -36,6 +38,7 @@ local trigger = Class("trigger", OBJECTS.base)
 
 function trigger:initialize(world, x, y, w, h, props)
     self.X, self.Y, self.W, self.H = x, y, w, h
+    self.checkignore = true
 
     self.triggered = false
     self.triggerid = props.linkid or 0
@@ -72,6 +75,7 @@ local checkpoint = Class("checkpoint", OBJECTS.base)
 
 function checkpoint:initialize(world, x, y, w, h, props)
     self.X, self.Y, self.W, self.H = x, y, w, h
+    self.checkignore = true
 
     self.triggered = false
     self.triggerid = props.linkid or 0

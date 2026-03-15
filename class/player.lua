@@ -144,12 +144,15 @@ function player:Movement(dt)
 end
 
 function player:Hop()
-    local cols = self:PhysicsCheck{H=self.H+12, Y=self.Y-12}
-    if #cols == 0 then
-        self.VY = -self.hopspeed
-        self.jumping = 1/self.turnspeed
-        playsound(Jumpsound)
-        self:UpdateHeight()
+    if IN:down("down") then
+        self.Y = self.Y + 0.1
+    else
+        if #self:PhysicsCheckAABB{H=self.H+12, Y=self.Y-12} == 0 then
+            self.VY = -self.hopspeed
+            self.jumping = 1/self.turnspeed
+            playsound(Jumpsound)
+            self:UpdateHeight()
+        end
     end
 end
 
@@ -296,8 +299,7 @@ function player:SpecialKnight()
 
     local dir = false
     if IN:down("up") then
-        local cols = self:PhysicsCheck{X=self.X+(self.DIR*48), Y=self.Y-96}
-        if #cols == 0 then
+        if #self:PhysicsCheckAABB{X=self.X+(self.DIR*48), Y=self.Y-96} == 0 then
             self.specialcooldown = 3
             self.X, self.Y = self.X+(self.DIR*48), self.Y-96
             self.world:update(self, self.X, self.Y, self.W, self.H)
