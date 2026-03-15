@@ -30,6 +30,7 @@ function love.load()
         love.audio.newSource("assets/audio/flip3.ogg","static")
     }
     Jumpsound = love.audio.newSource("assets/audio/jump.ogg","static")
+    Music = love.audio.newSource("assets/audio/music.ogg","stream")
 
     -- Load Libraries --
     Class = require("libs.middleclass")
@@ -57,7 +58,7 @@ function love.load()
     require("class.marble")
     require("class.misc")
 
-    SCENE:LoadScene("game")
+    SCENE:LoadScene("menu")
 end
 
 function playsound(v,vol)
@@ -88,8 +89,8 @@ function love.draw()
     love.graphics.clear()]]
     love.graphics.push()
     love.graphics.scale(ENV.scale, ENV.scale)
+    UI:Draw(DEBUG.hitbox)
     SCENE:Draw()
-    UI:Draw(DEBUG.ENABLED)
     DEBUG:Draw()
     love.graphics.pop()
     --[[love.graphics.setCanvas()

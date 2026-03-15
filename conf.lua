@@ -6,5 +6,5 @@ function love.conf(t)
     t.window.width = ENV.windowwidth
     t.window.height = ENV.windowheight
     t.window.vsync = false
-    t.window.resizable = true
+    t.window.resizable = false
 end

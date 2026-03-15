@@ -8,7 +8,7 @@ function britstate:Initialize()
     self.lastscene = nil
     self.transition = nil
     self.transitionTime = 0
-    self.transitionDuration = 0.5
+    self.transitionDuration = 0.2
 end
 
 function britstate:Run(func, args, scene)

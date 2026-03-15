@@ -13,7 +13,8 @@ function image:initialize(core,data,_style)
         self.image = data.image
     end
     self.imagefit = data.imagefit or "none" -- none, contain, cover, fill
-
+end
+function image:Reinitialize()
     self.scissor = {x=self.marginx, y=self.marginy, w=-(self.marginx*2), h=-(self.marginy*2)}
 end
 

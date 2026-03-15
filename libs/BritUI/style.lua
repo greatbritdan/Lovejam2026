@@ -240,6 +240,10 @@ function style:DrawText(element,transform,id,keys,state,varient,text)
         love.graphics.setFont(element.font)
         love.graphics.setColor(color)
         local x,y,_,_ = self:GetTextBounds(element,transform,element.font,text)
+        -- STO Addition
+        if element.parent and (state ~= 3) then
+            y = y - 1
+        end
         love.graphics.print(text, x, y)
     elseif data.type == "image" then
         return -- Not Supported

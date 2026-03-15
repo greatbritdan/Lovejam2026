@@ -16,12 +16,17 @@ end
 local layers
 function scene.LoadScene()
     GAME.WORLD = BUMP.newWorld(16)
-    GAME.MAP = MAP:new("assets/maps/level1.lua")
+    MAPNAME = MAPNAME or "level1"
+    GAME.MAP = MAP:new("assets/maps/"..MAPNAME..".lua")
 
     layers = GAME.MAP.layers
     GAME.SX, GAME.SY = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2), 0
+
+    Music:setVolume(VOLUME)
+    Music:play()
 end
 function scene.UnloadScene()
+    GAME = {}
 end
 
 function scene.Update(dt)
@@ -41,7 +46,7 @@ function scene.Draw()
     
     layers["tilesback"]:Draw(GAME.SX, GAME.SY)
     layers["tiles"]:Draw(GAME.SX, GAME.SY)
-    layers["objects"]:Draw(GAME.SX, GAME.SY, false)
+    layers["objects"]:Draw(GAME.SX, GAME.SY, DEBUG.hitbox)
     love.graphics.setColor(1,1,1)
     love.graphics.draw(Shadowimg, 0, 0)
 end

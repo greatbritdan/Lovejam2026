@@ -11,6 +11,7 @@ function debug:Load()
     self.consoleout = "print(\"test\")"
 
     self.info = false
+    self.hitbox = true
 
     self.frameadvance = 0
     self.framespeed = 1
@@ -132,6 +133,7 @@ function debug:Keypressed(key)
         end
     end
 
+    if key == "f11" then self.hitbox = not self.hitbox; self.skipti = true end
     if key == "f16" then self.frameadvance = 0; self.skipti = true end
     if key == "f15" then self.frameadvance = 1; self.framespeed = 1; self.skipti = true end
 

@@ -161,6 +161,7 @@ function base:PhysicsDraw()
         if self.oneway == "right" then love.graphics.rectangle("fill", self.X, self.Y+(self.W-displaysize), displaysize, self.H) end
     else
         love.graphics.setColor(color)
+        self.W, self.H = self.W or 0, self.H or 0
         love.graphics.rectangle("fill", self.X, self.Y, self.W, self.H)
     end
 end
