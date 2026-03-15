@@ -2,6 +2,7 @@ local player = Class("player", OBJECTS.base)
 
 function player:initialize(world, x, y, w, h, props)
     OBJECTS.base.initialize(self, world, x, y, w, h)
+    self.startX, self.startY = self.X, self.Y
     self.DIR = 1
     self.R = 0
 
@@ -203,6 +204,17 @@ function player:UpdateHeight(ignorey)
         self.H = h
         self:Move(self.X,self.Y,self.W,self.H)
     end
+end
+
+function player:Respawn()
+    if CHECKPOINT then
+        self.X = CHECKPOINT[1]-7
+        self.Y = CHECKPOINT[2]-self.H
+    else
+        self.X = self.startX
+        self.Y = self.startY
+    end
+    self.world:update(self, self.X, self.Y, self.W, self.H)
 end
 
 --------------

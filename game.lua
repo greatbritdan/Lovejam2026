@@ -19,13 +19,9 @@ function scene.LoadScene()
     MAPNAME = MAPNAME or "level1"
     GAME.MAP = MAP:new("assets/maps/"..MAPNAME..".lua")
     layers = GAME.MAP.layers
-    GAME.SX, GAME.SY = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2), 0
 
-    if CHECKPOINT then
-        GAME.PLAYER.X = CHECKPOINT.X-7
-        GAME.PLAYER.Y = CHECKPOINT.Y-GAME.PLAYER.H
-        GAME.PLAYER.world:update(GAME.PLAYER, GAME.PLAYER.X, GAME.PLAYER.Y, GAME.PLAYER.W, GAME.PLAYER.H)
-    end
+    GAME.SX, GAME.SY = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2), 0
+    GAME.PLAYER:Respawn()
 
     playmusic(Music)
 end
@@ -38,6 +34,10 @@ function scene.Update(dt)
     local tx = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2)
     local dx = tx-GAME.SX
     GAME.SX = math.min(math.max(0, GAME.SX+(dx*(4*dt))), (GAME.MAP.W*GAME.MAP.TW)-ENV.width)
+
+    if GAME.PLAYER.Y > (GAME.MAP.H*GAME.MAP.TH) then
+        GAME.PLAYER:Respawn()
+    end
 
     layers["objects"]:Run("Update",{dt})
     layers["objects"]:Run("PhysicsUpdate",{dt})
