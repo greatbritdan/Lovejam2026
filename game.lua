@@ -18,15 +18,14 @@ function scene.LoadScene()
     GAME.WORLD = BUMP.newWorld(16)
     MAPNAME = MAPNAME or "level1"
     GAME.MAP = MAP:new("assets/maps/"..MAPNAME..".lua")
-
     layers = GAME.MAP.layers
     GAME.SX, GAME.SY = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2), 0
 
-    Music:setVolume(VOLUME)
-    Music:play()
+    playmusic(Music)
 end
 function scene.UnloadScene()
     GAME = {}
+    slaymusic(Music)
 end
 
 function scene.Update(dt)

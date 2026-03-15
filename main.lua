@@ -31,6 +31,7 @@ function love.load()
     }
     Jumpsound = love.audio.newSource("assets/audio/jump.ogg","static")
     Music = love.audio.newSource("assets/audio/music.ogg","stream")
+    Music:setLooping(true)
 
     -- Load Libraries --
     Class = require("libs.middleclass")
@@ -46,7 +47,9 @@ function love.load()
     SAVE = require("libs.BritSaveManager")
     DEBUG = require("libs.BritDebug")
 
-    VOLUME = 0.5
+    SETTINGS = SAVE:new{config="save"}
+    SETTINGS:LOAD()
+    updatecodes()
 
     OBJECTS = {}
     require("class.base")
@@ -61,11 +64,24 @@ function love.load()
     SCENE:LoadScene("menu")
 end
 
+function updatecodes()
+    DEBUG.ENABLED = SETTINGS:GetInside("codes","aidanthemapper")
+end
+
 function playsound(v,vol)
     vol = vol or 1
-    v:setVolume(vol*VOLUME)
+    v:setVolume(vol*SETTINGS:Get("volumesfx"))
     v:stop()
     v:play()
+end
+
+function playmusic(v)
+    v:setVolume(SETTINGS:Get("volumemusic"))
+    v:stop()
+    v:play()
+end
+function slaymusic(v)
+    v:stop()
 end
 
 function love.update(dt)

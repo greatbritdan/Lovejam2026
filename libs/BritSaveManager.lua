@@ -89,4 +89,13 @@ function savemanager:Reset(name)
     end
 end
 
+function savemanager:Has(name)
+    if self.config[name] then return true end
+    return false
+end
+function savemanager:HasInside(name, key)
+    if self.config[name].table[key] then return true end
+    return false
+end
+
 return savemanager

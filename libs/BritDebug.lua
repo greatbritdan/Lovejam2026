@@ -11,12 +11,12 @@ function debug:Load()
     self.consoleout = "print(\"test\")"
 
     self.info = false
-    self.hitbox = true
+    self.hitbox = false
 
     self.frameadvance = 0
     self.framespeed = 1
 
-    self.nof3 = true
+    self.nof3 = false
 end
 
 function debug:NewCommand(key, func)
