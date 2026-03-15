@@ -62,6 +62,7 @@ function player:Update(dt)
     self:UpdateRook(dt)
     self:UpdateKnight(dt)
     self:UpdateState(dt)
+    if math.abs(self.R) < 0.05 then self.R = 0 end
 end
 
 function player:Draw()
@@ -99,6 +100,10 @@ end
 function player:Collide(other, nx, ny)
     if self.rookdouble then self.rookcollide = true end
     if other.collideid == "counter" then
+        if nx ~= 0 then
+            other.VX = (self.VX/2)
+            return true, false
+        end
         return other:Collide(self, -nx, -ny)
     end
     return false, false

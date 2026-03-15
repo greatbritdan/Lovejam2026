@@ -39,7 +39,7 @@ function counter:Collide(other, nx, ny)
             return true, "ignore"
         end
     end
-    if other.collideid == "counter" then
+    if other.collideid == "counter" and ny ~= 0 then
         if (not self.counterspecial) and (not other.counterspecial) then
             -- Merge counters
             self.counters = self.counters + other.counters

@@ -65,7 +65,7 @@ function love.load()
 end
 
 function updatecodes()
-    DEBUG.ENABLED = SETTINGS:GetInside("codes","aidanthemapper")
+    DEBUG.ENABLED = SETTINGS:GetInside("codes","iamgod")
 end
 
 function playsound(v,vol)

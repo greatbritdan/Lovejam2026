@@ -21,6 +21,12 @@ function scene.LoadScene()
     layers = GAME.MAP.layers
     GAME.SX, GAME.SY = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2), 0
 
+    if CHECKPOINT then
+        GAME.PLAYER.X = CHECKPOINT.X-7
+        GAME.PLAYER.Y = CHECKPOINT.Y-GAME.PLAYER.H
+        GAME.PLAYER.world:update(GAME.PLAYER, GAME.PLAYER.X, GAME.PLAYER.Y, GAME.PLAYER.W, GAME.PLAYER.H)
+    end
+
     playmusic(Music)
 end
 function scene.UnloadScene()
@@ -48,6 +54,21 @@ function scene.Draw()
     layers["objects"]:Draw(GAME.SX, GAME.SY, DEBUG.hitbox)
     love.graphics.setColor(1,1,1)
     love.graphics.draw(Shadowimg, 0, 0)
+end
+
+function scene.Mousepressed(mx,my,b)
+    if b == 1 then
+        GAME.PLAYER.X = GAME.SX+mx
+        GAME.PLAYER.Y = GAME.SY+my
+        GAME.PLAYER.world:update(GAME.PLAYER, GAME.PLAYER.X, GAME.PLAYER.Y, GAME.PLAYER.W, GAME.PLAYER.H)
+    end
+    if b == 2 then
+        if CHECKPOINT then
+            GAME.PLAYER.X = CHECKPOINT[1]-6
+            GAME.PLAYER.Y = CHECKPOINT[2]-GAME.PLAYER.H
+            GAME.PLAYER.world:update(GAME.PLAYER, GAME.PLAYER.X, GAME.PLAYER.Y, GAME.PLAYER.W, GAME.PLAYER.H)
+        end
+    end
 end
 
 return scene

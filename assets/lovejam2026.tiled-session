@@ -54,7 +54,7 @@
         "tilesets/Chess.tsx"
     ],
     "project": "lovejam2026.tiled-project",
-    "property.type": "string",
+    "property.type": "bool",
     "recentFiles": [
         "tilesets/Chess.tsx",
         "maps/level1.tmx",

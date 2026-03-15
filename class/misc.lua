@@ -43,7 +43,7 @@ function trigger:initialize(world, x, y, w, h, props)
 end
 
 function trigger:Update(dt)
-    if self.triggermode ~= "toggle" and self.triggered then return end
+    if self.triggered and self.triggermode ~= "toggle" then return end
 
     local hits = self:PhysicsCheckAABB{include={"player"}}
     if self.triggermode == "toggle" then
@@ -65,3 +65,23 @@ function trigger:Update(dt)
 end
 
 OBJECTS.trigger = trigger
+
+--------------------------------------------
+
+local checkpoint = Class("checkpoint", OBJECTS.base)
+
+function checkpoint:initialize(world, x, y, w, h, props)
+    self.X, self.Y, self.W, self.H = x, y, w, h
+
+    self.triggered = false
+    self.triggerid = props.linkid or 0
+end
+
+function checkpoint:Trigger(id, state)
+    if self.triggerid == id then
+        self.triggered = state
+        CHECKPOINT = {self.X, self.Y}
+    end
+end
+
+OBJECTS.checkpoint = checkpoint
