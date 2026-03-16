@@ -30,6 +30,8 @@ function love.load()
         love.audio.newSource("assets/audio/flip3.ogg","static")
     }
     Jumpsound = love.audio.newSource("assets/audio/jump.ogg","static")
+    Successsound = love.audio.newSource("assets/audio/success.ogg","static")
+
     Music = love.audio.newSource("assets/audio/music.ogg","stream")
     Music:setLooping(true)
 
@@ -54,6 +56,7 @@ function love.load()
     SETTINGS = SAVE:new{config="save"}
     SETTINGS:LOAD()
     updatecodes()
+    
 
     OBJECTS = {}
     require("class.base")
@@ -70,6 +73,10 @@ end
 
 function updatecodes()
     DEBUG.ENABLED = SETTINGS:GetInside("codes","iamgod")
+    GAMESPEED = 1
+    if SETTINGS:GetInside("codes","gimmestimmy") then
+        GAMESPEED = 8
+    end
 end
 
 function updatevolume()
@@ -96,6 +103,7 @@ function love.update(dt)
     dt = math.min(dt, 1/60) -- no falling through the world
     if DEBUG:Update(dt) then return end
     dt = dt * DEBUG.framespeed
+    dt = dt * GAMESPEED
     SCENE:Update(dt)
     UI:Update(dt)
 

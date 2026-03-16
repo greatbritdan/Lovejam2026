@@ -63,6 +63,7 @@ function scene.Draw()
 end
 
 function scene.Mousepressed(mx,my,b)
+    if not DEBUG.ENABLED then return end
     if b == 1 then
         GAME.PLAYER.X = GAME.SX+mx
         GAME.PLAYER.Y = GAME.SY+my

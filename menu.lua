@@ -33,9 +33,11 @@ local function updatesetting(name, value)
         end
     elseif name == "sendcode" then
         if SETTINGS:HasInside("codes", value) then
-            SETTINGS:SetInside("codes", value, true)
+            local old = SETTINGS:GetInside("codes", value)
+            SETTINGS:SetInside("codes", value, (not old))
             SETTINGS:SAVE()
             updatecodes()
+            playsound(Successsound)
         end
     end
 end
