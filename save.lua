@@ -5,5 +5,7 @@ return {
         iamgod = {default=false, type="boolean"},
         oldschool = {default=false, type="boolean"},
         gimmestimmy = {default=false, type="boolean"},
+        rookymistake = {default=false, type="boolean"},
+        imsohungry = {default=false, type="boolean"},
     }},
 }

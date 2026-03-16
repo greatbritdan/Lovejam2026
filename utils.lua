@@ -87,6 +87,13 @@ function updatecodes()
     if SETTINGS:GetInside("codes","gimmestimmy") then
         GAMESPEED = 4
     end
+    FORCEDFORM = nil
+    if SETTINGS:GetInside("codes","rookymistake") then
+        FORCEDFORM = "rook"
+    end
+    if SETTINGS:GetInside("codes","imsohungry") then
+        FORCEDFORM = "knight"
+    end
 end
 
 function updatevolume()

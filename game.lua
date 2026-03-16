@@ -10,6 +10,9 @@ function scene.LoadScene()
 
     GAME.SX, GAME.SY = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2), 0
     GAME.PLAYER:Respawn()
+    if FORCEDFORM then
+        GAME.PLAYER:AddCounters(FORCEDFORM)
+    end
 
     local theme = UI:RegisterStyle("assets/ui/theme.lua")
     GAME.PAUSE = UI:RegisterUI("assets/ui/pause.lua", theme)

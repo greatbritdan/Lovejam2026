@@ -15,7 +15,9 @@ return {
             merge = {"sc:e", "sc:c", "axis:triggerright+"},
             pause = {"sc:escape", "button:start"},
 
-            special = {"sc:lshift", "button:b"},
+            special = {"sc:lshift", "button:b"}, -- Unused
+
+            makemouseshow = {"mouse:1", "mouse:2"},
         }
     }
 }
