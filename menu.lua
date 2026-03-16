@@ -1,64 +1,6 @@
 local scene = {}
 MENU = {}
 
-local function changestate(name)
-    if MENU.STATE then
-        UI:Unload(MENU[MENU.STATE])
-    end
-    if name then
-        MENU.STATE = name
-        UI:Load(MENU[MENU.STATE])
-    end
-end
-
-local function loadsetting(name)
-    local e = MENU.OPTIONS:Find("strict",{{"id",name}})
-    if e and e[1] then
-        e[1].value = SETTINGS:Get(name)
-        if name == "volumesfx" or name == "volumemusic" then
-            e[1].value = e[1].value*100
-        end
-    end
-end
-
-local function updatesetting(name, value)
-    if SETTINGS:Has(name) then
-        if name == "volumesfx" or name == "volumemusic" then
-            value = value/100
-        end
-        SETTINGS:Set(name,value)
-        SETTINGS:SAVE()
-        if name == "volumemusic" then
-            updatevolume()
-        end
-    elseif name == "sendcode" then
-        if SETTINGS:HasInside("codes", value) then
-            local old = SETTINGS:GetInside("codes", value)
-            SETTINGS:SetInside("codes", value, (not old))
-            SETTINGS:SAVE()
-            updatecodes()
-            playsound(Successsound)
-        end
-    end
-end
-
-function scene.UICallback(e)
-    local id = e.id or "nil"
-    if id:sub(1,3) == "map" then
-        MAPNAME = id:sub(4,-1)
-        SCENE:StartTransition("game")
-    else
-        -- updates settings if the ID matches one, works for codes
-        updatesetting(id, e:GetValue())
-
-        if id == "start" then MAPNAME = "level1"; SCENE:StartTransition("game") end
-        if id == "menu" then changestate("MENU") end
-        if id == "levelselect" then changestate("LEVELSELECT") end
-        if id == "options" then changestate("OPTIONS") end
-        if id == "quit" then love.event.quit() end
-    end
-end
-
 function scene.LoadScene()
     MENU.MAP = MAP:new("assets/maps/level1.lua",{menu=true})
     layers = MENU.MAP.layers
@@ -72,15 +14,15 @@ function scene.LoadScene()
     end
     MENU.OPTIONS = UI:RegisterUI("assets/ui/options.lua", theme)
     MENU.LEVELSELECT = UI:RegisterUI("assets/ui/levelselect.lua", theme)
-    changestate("MENU")
+    changestate(MENU,"MENU")
 
-    loadsetting("volumesfx")
-    loadsetting("volumemusic")
+    loadsetting(MENU, "volumesfx")
+    loadsetting(MENU, "volumemusic")
 
     playmusic(Music)
 end
 function scene.UnloadScene()
-    changestate()
+    changestate(MENU)
     MENU = {}
     slaymusic(Music)
 end

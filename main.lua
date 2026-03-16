@@ -49,15 +49,12 @@ function love.load()
     SAVE = require("libs.BritSaveManager")
     DEBUG = require("libs.BritDebug")
 
-    UI.Callback = function(e)
-        SCENE:Run("UICallback",{e})
-    end
+    require("utils")
 
     SETTINGS = SAVE:new{config="save"}
     SETTINGS:LOAD()
     updatecodes()
     
-
     OBJECTS = {}
     require("class.base")
     require("class.tile")
@@ -69,34 +66,6 @@ function love.load()
     require("class.misc")
 
     SCENE:LoadScene("menu")
-end
-
-function updatecodes()
-    DEBUG.ENABLED = SETTINGS:GetInside("codes","iamgod")
-    GAMESPEED = 1
-    if SETTINGS:GetInside("codes","gimmestimmy") then
-        GAMESPEED = 8
-    end
-end
-
-function updatevolume()
-    Music:setVolume(SETTINGS:Get("volumemusic"))
-end
-
-function playsound(v,vol)
-    vol = vol or 1
-    v:setVolume(vol*SETTINGS:Get("volumesfx"))
-    v:stop()
-    v:play()
-end
-
-function playmusic(v)
-    v:setVolume(SETTINGS:Get("volumemusic"))
-    v:stop()
-    v:play()
-end
-function slaymusic(v)
-    v:stop()
 end
 
 function love.update(dt)
