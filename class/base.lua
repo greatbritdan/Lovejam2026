@@ -173,6 +173,13 @@ function base:SendTrigger(state, id)
     if id > 0 then
         GAME.MAP.layers["objects"]:Run("Trigger",{id, state})
     end
+    if self.triggerinfo and state then
+        if self.triggerinfo == "nextlevel" then
+            print("next")
+        else
+            GAME.INFO = INFO:new(self.triggerinfo)
+        end
+    end
 end
 
 OBJECTS.base = base

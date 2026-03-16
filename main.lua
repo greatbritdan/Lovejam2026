@@ -14,6 +14,7 @@ function love.load()
     Doorimg, Doorquads = LoadSprites{path="assets/graphics/door.png", yquads=3}
     Marbleimg = LoadSprites{path="assets/graphics/marble.png", noquads=true}
     Shadowimg = LoadSprites{path="assets/backgrounds/shadow.png", noquads=true}
+    Promptsimg, Promptsquads = LoadSprites{path="assets/graphics/prompts.png", xquads=7, yquads=4, xquadnames={"left","right","up","down","jump","split","merge"}, yquadnames={"kbm","kbm_alt","joy","joy_stick"}}
 
     Font = love.graphics.newImageFont("assets/graphics/newfont.png","abcdefghijklmnopqrstuvwxyz1234567890.,!? /",1)
     love.graphics.setFont(Font)
@@ -64,6 +65,7 @@ function love.load()
     require("class.door")
     require("class.marble")
     require("class.misc")
+    INFO = require("class.info")
 
     SCENE:LoadScene("menu")
 end

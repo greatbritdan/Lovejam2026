@@ -42,6 +42,7 @@ function trigger:initialize(world, x, y, w, h, props)
 
     self.triggered = false
     self.triggerid = props.linkid or 0
+    self.triggerinfo = props.linkinfo or nil
     self.triggermode = props.mode or "toggle"
 end
 

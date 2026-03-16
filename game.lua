@@ -25,6 +25,11 @@ end
 function scene.Update(dt)
     if GAME.STATE then return end
 
+    if GAME.INFO then
+        GAME.INFO:Update(dt)
+        if GAME.INFO.DONE then GAME.INFO = nil end
+    end
+
     local tx = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2)
     local dx = tx-GAME.SX
     GAME.SX = math.min(math.max(0, GAME.SX+(dx*(4*dt))), (GAME.MAP.W*GAME.MAP.TW)-ENV.width)
@@ -48,6 +53,10 @@ function scene.Draw()
     layers["objects"]:Draw(GAME.SX, GAME.SY, DEBUG.hitbox)
     love.graphics.setColor(1,1,1)
     love.graphics.draw(Shadowimg, 0, 0)
+
+    if GAME.INFO then
+        GAME.INFO:Draw()
+    end
     
     UI:Draw(DEBUG.hitbox)
 end

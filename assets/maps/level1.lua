@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 78,
+  nextobjectid = 82,
   properties = {},
   tilesets = {
     {
@@ -186,46 +186,14 @@ return {
           }
         },
         {
-          id = 19,
-          name = "",
-          type = "text",
-          shape = "point",
-          x = 200,
-          y = 140,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 2,
-            ["text"] = "press a or d to move"
-          }
-        },
-        {
-          id = 20,
-          name = "",
-          type = "text",
-          shape = "point",
-          x = 200,
-          y = 148,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 2,
-            ["text"] = "press space to jump!"
-          }
-        },
-        {
           id = 21,
           name = "",
           type = "trigger",
           shape = "rectangle",
           x = 311,
-          y = 49,
+          y = 48,
           width = 2,
-          height = 127,
+          height = 128,
           rotation = 0,
           visible = true,
           properties = {
@@ -265,38 +233,6 @@ return {
           }
         },
         {
-          id = 25,
-          name = "",
-          type = "text",
-          shape = "point",
-          x = 472,
-          y = 108,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 3,
-            ["text"] = "press e to merge with counters"
-          }
-        },
-        {
-          id = 26,
-          name = "",
-          type = "text",
-          shape = "point",
-          x = 472,
-          y = 116,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 3,
-            ["text"] = "make sure you stand on top."
-          }
-        },
-        {
           id = 27,
           name = "",
           type = "switch",
@@ -309,7 +245,7 @@ return {
           visible = true,
           properties = {
             ["counters"] = 1,
-            ["linkid"] = 4
+            ["linkid"] = 2
           }
         },
         {
@@ -325,55 +261,7 @@ return {
           visible = true,
           properties = {
             ["dist"] = 64,
-            ["linkid"] = 4
-          }
-        },
-        {
-          id = 29,
-          name = "",
-          type = "text",
-          shape = "point",
-          x = 592,
-          y = 124,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 3,
-            ["text"] = "press q to split"
-          }
-        },
-        {
-          id = 30,
-          name = "",
-          type = "text",
-          shape = "point",
-          x = 592,
-          y = 132,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 3,
-            ["text"] = "switches require counters to trigger-"
-          }
-        },
-        {
-          id = 32,
-          name = "",
-          type = "trigger",
-          shape = "rectangle",
-          x = 311,
-          y = 48,
-          width = 2,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 2,
-            ["mode"] = "on"
+            ["linkid"] = 2
           }
         },
         {
@@ -393,34 +281,18 @@ return {
           }
         },
         {
-          id = 34,
-          name = "",
-          type = "trigger",
-          shape = "rectangle",
-          x = 695,
-          y = 112,
-          width = 2,
-          height = 64,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 3,
-            ["mode"] = "on"
-          }
-        },
-        {
           id = 36,
           name = "",
           type = "trigger",
           shape = "rectangle",
           x = 695,
-          y = 113,
+          y = 112,
           width = 2.03175,
-          height = 63,
+          height = 64,
           rotation = 0,
           visible = true,
           properties = {
-            ["linkid"] = 4,
+            ["linkid"] = 2,
             ["mode"] = "off"
           }
         },
@@ -440,38 +312,6 @@ return {
           }
         },
         {
-          id = 38,
-          name = "",
-          type = "text",
-          shape = "point",
-          x = 792,
-          y = 140,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 5,
-            ["text"] = "you can use counters to climb by"
-          }
-        },
-        {
-          id = 39,
-          name = "",
-          type = "text",
-          shape = "point",
-          x = 792,
-          y = 148,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 5,
-            ["text"] = "splitting and using them as platforms"
-          }
-        },
-        {
           id = 40,
           name = "",
           type = "door",
@@ -484,11 +324,11 @@ return {
           visible = true,
           properties = {
             ["dist"] = 64,
-            ["linkid"] = 6
+            ["linkid"] = 3
           }
         },
         {
-          id = 41,
+          id = 42,
           name = "",
           type = "trigger",
           shape = "rectangle",
@@ -499,23 +339,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["linkid"] = 5,
-            ["mode"] = "on"
-          }
-        },
-        {
-          id = 42,
-          name = "",
-          type = "trigger",
-          shape = "rectangle",
-          x = 951,
-          y = 49,
-          width = 2,
-          height = 79,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 6,
+            ["linkid"] = 3,
             ["mode"] = "on"
           }
         },
@@ -531,7 +355,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["linkid"] = 6,
+            ["linkid"] = 3,
             ["mode"] = "off"
           }
         },
@@ -578,7 +402,7 @@ return {
           visible = true,
           properties = {
             ["counters"] = 8,
-            ["linkid"] = 7
+            ["linkid"] = 4
           }
         },
         {
@@ -594,7 +418,7 @@ return {
           visible = true,
           properties = {
             ["dist"] = 64,
-            ["linkid"] = 7
+            ["linkid"] = 4
           }
         },
         {
@@ -609,40 +433,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["linkid"] = 7,
+            ["linkid"] = 4,
             ["mode"] = "off"
-          }
-        },
-        {
-          id = 49,
-          name = "",
-          type = "text",
-          shape = "point",
-          x = 1152,
-          y = 160,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 8,
-            ["text"] = "some switches need more than 1 counter"
-          }
-        },
-        {
-          id = 50,
-          name = "",
-          type = "trigger",
-          shape = "rectangle",
-          x = 1383,
-          y = 129,
-          width = 2,
-          height = 63,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 8,
-            ["mode"] = "on"
           }
         },
         {
@@ -658,7 +450,7 @@ return {
           visible = true,
           properties = {
             ["dist"] = 64,
-            ["linkid"] = 9
+            ["linkid"] = 5
           }
         },
         {
@@ -674,7 +466,7 @@ return {
           visible = true,
           properties = {
             ["counters"] = 8,
-            ["linkid"] = 9
+            ["linkid"] = 5
           }
         },
         {
@@ -755,38 +547,6 @@ return {
           }
         },
         {
-          id = 60,
-          name = "",
-          type = "text",
-          shape = "point",
-          x = 1616,
-          y = 60,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 11,
-            ["text"] = "top tip!"
-          }
-        },
-        {
-          id = 61,
-          name = "",
-          type = "text",
-          shape = "point",
-          x = 1616,
-          y = 68,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 11,
-            ["text"] = "counters can be pushed!"
-          }
-        },
-        {
           id = 62,
           name = "",
           type = "trigger",
@@ -798,54 +558,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["linkid"] = 9,
+            ["linkid"] = 5,
             ["mode"] = "off"
-          }
-        },
-        {
-          id = 63,
-          name = "",
-          type = "trigger",
-          shape = "rectangle",
-          x = 1687,
-          y = 33,
-          width = 2,
-          height = 63,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 11,
-            ["mode"] = "on"
-          }
-        },
-        {
-          id = 64,
-          name = "",
-          type = "text",
-          shape = "point",
-          x = 1800,
-          y = 76,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["text"] = "jump down to the"
-          }
-        },
-        {
-          id = 65,
-          name = "",
-          type = "text",
-          shape = "point",
-          x = 1800,
-          y = 84,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["text"] = "next level!"
           }
         },
         {
@@ -1001,6 +715,74 @@ return {
           visible = true,
           properties = {
             ["linkid"] = 105
+          }
+        },
+        {
+          id = 78,
+          name = "",
+          type = "trigger",
+          shape = "rectangle",
+          x = 160,
+          y = 64,
+          width = 80,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["linkid"] = 0,
+            ["linkinfo"] = "movement",
+            ["mode"] = "on"
+          }
+        },
+        {
+          id = 79,
+          name = "",
+          type = "trigger",
+          shape = "rectangle",
+          x = 408,
+          y = 48,
+          width = 16,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["linkid"] = 0,
+            ["linkinfo"] = "merge",
+            ["mode"] = "on"
+          }
+        },
+        {
+          id = 80,
+          name = "",
+          type = "trigger",
+          shape = "rectangle",
+          x = 1048,
+          y = 48,
+          width = 16,
+          height = 112,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["linkid"] = 0,
+            ["linkinfo"] = "down",
+            ["mode"] = "on"
+          }
+        },
+        {
+          id = 81,
+          name = "",
+          type = "trigger",
+          shape = "rectangle",
+          x = 1776,
+          y = 192,
+          width = 48,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["linkid"] = 0,
+            ["linkinfo"] = "nextlevel",
+            ["mode"] = "on"
           }
         }
       }
