@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 82,
+  nextobjectid = 84,
   properties = {},
   tilesets = {
     {
@@ -246,6 +246,37 @@ return {
           properties = {
             ["linkid"] = 1,
             ["mode"] = "off"
+          }
+        },
+        {
+          id = 82,
+          name = "",
+          type = "trigger",
+          shape = "rectangle",
+          x = 384,
+          y = 128,
+          width = 16,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["linkid"] = 101,
+            ["mode"] = "on"
+          }
+        },
+        {
+          id = 83,
+          name = "",
+          type = "checkpoint",
+          shape = "point",
+          x = 392,
+          y = 192,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["linkid"] = 101
           }
         }
       }

@@ -19,6 +19,10 @@ UI.Callback = function(e)
 end
 
 function scene.LoadScene()
+    MENU.MAP = MAP:new("assets/maps/level1.lua",{menu=true})
+    layers = MENU.MAP.layers
+    MENU.SX = 0
+
     local theme = UI:RegisterStyle("assets/ui/theme.lua")
     MENU.MENU = UI:RegisterUI("assets/ui/menu.lua", theme)
     UI:Load(MENU.MENU)
@@ -31,9 +35,19 @@ function scene.UnloadScene()
 end
 
 function scene.Update(dt)
+    MENU.SX = MENU.SX + dt*16
 end
 
 function scene.Draw()
+    love.graphics.setColor(.4,.4,.4)
+    layers["background3"]:Draw(MENU.SX, 0)
+    layers["background2"]:Draw(MENU.SX, 0)
+    layers["background1"]:Draw(MENU.SX, 0)
+    
+    layers["tilesback"]:Draw(MENU.SX, 0)
+    layers["tiles"]:Draw(MENU.SX, 0)
+    love.graphics.setColor(.4,.4,.4)
+    love.graphics.draw(Shadowimg, 0, 0)
 end
 
 return scene

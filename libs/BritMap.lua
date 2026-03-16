@@ -16,11 +16,12 @@ local _tileset = Class("BritMap_Tileset")
 local _layer = Class("BritMap_Layer")
 
 -- MAP --
-function _map:initialize(path)
+function _map:initialize(path,spawnparams)
     self.path = path
     local d = love.filesystem.load(path)(); self.data = d
     self.W, self.H = d.width, d.height
     self.TW, self.TH = d.tilewidth, d.tileheight
+    self.spawnparams = spawnparams or {}
 
     self.tiles = {}
     self.tilesets = {}
@@ -128,13 +129,14 @@ function _layer:AddTile(id, x, y, cause)
     local data = self.map.tiles[id]
     if self.grid[y][x] then
         self.grid[y][x].obj:Release()
+        self.grid[y][x].obj = nil
     end
     local tile = {
         X=(x-1)*self.map.TW, Y=(y-1)*self.map.TH, W=self.map.TW, H=self.map.TH,
         tile=id, image=data.image, quad=data.quad, props=data.props, tileset=data.tileset
     }
     local obj
-    if self.map.Register then obj = self.map.Register("tile", tile, self) end
+    if self.map.Register then obj = self.map.Register("tile", tile, self, self.map.spawnparams) end
     if obj then tile.obj = obj end
     self.grid[y][x] = tile
 
@@ -147,7 +149,7 @@ function _layer:AddObject(class, x, y, w, h, props)
         X=x, Y=y, W=w, H=h,
         class=class, props=props
     }
-    if self.map.Register then object = self.map.Register("object", object, self) end
+    if self.map.Register then object = self.map.Register("object", object, self, self.map.spawnparams) end
     if object then
         table.insert(self.objects, object)
     end

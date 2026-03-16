@@ -1,7 +1,8 @@
 local scene = {}
 GAME = {}
 
-MAP.Register = function(t, data, layer)
+MAP.Register = function(t, data, layer, spawnparams)
+    if spawnparams.menu then return {} end
     if t == "tile" then
         if data.props.collision and layer.class == "tiles" then -- ignore background tiles
             return OBJECTS.tile:new(GAME.WORLD, data.X, data.Y, data.W, data.H, data.props)

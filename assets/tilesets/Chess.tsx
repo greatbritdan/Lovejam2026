@@ -84,11 +84,13 @@
  <tile id="34">
   <properties>
    <property name="collision" type="bool" value="true"/>
+   <property name="half" value="top"/>
   </properties>
  </tile>
  <tile id="35">
   <properties>
    <property name="collision" type="bool" value="true"/>
+   <property name="half" value="top"/>
   </properties>
  </tile>
  <tile id="48">
@@ -104,11 +106,13 @@
  <tile id="50">
   <properties>
    <property name="collision" type="bool" value="true"/>
+   <property name="half" value="bottom"/>
   </properties>
  </tile>
  <tile id="51">
   <properties>
    <property name="collision" type="bool" value="true"/>
+   <property name="half" value="bottom"/>
   </properties>
  </tile>
  <tile id="64">

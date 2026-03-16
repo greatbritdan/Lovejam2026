@@ -123,13 +123,15 @@ return {
     {
       id = 34,
       properties = {
-        ["collision"] = true
+        ["collision"] = true,
+        ["half"] = "top"
       }
     },
     {
       id = 35,
       properties = {
-        ["collision"] = true
+        ["collision"] = true,
+        ["half"] = "top"
       }
     },
     {
@@ -147,13 +149,15 @@ return {
     {
       id = 50,
       properties = {
-        ["collision"] = true
+        ["collision"] = true,
+        ["half"] = "bottom"
       }
     },
     {
       id = 51,
       properties = {
-        ["collision"] = true
+        ["collision"] = true,
+        ["half"] = "bottom"
       }
     },
     {
