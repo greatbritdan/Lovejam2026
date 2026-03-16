@@ -131,7 +131,7 @@ end
 
 function core:FindSingle(mode,conditions)
     local results = self:Find(mode,conditions)
-    if #results == 1 then
+    if #results >= 1 then
         return results[1]
     end
 end

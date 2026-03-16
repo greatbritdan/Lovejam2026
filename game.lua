@@ -14,6 +14,9 @@ MAP.Register = function(t, data, layer, spawnparams)
     end
 end
 
+function scene.UICallback(e)
+end
+
 local layers
 function scene.LoadScene()
     GAME.WORLD = BUMP.newWorld(16)
@@ -55,6 +58,8 @@ function scene.Draw()
     layers["objects"]:Draw(GAME.SX, GAME.SY, DEBUG.hitbox)
     love.graphics.setColor(1,1,1)
     love.graphics.draw(Shadowimg, 0, 0)
+    
+    UI:Draw(DEBUG.hitbox)
 end
 
 function scene.Mousepressed(mx,my,b)

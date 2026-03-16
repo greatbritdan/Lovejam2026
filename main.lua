@@ -47,6 +47,10 @@ function love.load()
     SAVE = require("libs.BritSaveManager")
     DEBUG = require("libs.BritDebug")
 
+    UI.Callback = function(e)
+        SCENE:Run("UICallback",{e})
+    end
+
     SETTINGS = SAVE:new{config="save"}
     SETTINGS:LOAD()
     updatecodes()
@@ -66,6 +70,10 @@ end
 
 function updatecodes()
     DEBUG.ENABLED = SETTINGS:GetInside("codes","iamgod")
+end
+
+function updatevolume()
+    Music:setVolume(SETTINGS:Get("volumemusic"))
 end
 
 function playsound(v,vol)
@@ -106,7 +114,6 @@ function love.draw()
     love.graphics.push()
     love.graphics.scale(ENV.scale, ENV.scale)
     SCENE:Draw()
-    UI:Draw(DEBUG.hitbox)
     DEBUG:Draw()
     love.graphics.pop()
     --[[love.graphics.setCanvas()
