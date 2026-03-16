@@ -18,11 +18,19 @@ function scene.LoadScene()
     playmusic(Music)
 end
 function scene.UnloadScene()
+    changestate(GAME)
     GAME = {}
     slaymusic(Music)
 end
 
 function scene.Update(dt)
+    if IN:pressed("pause") then
+        if GAME.STATE then
+            changestate(GAME)
+        else
+            changestate(GAME,"PAUSE")
+        end
+    end
     if GAME.STATE then return end
 
     if GAME.INFO then
@@ -74,16 +82,6 @@ function scene.Mousepressed(mx,my,b)
             GAME.PLAYER.X = CHECKPOINT[1]-6
             GAME.PLAYER.Y = CHECKPOINT[2]-GAME.PLAYER.H
             GAME.PLAYER.world:update(GAME.PLAYER, GAME.PLAYER.X, GAME.PLAYER.Y, GAME.PLAYER.W, GAME.PLAYER.H)
-        end
-    end
-end
-
-function scene.Keypressed(key)
-    if key == "escape" then
-        if GAME.STATE then
-            changestate(GAME)
-        else
-            changestate(GAME,"PAUSE")
         end
     end
 end

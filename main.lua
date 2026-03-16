@@ -31,6 +31,18 @@ function love.load()
         love.audio.newSource("assets/audio/flip3.ogg","static")
     }
     Jumpsound = love.audio.newSource("assets/audio/jump.ogg","static")
+    Mergesounds = {
+        love.audio.newSource("assets/audio/merge.ogg","static"),
+        love.audio.newSource("assets/audio/merge2.ogg","static"),
+        love.audio.newSource("assets/audio/merge3.ogg","static")
+    }
+    Splitsounds = {
+        love.audio.newSource("assets/audio/split.ogg","static"),
+        love.audio.newSource("assets/audio/split2.ogg","static"),
+        love.audio.newSource("assets/audio/split3.ogg","static")
+    }
+    Opensound = love.audio.newSource("assets/audio/open.ogg","static")
+    Closesound = love.audio.newSource("assets/audio/close.ogg","static")
     Successsound = love.audio.newSource("assets/audio/success.ogg","static")
 
     Music = love.audio.newSource("assets/audio/music.ogg","stream")

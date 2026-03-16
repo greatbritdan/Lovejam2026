@@ -11,9 +11,11 @@ return {
             up = {"sc:w", "sc:up", "axis:lefty-", "button:dpup"},
             down = {"sc:s", "sc:down", "axis:lefty+", "button:dpdown"},
             jump = {"sc:space", "sc:z", "button:a"},
-            special = {"sc:lshift", "button:b"},
             split = {"sc:q", "sc:x", "axis:triggerleft+"},
             merge = {"sc:e", "sc:c", "axis:triggerright+"},
+            pause = {"sc:escape", "button:start"},
+
+            special = {"sc:lshift", "button:b"},
         }
     }
 }

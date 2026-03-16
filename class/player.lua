@@ -247,6 +247,7 @@ function player:SplitCounters()
     GAME.MAP.layers["objects"]:AddObject("counter", self.X, self.Y+self.H-(t*4), 12, t*4, {counters=t})
     self:AddCounters(-t)
     self:UpdateHeight(true)
+    playsound(Splitsounds[math.random(#Splitsounds)])
 end
 
 function player:MergeCounters()
@@ -261,6 +262,7 @@ function player:MergeCounters()
         GAME.MAP.layers["objects"]:RemoveObject(self.riding)
         self:AddCounters(t)
         self:UpdateHeight(true)
+        playsound(Mergesounds[math.random(#Mergesounds)])
     end
 end
 
