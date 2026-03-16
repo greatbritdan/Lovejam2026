@@ -53,6 +53,7 @@ function scene.UICallback(e)
 
         if id == "start" then MAPNAME = "level1"; SCENE:StartTransition("game") end
         if id == "menu" then changestate("MENU") end
+        if id == "levelselect" then changestate("LEVELSELECT") end
         if id == "options" then changestate("OPTIONS") end
         if id == "quit" then love.event.quit() end
     end
@@ -70,6 +71,7 @@ function scene.LoadScene()
         MENU.MENU = UI:RegisterUI("assets/ui/menu.lua", theme)
     end
     MENU.OPTIONS = UI:RegisterUI("assets/ui/options.lua", theme)
+    MENU.LEVELSELECT = UI:RegisterUI("assets/ui/levelselect.lua", theme)
     changestate("MENU")
 
     loadsetting("volumesfx")

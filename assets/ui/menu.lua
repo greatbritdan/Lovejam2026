@@ -3,7 +3,7 @@ return {type="layout", flow="x", allign=-1, {
         {type="spacer", size=18},
         {type="layout", size="auto", flow="y", spacing=4, margin=8, {
             {type="button", size=31, text="start", id="start"},
-            {type="button", size=21, text="select level"},
+            {type="button", size=21, text="select level", id="levelselect"},
             {type="button", size=21, text="options", id="options"},
             {type="button", size=21, text="quit", id="quit"},
         }},
