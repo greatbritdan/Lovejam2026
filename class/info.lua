@@ -8,13 +8,18 @@ function info:initialize(id)
         }
     elseif id == "merge" then
         self.text = {
-            {"press ","!merge"," to merge with counters,"},
+            {"press ","!merge"," to merge with counters, (must be standing on top)"},
             {"press ","!split"," to split into two half stacks!"},
         }
     elseif id == "down" then
         self.text = {
             {"top tip, you can press ","!down"," while holding ","!jump"},
             {"to fall back through one way platforms!"},
+        }
+    elseif id == "teleport" then
+        self.text = {
+            {"teleporters"},
+            {"they exist!"},
         }
     end
     self.duration = 6

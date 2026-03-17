@@ -16,10 +16,15 @@ return {type="layout", size={x=12,y=12,w=ENV.width-24,h=ENV.height-24}, flow="y"
             {type="text", size=21, text="", id="volumesfxlabel"},
         }},
 
+        {type="text", size=13, text="reset save data: (no undo)"},
+        {type="layout", size=21, flow="x", spacing=4, margin=0, {
+            {type="button", size=160, text="bye bye, mr save file", id="resetsave"},
+        }},
+
         {type="spacer", size=79},
         {type="text", size=13, text="enter code:"},
         {type="layout", size=21, flow="x", spacing=4, margin=0, {
-            {type="input", size=160, text="", id="sendcode", marginx=7}
+            {type="input", size=160, text="", id="sendcode", marginx=7},
         }},
         {type="spacer", size=21},
 

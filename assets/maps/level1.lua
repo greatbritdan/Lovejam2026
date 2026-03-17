@@ -774,7 +774,7 @@ return {
           type = "trigger",
           shape = "rectangle",
           x = 1776,
-          y = 192,
+          y = 168,
           width = 48,
           height = 16,
           rotation = 0,

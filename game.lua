@@ -8,8 +8,8 @@ function scene.LoadScene()
     GAME.MAP = MAP:new("assets/maps/"..MAPNAME..".lua")
     layers = GAME.MAP.layers
 
-    GAME.SX, GAME.SY = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2), 0
     GAME.PLAYER:Respawn()
+    GAME.SX, GAME.SY = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2), 0
     if FORCEDFORM then
         GAME.PLAYER:AddCounters(FORCEDFORM)
     end
@@ -99,6 +99,9 @@ function scene.Mousepressed(mx,my,b)
             GAME.PLAYER.Y = CHECKPOINT[2]-GAME.PLAYER.H
             GAME.PLAYER.world:update(GAME.PLAYER, GAME.PLAYER.X, GAME.PLAYER.Y, GAME.PLAYER.W, GAME.PLAYER.H)
         end
+    end
+    if b == 3 then
+        SCENE:LoadScene("game")
     end
 end
 

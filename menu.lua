@@ -21,6 +21,11 @@ function scene.LoadScene()
     loadsetting(MENU, "volumesfx")
     loadsetting(MENU, "volumemusic")
 
+    if SETTINGS:Get("lastlevel") ~= "level1" then
+        local stb = MENU.MENU:Find("strict",{{"id","start"}})
+        stb[1]:SetText("continue")
+    end
+
     playmusic(Music)
 end
 function scene.UnloadScene()

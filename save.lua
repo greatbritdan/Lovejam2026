@@ -9,4 +9,5 @@ return {
         imsohungry = {default=false, type="boolean"},
         puttpartyreference = {default=false, type="boolean"},
     }},
+    lastlevel = {default="level1", type="string"}
 }

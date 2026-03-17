@@ -17,7 +17,7 @@ function love.load()
     Teleporterimg, Teleporterquads = LoadSprites{path="assets/graphics/teleporter.png", xquads=3}
 
     Shadowimg = LoadSprites{path="assets/backgrounds/shadow.png", noquads=true}
-    Font = love.graphics.newImageFont("assets/graphics/newfont.png","abcdefghijklmnopqrstuvwxyz1234567890.,!? /",1)
+    Font = love.graphics.newImageFont("assets/graphics/newfont.png","abcdefghijklmnopqrstuvwxyz1234567890.,!? /():",1)
     love.graphics.setFont(Font)
 
     -- Load Audio --
@@ -68,6 +68,8 @@ function love.load()
     SETTINGS = SAVE:new{config="save"}
     SETTINGS:LOAD()
     updatecodes()
+
+    LEVELORDER = {"level1","level2"}
     
     OBJECTS = {}
     require("class.base")

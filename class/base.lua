@@ -191,7 +191,12 @@ function base:SendTrigger(state, id)
     end
     if self.triggerinfo and state then
         if self.triggerinfo == "nextlevel" then
-            print("next")
+            local i = TableContains(MAPNAME, LEVELORDER)
+            MAPNAME = LEVELORDER[i+1]
+            SETTINGS:Set("lastlevel",MAPNAME)
+            SETTINGS:SAVE()
+            CHECKPOINT = nil
+            SCENE:StartTransition("game")
         else
             GAME.INFO = INFO:new(self.triggerinfo)
         end

@@ -20,7 +20,10 @@ UI.Callback = function(e)
         -- updates settings if the ID matches one, works for codes
         updatesetting(id, e:GetValue())
 
-        if id == "start" then MAPNAME = "level1"; SCENE:StartTransition("game") end
+        if id == "start" then
+            MAPNAME = SETTINGS:Get("lastlevel")
+            SCENE:StartTransition("game")
+        end
         if id == "levelselect" then changestate(MENU,"LEVELSELECT") end
         if id == "options" then changestate(MENU,"OPTIONS") end
         if id == "quit" then love.event.quit() end
@@ -30,6 +33,19 @@ UI.Callback = function(e)
             else
                 changestate(GAME,"PAUSE")
             end
+        end
+        if id == "resetsave" then
+            SETTINGS:Set("volumemusic",0.5)
+            SETTINGS:Set("volumesfx",0.5)
+            SETTINGS:Set("lastlevel","level1")
+            SETTINGS:SetInside("codes","gimmestimmy",false)
+            SETTINGS:SetInside("codes","iamgod",false)
+            SETTINGS:SetInside("codes","imsohungry",false)
+            SETTINGS:SetInside("codes","oldschool",false)
+            SETTINGS:SetInside("codes","puttpartyreference",false)
+            SETTINGS:SetInside("codes","rookymistake",false)
+            SETTINGS:SAVE()
+            SCENE:StartTransition("menu")
         end
         
         if id == "continue" then changestate(GAME) end

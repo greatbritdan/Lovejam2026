@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 96,
+  nextobjectid = 97,
   properties = {},
   tilesets = {
     {
@@ -355,6 +355,23 @@ return {
           properties = {
             ["active"] = false,
             ["teleportid"] = 1
+          }
+        },
+        {
+          id = 96,
+          name = "",
+          type = "trigger",
+          shape = "rectangle",
+          x = 408,
+          y = 80,
+          width = 16,
+          height = 112,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["linkid"] = 0,
+            ["linkinfo"] = "teleport",
+            ["mode"] = "on"
           }
         }
       }
