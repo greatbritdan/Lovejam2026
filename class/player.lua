@@ -248,6 +248,7 @@ end
 
 function player:SplitCounters()
     if not self.grounded then return end
+    if self.counters <= 0 then return end
 
     local t
     if IN:down("up") then
@@ -257,10 +258,7 @@ function player:SplitCounters()
     else
         t = math.floor(self.counters/2) -- half
     end
-    if t == 0 then
-        if self.counters <= 0 then return end
-        t = 1
-    end
+    if t == 0 then t = 1 end
 
     local obj = GAME.MAP.layers["objects"]:AddObject("counter", self.X, self.Y+self.H-(t*4), 12, t*4, {counters=t})
     obj.grounded = true

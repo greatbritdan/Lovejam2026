@@ -54,12 +54,20 @@ function scene.Update(dt)
         if GAME.INFO.DONE then GAME.INFO = nil end
     end
 
-    local tx = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2)
-    local dx = tx-GAME.SX
-    GAME.SX = math.min(math.max(0, GAME.SX+(dx*(4*dt))), (GAME.MAP.W*GAME.MAP.TW)-ENV.width)
+    if SETTINGS:GetInside("codes","boundarybreak") then
+        local tx = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2)
+        local ty = GAME.PLAYER.Y-(ENV.height/2)+(GAME.PLAYER.H/2)
+        local dx, dy = tx-GAME.SX, ty-GAME.SY
+        GAME.SX = GAME.SX+(dx*(4*dt))
+        GAME.SY = GAME.SY+(dy*(4*dt))
+    else
+        local tx = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2)
+        local dx = tx-GAME.SX
+        GAME.SX = math.min(math.max(0, GAME.SX+(dx*(4*dt))), (GAME.MAP.W*GAME.MAP.TW)-ENV.width)
 
-    if GAME.PLAYER.Y > (GAME.MAP.H*GAME.MAP.TH) then
-        GAME.PLAYER:Respawn()
+        if GAME.PLAYER.Y > (GAME.MAP.H*GAME.MAP.TH) then
+            GAME.PLAYER:Respawn()
+        end
     end
 
     layers["objects"]:Run("Update",{dt})

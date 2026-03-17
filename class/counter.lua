@@ -57,6 +57,7 @@ function counter:Collide(other, nx, ny)
             self:UpdateHeight()
             other:Release()
             GAME.MAP.layers["objects"]:RemoveObject(other)
+            self.grounded = true
             return true, "ignore"
         end
     end

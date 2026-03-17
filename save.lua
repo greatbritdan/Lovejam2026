@@ -8,6 +8,7 @@ return {
         rookymistake = {default=false, type="boolean"},
         imsohungry = {default=false, type="boolean"},
         puttpartyreference = {default=false, type="boolean"},
+        boundarybreak = {default=false, type="boolean"},
     }},
     lastlevel = {default="level1", type="string"}
 }
