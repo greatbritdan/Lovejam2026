@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 94,
+  nextobjectid = 95,
   properties = {},
   tilesets = {
     {
@@ -756,10 +756,10 @@ return {
           name = "",
           type = "trigger",
           shape = "rectangle",
-          x = 1048,
+          x = 728,
           y = 48,
           width = 16,
-          height = 112,
+          height = 128,
           rotation = 0,
           visible = true,
           properties = {
@@ -940,6 +940,23 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 94,
+          name = "",
+          type = "trigger",
+          shape = "rectangle",
+          x = 1048,
+          y = 48,
+          width = 16,
+          height = 112,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["linkid"] = 0,
+            ["linkinfo"] = "platform",
+            ["mode"] = "on"
+          }
         }
       }
     }

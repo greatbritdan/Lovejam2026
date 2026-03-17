@@ -13,6 +13,11 @@ function info:initialize(id)
         }
     elseif id == "down" then
         self.text = {
+            {"top tip, you can hold ","!down"," while splitting to drop all counters,"},
+            {"and you can hold ","!up"," while splitting to drop just one!"},
+        }
+    elseif id == "platform" then
+        self.text = {
             {"top tip, you can press ","!down"," while holding ","!jump"},
             {"to fall back through one way platforms!"},
         }
