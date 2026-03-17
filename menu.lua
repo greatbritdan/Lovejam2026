@@ -23,7 +23,9 @@ function scene.LoadScene()
 
     if SETTINGS:Get("lastlevel") ~= "level1" then
         local stb = MENU.MENU:Find("strict",{{"id","start"}})
-        stb[1]:SetText("continue")
+        if stb[1] then
+            stb[1]:SetText("continue")
+        end
     end
 
     playmusic(Music)

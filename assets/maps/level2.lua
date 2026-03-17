@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 100,
+  nextobjectid = 102,
   properties = {},
   tilesets = {
     {
@@ -310,38 +310,6 @@ return {
           properties = {}
         },
         {
-          id = 93,
-          name = "",
-          type = "teleporter",
-          shape = "rectangle",
-          x = 488,
-          y = 152,
-          width = 16,
-          height = 16,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["active"] = false,
-            ["teleportid"] = 1
-          }
-        },
-        {
-          id = 94,
-          name = "",
-          type = "teleporter",
-          shape = "rectangle",
-          x = 584,
-          y = 152,
-          width = 16,
-          height = 16,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["active"] = true,
-            ["teleportid"] = 1
-          }
-        },
-        {
           id = 96,
           name = "",
           type = "trigger",
@@ -363,8 +331,8 @@ return {
           name = "",
           type = "counter",
           shape = "rectangle",
-          x = 460,
-          y = 141,
+          x = 314,
+          y = 177,
           width = 12,
           height = 4,
           rotation = 0,
@@ -403,6 +371,38 @@ return {
           properties = {
             ["linkid"] = 2,
             ["mode"] = "on"
+          }
+        },
+        {
+          id = 100,
+          name = "",
+          type = "teleporter",
+          shape = "rectangle",
+          x = 586,
+          y = 154,
+          width = 12,
+          height = 12,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["active"] = true,
+            ["teleportid"] = 1
+          }
+        },
+        {
+          id = 101,
+          name = "",
+          type = "teleporter",
+          shape = "rectangle",
+          x = 490,
+          y = 154,
+          width = 12,
+          height = 12,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["active"] = false,
+            ["teleportid"] = 1
           }
         }
       }

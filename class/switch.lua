@@ -48,5 +48,9 @@ function switch:Draw()
         love.graphics.printf(self.countersgot.."/"..self.countersneeded, self.X+3, self.Y+2, self.W-4, "center")
     end
 end
+function switch:DebugDraw()
+    love.graphics.setColor(0,0,1,1)
+    love.graphics.rectangle("line", self.X, self.Y-1, self.W, 2)
+end
 
 OBJECTS.switch = switch

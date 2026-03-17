@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="122" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="100">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="122" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="102">
  <editorsettings>
   <export target="level2.lua" format="lua"/>
  </editorsettings>
@@ -3967,18 +3967,6 @@
   <object id="90" type="tile" x="160" y="-32" width="80" height="16"/>
   <object id="91" type="tile" x="224" y="-16" width="16" height="16"/>
   <object id="92" type="tile" x="160" y="-16" width="16" height="16"/>
-  <object id="93" type="teleporter" x="488" y="152" width="16" height="16">
-   <properties>
-    <property name="active" type="bool" value="false"/>
-    <property name="teleportid" type="int" value="1"/>
-   </properties>
-  </object>
-  <object id="94" type="teleporter" x="584" y="152" width="16" height="16">
-   <properties>
-    <property name="active" type="bool" value="true"/>
-    <property name="teleportid" type="int" value="1"/>
-   </properties>
-  </object>
   <object id="96" type="trigger" x="408" y="80" width="16" height="112">
    <properties>
     <property name="linkid" type="int" value="0"/>
@@ -3986,7 +3974,7 @@
     <property name="mode" value="on"/>
    </properties>
   </object>
-  <object id="97" type="counter" x="460" y="141" width="12" height="4">
+  <object id="97" type="counter" x="314" y="177" width="12" height="4">
    <properties>
     <property name="counters" type="int" value="9"/>
    </properties>
@@ -4001,6 +3989,18 @@
    <properties>
     <property name="linkid" type="int" value="2"/>
     <property name="mode" value="on"/>
+   </properties>
+  </object>
+  <object id="100" type="teleporter" x="586" y="154" width="12" height="12">
+   <properties>
+    <property name="active" type="bool" value="true"/>
+    <property name="teleportid" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="101" type="teleporter" x="490" y="154" width="12" height="12">
+   <properties>
+    <property name="active" type="bool" value="false"/>
+    <property name="teleportid" type="int" value="1"/>
    </properties>
   </object>
  </objectgroup>

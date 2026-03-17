@@ -4,7 +4,7 @@ return {type="layout", flow="x", allign=-1, margin=0, spacing=0, {
         {type="button", size=17, text="level1 map", id="maplevel1"},
         {type="button", size=17, text="level2 map", id="maplevel2"},
         {type="text", size=13, text="enter codes:"},
-        {type="input", size=17, text="", id="sendcode"}
+        {type="input", size=17, text="", id="sendcode", marginx=5},
     }},
     {type="layout", size="60%", flow="y", margin=0, {
         {type="layout", size="auto", flow="x", margin=0, {

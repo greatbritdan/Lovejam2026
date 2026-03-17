@@ -179,6 +179,9 @@ function base:PhysicsDraw()
         love.graphics.setColor(color)
         love.graphics.rectangle("fill", self.X, self.Y, self.W, self.H)
     end
+    if self.DebugDraw then
+        self:DebugDraw()
+    end
 end
 
 -------------------------

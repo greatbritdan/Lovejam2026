@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 26,
+  nextobjectid = 29,
   properties = {},
   tilesets = {
     {
@@ -421,6 +421,38 @@ return {
             ["linkid"] = 0,
             ["linkinfo"] = "down",
             ["mode"] = "on"
+          }
+        },
+        {
+          id = 27,
+          name = "",
+          type = "teleporter",
+          shape = "rectangle",
+          x = 786,
+          y = 50,
+          width = 12,
+          height = 12,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["active"] = true,
+            ["teleportid"] = 1
+          }
+        },
+        {
+          id = 28,
+          name = "",
+          type = "teleporter",
+          shape = "rectangle",
+          x = 322,
+          y = 114,
+          width = 12,
+          height = 12,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["active"] = false,
+            ["teleportid"] = 1
           }
         }
       }
