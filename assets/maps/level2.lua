@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 118,
+  nextobjectid = 119,
   properties = {},
   tilesets = {
     {
@@ -42,7 +42,7 @@ return {
       layers = {
         {
           type = "imagelayer",
-          image = "../backgrounds/Chess3.png",
+          image = "../backgrounds/Connect3.png",
           id = 6,
           name = "Background3",
           class = "background3",
@@ -58,7 +58,7 @@ return {
         },
         {
           type = "imagelayer",
-          image = "../backgrounds/Chess2.png",
+          image = "../backgrounds/Connect2.png",
           id = 8,
           name = "Background2",
           class = "background2",
@@ -74,7 +74,7 @@ return {
         },
         {
           type = "imagelayer",
-          image = "../backgrounds/Chess1.png",
+          image = "../backgrounds/Connect1.png",
           id = 7,
           name = "Background1",
           class = "background1",
@@ -612,6 +612,22 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 118,
+          name = "",
+          type = "trigger",
+          shape = "rectangle",
+          x = 1079,
+          y = 128,
+          width = 2,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["linkid"] = 3,
+            ["mode"] = "off"
+          }
         }
       }
     }

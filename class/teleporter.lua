@@ -25,6 +25,7 @@ function teleporter:Update(dt)
             p.world:update(p, p.X, p.Y, p.W, p.H)
             other.teleactive = false
             self.teleactive = true
+            playsound(Teleportsound)
             neweffect(self.X+2, self.Y+2, "telein")
             neweffect(other.X+2, other.Y+2, "teleout")
         end

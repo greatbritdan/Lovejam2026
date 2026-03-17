@@ -67,6 +67,9 @@ function utils:UpdateAutoscroll(a,dt)
 end
 
 function utils:ScissorPush(x,y,w,h)
+    if SETTINGS:Get("pixelperfect") then
+        return -- No fucking clue why this broke, im going to just ignore the issue!
+    end
     local x1,x2,y1,y2 = x, x+w, y, y+h
     local ox,oy,ow,oh = love.graphics.getScissor()
     ox,oy,ow,oh = ox or 0, oy or 0, ow or love.graphics.getWidth(), oh or love.graphics.getHeight()
@@ -81,6 +84,9 @@ function utils:ScissorPush(x,y,w,h)
 end
 
 function utils:ScissorPop()
+    if SETTINGS:Get("pixelperfect") then
+        return
+    end
     table.remove(self.scissorstack)
     if #self.scissorstack == 0 then
         love.graphics.setScissor()

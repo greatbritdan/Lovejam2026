@@ -17,8 +17,8 @@
             "scale": 2,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 923.5,
-                "y": 140
+                "x": 976.25,
+                "y": 127.75
             }
         },
         "maps/level2.tmx": {
@@ -42,8 +42,8 @@
             "scale": 1,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 469,
-                "y": 144
+                "x": 800.5,
+                "y": 127.5
             }
         },
         "tilesets/Chess.tsx": {

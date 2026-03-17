@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="122" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="118">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="122" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="119">
  <editorsettings>
   <export target="level2.lua" format="lua"/>
  </editorsettings>
@@ -7,13 +7,13 @@
  <tileset firstgid="257" source="../tilesets/Connect.tsx"/>
  <group id="5" name="Background" opacity="0.1">
   <imagelayer id="6" name="Background3" class="background3" parallaxx="0.25" repeatx="1">
-   <image source="../backgrounds/Chess3.png" width="400" height="256"/>
+   <image source="../backgrounds/Connect3.png" width="400" height="256"/>
   </imagelayer>
   <imagelayer id="8" name="Background2" class="background2" parallaxx="0.5" repeatx="1">
-   <image source="../backgrounds/Chess2.png" width="400" height="256"/>
+   <image source="../backgrounds/Connect2.png" width="400" height="256"/>
   </imagelayer>
   <imagelayer id="7" name="Background1" class="background1" parallaxx="0.75" repeatx="1">
-   <image source="../backgrounds/Chess1.png" width="400" height="256"/>
+   <image source="../backgrounds/Connect1.png" width="324" height="256"/>
   </imagelayer>
  </group>
  <layer id="3" name="Tiles (Background)" class="tilesback" width="122" height="16" opacity="0.5">
@@ -4062,5 +4062,11 @@
   </object>
   <object id="116" type="blocker" x="914" y="176" width="28" height="16"/>
   <object id="117" type="blocker" x="914" y="96" width="28" height="16"/>
+  <object id="118" type="trigger" x="1079" y="128" width="2" height="64">
+   <properties>
+    <property name="linkid" type="int" value="3"/>
+    <property name="mode" value="off"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

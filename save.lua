@@ -10,5 +10,6 @@ return {
         puttpartyreference = {default=false, type="boolean"},
         boundarybreak = {default=false, type="boolean"},
     }},
-    lastlevel = {default="level1", type="string"}
+    lastlevel = {default="level1", type="string"},
+    pixelperfect = {default=false, type="boolean"}
 }

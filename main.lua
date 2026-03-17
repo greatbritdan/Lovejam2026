@@ -46,6 +46,7 @@ function love.load()
     }
     Opensound = love.audio.newSource("assets/audio/open.ogg","static")
     Closesound = love.audio.newSource("assets/audio/close.ogg","static")
+    Teleportsound = love.audio.newSource("assets/audio/teleport.ogg","static")
     Successsound = love.audio.newSource("assets/audio/success.ogg","static")
 
     Music = love.audio.newSource("assets/audio/music.ogg","stream")
@@ -108,15 +109,23 @@ function love.update(dt)
 end
 
 function love.draw()
-    --[[love.graphics.setCanvas(canvas)
-    love.graphics.clear()]]
-    love.graphics.push()
-    love.graphics.scale(ENV.scale, ENV.scale)
+    if SETTINGS:Get("pixelperfect") then
+        love.graphics.setCanvas(canvas)
+        love.graphics.clear()
+    else
+        love.graphics.push()
+        love.graphics.scale(ENV.scale, ENV.scale)
+    end
+
     SCENE:Draw()
     DEBUG:Draw()
-    love.graphics.pop()
-    --[[love.graphics.setCanvas()
-    love.graphics.draw(canvas, 0, 0, 0, ENV.scale, ENV.scale)]]
+    
+    if SETTINGS:Get("pixelperfect") then
+        love.graphics.setCanvas()
+        love.graphics.draw(canvas, 0, 0, 0, ENV.scale, ENV.scale)
+    else
+        love.graphics.pop()
+    end
 end
 
 function love.mousepressed(x,y,b)
@@ -165,6 +174,14 @@ end
 local gxy = love.mouse.getPosition
 function love.mouse.getPosition()
     return gx()/ENV.scale, gy()/ENV.scale
+end
+
+local ss = love.graphics.setScissor
+function love.graphics.setScissor(x,y,w,h)
+    if x and SETTINGS:Get("pixelperfect") then
+        x,y,w,h = x/ENV.scale, y/ENV.scale, w/ENV.scale, h/ENV.scale
+    end
+    ss(x,y,w,h)
 end
 
 -----------------------------

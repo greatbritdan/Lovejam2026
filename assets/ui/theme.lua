@@ -18,6 +18,12 @@ return {
             bulb = {image="assets/ui/base.png", cornersize=6},
         }
     },
+    toggle = {
+        styles = {
+            base = {image="assets/ui/sliderbase.png", cornersize=6},
+            bulb = {image="assets/ui/base.png", cornersize=6},
+        }
+    },
     input = {
         styles = {
             base = {image="assets/ui/inputbase.png", cornersize=6},

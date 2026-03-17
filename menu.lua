@@ -20,6 +20,7 @@ function scene.LoadScene()
 
     loadsetting(MENU, "volumesfx")
     loadsetting(MENU, "volumemusic")
+    loadsetting(MENU, "pixelperfect")
 
     if SETTINGS:Get("lastlevel") ~= "level1" then
         local stb = MENU.MENU:Find("strict",{{"id","start"}})
@@ -49,6 +50,11 @@ function scene.Update(dt)
     local esv = MENU.OPTIONS:Find("strict",{{"id","volumesfx"}})
     local esl = MENU.OPTIONS:Find("strict",{{"id","volumesfxlabel"}})
     esl[1]:SetText(esv[1]:GetValue(true))
+
+    local epv = MENU.OPTIONS:Find("strict",{{"id","pixelperfect"}})
+    local epl = MENU.OPTIONS:Find("strict",{{"id","pixelperfectlabel"}})
+    local t = epv[1]:GetValue(true) and "on" or "off"
+    epl[1]:SetText(t)
 end
 
 function scene.Draw()
