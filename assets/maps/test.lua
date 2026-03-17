@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 29,
+  nextobjectid = 30,
   properties = {},
   tilesets = {
     {
@@ -454,6 +454,19 @@ return {
             ["active"] = false,
             ["teleportid"] = 1
           }
+        },
+        {
+          id = 29,
+          name = "",
+          type = "blocker",
+          shape = "rectangle",
+          x = 546,
+          y = 0,
+          width = 76,
+          height = 160,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

@@ -16,6 +16,7 @@ function love.load()
     Promptsimg, Promptsquads = LoadSprites{path="assets/graphics/prompts.png", xquads=7, yquads=4, xquadnames={"left","right","up","down","jump","split","merge"}, yquadnames={"kbm","kbm_alt","joy","joy_stick"}}
     Teleporterimg, Teleporterquads = LoadSprites{path="assets/graphics/teleporter.png", xquads=3}
     Effectimg, Effectquads = LoadSprites{path="assets/graphics/effects.png", xquads=8}
+    Blockerimg = LoadSprites{path="assets/graphics/blocker.png", noquads=true}
 
     Shadowimg = LoadSprites{path="assets/backgrounds/shadow.png", noquads=true}
     Font = love.graphics.newImageFont("assets/graphics/newfont.png","abcdefghijklmnopqrstuvwxyz1234567890.,!? /():'",1)

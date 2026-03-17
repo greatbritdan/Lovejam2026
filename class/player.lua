@@ -253,6 +253,7 @@ end
 function player:SplitCounters()
     if not self.grounded then return end
     if self.counters <= 0 then return end
+    if #self:PhysicsCheckAABB{include={"blocker"}} > 0 then return end -- don't split in counter blockers
 
     local t
     if IN:down("up") then

@@ -17,7 +17,6 @@ function EFFECT:initialize(x, y, t)
         if t == "telein" then 
             self.frames = {frames={8,7,6,5}, frame=1, timer=0, time=0.1}
         end
-        print(self.frames.frames)
         self.lifetime = 0.4
     end
 
@@ -52,9 +51,6 @@ end
 
 function EFFECT:Draw()
     love.graphics.setColor(self.color)
-    local t = self.frames.frame
-    if self.frames.frames then
-        t = self.frames.frames[self.frames.frame]
-    end
+    t = self.frames.frames[self.frames.frame]
     love.graphics.draw(Effectimg, Effectquads[t], self.X-GAME.SX, self.Y-GAME.SY)
 end

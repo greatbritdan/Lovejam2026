@@ -9,7 +9,7 @@ function marble:initialize(world, x, y, w, h, props)
     self.F = 256
 
     self.collideid = "marble"
-    self.collidelookup = {"tile","door","player","counter","switch","marble"}
+    self.collidelookup = {"tile","blocker","door","player","counter","switch","marble"}
 end
 
 function marble:Update(dt)
