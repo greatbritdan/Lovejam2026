@@ -12,6 +12,14 @@ function EFFECT:initialize(x, y, t)
         self.VX = (t == "dustr") and 32 or -32
         self.fade = true
     end
+    if t == "telein" or t == "teleout" then
+        self.frames = {frames={5,6,7,8}, frame=1, timer=0, time=0.1}
+        if t == "telein" then 
+            self.frames = {frames={8,7,6,5}, frame=1, timer=0, time=0.1}
+        end
+        print(self.frames.frames)
+        self.lifetime = 0.4
+    end
 
     self.lifetimer = 0
 end
@@ -44,5 +52,9 @@ end
 
 function EFFECT:Draw()
     love.graphics.setColor(self.color)
-    love.graphics.draw(Effectimg, Effectquads[self.frames.frame], self.X-GAME.SX, self.Y-GAME.SY)
+    local t = self.frames.frame
+    if self.frames.frames then
+        t = self.frames.frames[self.frames.frame]
+    end
+    love.graphics.draw(Effectimg, Effectquads[t], self.X-GAME.SX, self.Y-GAME.SY)
 end
