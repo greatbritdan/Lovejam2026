@@ -55,7 +55,7 @@ function player:Update(dt)
                 self:SplitCounters()
             elseif IN:pressed("merge") then
                 self:MergeCounters()
-            elseif IN:pressed("jump") and self.grounded then
+            elseif IN:pressed("jump") and (self.grounded or SETTINGS:GetInside("codes","puttpartyreference")) then
                 self:Hop()
             end
         end
@@ -194,6 +194,13 @@ function player:UpdateState(dt)
             self.moving = nil
             self:Land()
         end 
+    end
+
+    if self.teleportimmunity then
+        self.teleportimmunity = self.teleportimmunity - dt
+        if self.teleportimmunity <= 0 then
+            self.teleportimmunity = nil
+        end
     end
 end
 

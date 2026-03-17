@@ -77,6 +77,10 @@ function slider:Scroll(sx,sy)
     self.core:DefaultCallback(self)
 end
 
+function slider:Release()
+    -- for sound!
+end
+
 function slider:Clamp()
     self.value = math.max(self.limit.min, math.min(self.value, self.limit.max))
     self.value = math.floor((self.value - self.limit.min) / self.limit.step + 0.5) * self.limit.step + self.limit.min

@@ -140,6 +140,22 @@ function base:PhysicsCheckAABB(args)
     return ret
 end
 
+function base:Find(mode,conditions)
+    local ret = {}
+    for i,obj in pairs(GAME.MAP.layers["objects"].objects) do
+        local yes = (mode == "strict") and true or false
+        for _, cond in ipairs(conditions) do
+            if obj[cond[1]] == cond[2] then
+                yes = true
+            elseif mode == "strict" then
+                yes = false; break
+            end
+        end
+        if yes then table.insert(ret, obj) end
+    end
+    return ret
+end
+
 function base:PhysicsResolve(other, nx, ny)
     if (ny < 0 and self.VY > 0) then
         self.grounded = true; self.riding = other; other.rider = self

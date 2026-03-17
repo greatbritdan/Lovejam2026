@@ -2,6 +2,8 @@ local scene = {}
 MENU = {}
 
 function scene.LoadScene()
+    CHECKPOINT = nil
+
     MENU.MAP = MAP:new("assets/maps/level1.lua",{menu=true})
     layers = MENU.MAP.layers
     MENU.SX = 0

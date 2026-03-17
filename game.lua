@@ -18,6 +18,10 @@ function scene.LoadScene()
     GAME.PAUSE = UI:RegisterUI("assets/ui/pause.lua", theme)
     GAME.OPTIONS = UI:RegisterUI("assets/ui/options.lua", theme)
 
+    changestate(GAME)
+    loadsetting(GAME, "volumesfx")
+    loadsetting(GAME, "volumemusic")
+
     playmusic(Music)
 end
 function scene.UnloadScene()
@@ -34,7 +38,16 @@ function scene.Update(dt)
             changestate(GAME,"PAUSE")
         end
     end
-    if GAME.STATE then return end
+    if GAME.STATE then
+        local emv = GAME.OPTIONS:Find("strict",{{"id","volumemusic"}})
+        local eml = GAME.OPTIONS:Find("strict",{{"id","volumemusiclabel"}})
+        eml[1]:SetText(emv[1]:GetValue(true))
+
+        local esv = GAME.OPTIONS:Find("strict",{{"id","volumesfx"}})
+        local esl = GAME.OPTIONS:Find("strict",{{"id","volumesfxlabel"}})
+        esl[1]:SetText(esv[1]:GetValue(true))
+        return 
+    end
 
     if GAME.INFO then
         GAME.INFO:Update(dt)

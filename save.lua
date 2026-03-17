@@ -7,5 +7,6 @@ return {
         gimmestimmy = {default=false, type="boolean"},
         rookymistake = {default=false, type="boolean"},
         imsohungry = {default=false, type="boolean"},
+        puttpartyreference = {default=false, type="boolean"},
     }},
 }

@@ -4,7 +4,7 @@ function switch:initialize(world, x, y, w, h, props)
     OBJECTS.base.initialize(self, world, x, y, w, h)
 
     self.collideid = "switch"
-    self.collidelookup = {"player","counter"}
+    self.collidelookup = {"player","counter","marble"}
 
     self.countersgot = 0
     self.countersneeded = props.counters or 3

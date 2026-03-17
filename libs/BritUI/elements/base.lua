@@ -180,6 +180,7 @@ function base:BaseRelease(mx,my,mb)
     if not self.active then return end
     if self.hover and self.click and self.Release then
         self:Release()
+        playsound(Mergesounds[math.random(#Mergesounds)])
     end
     self.click = false
     self:Propigate("BaseRelease",{mx,my,mb})
