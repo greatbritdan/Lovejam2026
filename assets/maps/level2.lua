@@ -327,21 +327,6 @@ return {
           }
         },
         {
-          id = 97,
-          name = "",
-          type = "counter",
-          shape = "rectangle",
-          x = 314,
-          y = 177,
-          width = 12,
-          height = 4,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["counters"] = 9
-          }
-        },
-        {
           id = 98,
           name = "",
           type = "door",

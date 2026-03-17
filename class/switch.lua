@@ -8,8 +8,8 @@ function switch:initialize(world, x, y, w, h, props)
 
     self.countersgot = 0
     self.countersneeded = props.counters or 3
+    
     self.triggered = false
-
     self.triggerid = props.linkid or 0
 end
 

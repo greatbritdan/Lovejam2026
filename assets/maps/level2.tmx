@@ -3974,11 +3974,6 @@
     <property name="mode" value="on"/>
    </properties>
   </object>
-  <object id="97" type="counter" x="314" y="177" width="12" height="4">
-   <properties>
-    <property name="counters" type="int" value="9"/>
-   </properties>
-  </object>
   <object id="98" type="door" x="693" y="128" width="5.81818" height="64">
    <properties>
     <property name="dist" type="int" value="64"/>

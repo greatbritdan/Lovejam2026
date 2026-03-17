@@ -23,8 +23,8 @@ function info:initialize(id)
         }
     elseif id == "teleport" then
         self.text = {
-            {"teleporters"},
-            {"they exist!"},
+            {"these blue orbs are teleporters, jump into them to teleport!"},
+            {"you'll teleport to the last used teleporter."},
         }
     end
     self.duration = 6
