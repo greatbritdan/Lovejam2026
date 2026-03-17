@@ -32,6 +32,17 @@ function counter:DrawSelf(x, y)
     end
 end
 
+function counter:Land()
+    if self.grounded then
+        -- if a tree falls in the forest and no one is around to hear it, does it make a sound?
+        if self.X > GAME.SX and self.X < GAME.SX+ENV.width then
+            playsound(Landsounds[math.random(#Landsounds)])
+            neweffect(self.X+2, self.Y+self.H-4, "dustl")
+            neweffect(self.X+2, self.Y+self.H-4, "dustr")
+        end
+    end
+end
+
 function counter:Collide(other, nx, ny)
     if other.collideid == "player" then
         if ny == -1 then

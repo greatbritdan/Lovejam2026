@@ -119,6 +119,8 @@ end
 function player:Land()
     if self.grounded then
         playsound(Landsounds[math.random(#Landsounds)])
+        neweffect(self.X+2, self.Y+self.H-4, "dustl")
+        neweffect(self.X+2, self.Y+self.H-4, "dustr")
     end
 end
 
@@ -154,7 +156,7 @@ function player:Hop()
     if IN:down("down") then
         self.Y = self.Y + 0.1
     else
-        if #self:PhysicsCheckAABB{H=self.H+12, Y=self.Y-12} == 0 then
+        if #self:PhysicsCheck{H=self.H+12, Y=self.Y-12} == 0 then
             self.VY = -self.hopspeed
             self.jumping = 1/self.turnspeed
             playsound(Jumpsound)
@@ -259,8 +261,9 @@ function player:SplitCounters()
         if self.counters <= 0 then return end
         t = 1
     end
-    
-    GAME.MAP.layers["objects"]:AddObject("counter", self.X, self.Y+self.H-(t*4), 12, t*4, {counters=t})
+
+    local obj = GAME.MAP.layers["objects"]:AddObject("counter", self.X, self.Y+self.H-(t*4), 12, t*4, {counters=t})
+    obj.grounded = true
     self:AddCounters(-t)
     self:UpdateHeight(true)
     playsound(Splitsounds[math.random(#Splitsounds)])

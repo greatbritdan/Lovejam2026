@@ -131,3 +131,8 @@ end
 function slaymusic(v)
     v:stop()
 end
+
+function neweffect(x, y, t)
+    local e = EFFECT:new(x, y, t)
+    table.insert(EFFECTS, e)
+end

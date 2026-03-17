@@ -46,16 +46,19 @@ end
 
 function door:Trigger(id, state)
     if id == self.triggerid then
+        local oldstate = self.triggered
         self.triggered = state
-        -- Update world straight away to avoid softlocks
-        if self.triggered then
-            self.world:update(self, self.X, self.startY-self.dist, self.W, self.H)
-            playsound(Opensound)
-        else
-            self.world:update(self, self.X, self.startY, self.W, self.H)
-            playsound(Closesound)
+        if oldstate ~= self.triggered then
+            -- Update world straight away to avoid softlocks
+            if self.triggered then
+                self.world:update(self, self.X, self.startY-self.dist, self.W, self.H)
+                playsound(Opensound)
+            else
+                self.world:update(self, self.X, self.startY, self.W, self.H)
+                playsound(Closesound)
+            end
+            self.moving = true
         end
-        self.moving = true
     end
 end
 

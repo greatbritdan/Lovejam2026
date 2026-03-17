@@ -64,6 +64,13 @@ function scene.Update(dt)
 
     layers["objects"]:Run("Update",{dt})
     layers["objects"]:Run("PhysicsUpdate",{dt})
+
+    for i = #EFFECTS, 1, -1 do
+        local v = EFFECTS[i]
+        if v:Update(dt) then
+            table.remove(EFFECTS, i)
+        end
+    end
 end
 
 function scene.Draw()
@@ -75,6 +82,12 @@ function scene.Draw()
     layers["tilesback"]:Draw(GAME.SX, GAME.SY)
     layers["tiles"]:Draw(GAME.SX, GAME.SY)
     layers["objects"]:Draw(GAME.SX, GAME.SY, DEBUG.hitbox)
+
+    for i = #EFFECTS, 1, -1 do
+        local v = EFFECTS[i]
+        v:Draw()
+    end
+
     love.graphics.setColor(1,1,1)
     love.graphics.draw(Shadowimg, 0, 0)
 
