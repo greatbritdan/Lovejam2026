@@ -4,7 +4,7 @@ function counter:initialize(world, x, y, w, h, props)
     OBJECTS.base.initialize(self, world, x, y, w, h)
 
     self.static = false
-
+    self.grounded = true
     self.G = 512
     self.F = 256
 

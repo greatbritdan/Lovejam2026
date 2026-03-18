@@ -8,6 +8,9 @@ function text:initialize(world, x, y, w, h, props)
     self.opacity = 1
 
     self.triggerid = props.linkid or 0
+    if self.triggerid > 0 then
+        self.opacity = 0
+    end
 end
 
 function text:Update(dt)
@@ -23,9 +26,9 @@ function text:Trigger(id, state)
     if self.triggerid == id then
         self.triggered = state
         if state then
-            self.action = TWEEN.new(self.opacity/3, self, {opacity=0}, "linear")
-        else
             self.action = TWEEN.new((1-self.opacity)/3, self, {opacity=1}, "linear")
+        else
+            self.action = TWEEN.new((self.opacity)/3, self, {opacity=0}, "linear")
         end
     end
 end
