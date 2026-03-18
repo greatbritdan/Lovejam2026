@@ -17,8 +17,8 @@
             "scale": 2,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1575.75,
-                "y": 119
+                "x": 1703.25,
+                "y": 137
             }
         },
         "maps/level2.tmx": {
@@ -28,11 +28,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2,
+            "scale": 8,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 380.75,
-                "y": 27.5
+                "x": 2492.3125,
+                "y": 116.75
             }
         },
         "maps/test.tmx": {

@@ -73,7 +73,7 @@ function love.load()
     SETTINGS:LOAD()
     updatecodes()
 
-    LEVELORDER = {"level1","level2"}
+    LEVELORDER = {"level1","level2","level3","credits"}
     
     OBJECTS = {}
     EFFECTS = {}
