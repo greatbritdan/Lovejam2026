@@ -100,12 +100,11 @@ return {
       name = "Tiles (Background)",
       class = "tilesback",
       visible = true,
-      opacity = 1,
+      opacity = 0.5,
       offsetx = 0,
       offsety = 0,
       parallaxx = 1,
       parallaxy = 1,
-      tintcolor = { 255, 0, 0 },
       properties = {},
       encoding = "lua",
       data = {

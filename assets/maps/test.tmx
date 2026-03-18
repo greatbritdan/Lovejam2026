@@ -16,7 +16,7 @@
    <image source="../backgrounds/Chess1.png" width="400" height="256"/>
   </imagelayer>
  </group>
- <layer id="3" name="Tiles (Background)" class="tilesback" width="100" height="16" tintcolor="#ff0000">
+ <layer id="3" name="Tiles (Background)" class="tilesback" width="100" height="16" opacity="0.5">
   <data>
    <tile/>
    <tile/>
