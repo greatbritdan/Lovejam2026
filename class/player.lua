@@ -39,6 +39,8 @@ function player:initialize(world, x, y, w, h, props)
     self:AddCounters(props.counterspecial)
     self:UpdateHeight()
 
+    self.blinktimer = math.random(3, 7)
+
     self.anim = nil
     self.animtime = nil
     self.animcheck = nil
@@ -88,9 +90,10 @@ function player:DrawSelf(x, y)
 
     y = y + math.sin(-math.abs(self.R))*6
     local scalex, scaley = 1, 1
-    if math.abs(self.R) >= math.pi/2 then scaley = -1 end
-    if math.abs(self.R) >= math.pi/2 then scalex = -1 end
+    if math.abs(self.R) >= math.pi/2 then scaley = -scaley end
+    if math.abs(self.R) >= math.pi/2 then scalex = -scalex end
     love.graphics.draw(Counterimg, Counterquads[1]["counter"], x, y, self.R, scalex, scaley, 8, 30)
+    local cutex, cutey = x, y
 
     y = y + math.sin(-math.abs(self.R))*6
     for i = 1, self.counters do
@@ -100,6 +103,12 @@ function player:DrawSelf(x, y)
         local i = (self.specialcooldown) and 3 or 1
         love.graphics.draw(Counterimg, Counterquads[i][self.counterspecial], x, y-(self.counters*4)-4, 0, 1, 1, 8, 30)
     end
+
+    scalex, scaley = 1, 1
+    if self.DIR == -1 then scalex = -scalex end
+    local i = (self.blinktimer <= 0) and 2 or 1
+    if self.jumping then i = 3 end
+    love.graphics.draw(Cuteimg, Cutequads[i], cutex, cutey, 0, scalex, scaley, 8, 14)
 end
 
 function player:Collide(other, nx, ny)
@@ -136,18 +145,22 @@ function player:Movement(dt)
         self.VX = math.max(self.VX - (self.moveacc * dt), -self.movespeed)
         self.F = self.movefriction
         if (not self.moving) and (not self.jumping) and self.grounded then
-            self.moving = 1/self.turnspeed
-            playsound(Flipsounds[math.random(#Flipsounds)], .6)
-            self.movingdir = -1
+            if #self:PhysicsCheck{Y=self.Y-1} == 0 then
+                self.moving = 1/self.turnspeed
+                playsound(Flipsounds[math.random(#Flipsounds)], .6)
+                self.movingdir = -1
+            end
         end
         self.DIR = -1
     elseif right and (not left) then
         self.VX = math.min(self.VX + (self.moveacc * dt), self.movespeed)
         self.F = self.movefriction
         if (not self.moving) and (not self.jumping) and self.grounded then
-            self.moving = 1/self.turnspeed
-            playsound(Flipsounds[math.random(#Flipsounds)], .6)
-            self.movingdir = 1
+            if #self:PhysicsCheck{Y=self.Y-1} == 0 then
+                self.moving = 1/self.turnspeed
+                playsound(Flipsounds[math.random(#Flipsounds)], .6)
+                self.movingdir = 1
+            end
         end
         self.DIR = 1
     end
@@ -207,6 +220,12 @@ function player:UpdateState(dt)
         if self.teleportimmunity <= 0 then
             self.teleportimmunity = nil
         end
+    end
+
+    -- negative == blinking
+    self.blinktimer = self.blinktimer - dt
+    if self.blinktimer <= -0.2 then
+        self.blinktimer = math.random(3, 7)
     end
 end
 
@@ -280,6 +299,8 @@ function player:MergeCounters()
         elseif self.riding.counterspecial then
             t = self.riding.counterspecial
         end
+        self.X = self.riding.X
+        self.world:update(self, self.X, self.Y, self.W, self.H)
         self.riding:Release()
         GAME.MAP.layers["objects"]:RemoveObject(self.riding)
         self:AddCounters(t)

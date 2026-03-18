@@ -10,6 +10,7 @@ function love.load()
     --love.graphics.setFont(Font)
 
     Counterimg, Counterquads = LoadSprites{path="assets/graphics/counter.png", xquads=3, yquads=3, xquadnames={"counter","rook","knight"}}
+    Cuteimg, Cutequads = LoadSprites{path="assets/graphics/cute.png", xquads=3}
     Switchimg, Switchquads = LoadSprites{path="assets/graphics/switch.png", xquads=3}
     Doorimg, Doorquads = LoadSprites{path="assets/graphics/door.png", yquads=3, xquads=2}
     Marbleimg = LoadSprites{path="assets/graphics/marble.png", noquads=true}

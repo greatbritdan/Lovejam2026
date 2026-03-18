@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="122" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="146">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="122" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="149">
  <editorsettings>
   <export target="level2.lua" format="lua"/>
  </editorsettings>
@@ -2763,8 +2763,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="262"/>
+   <tile gid="262"/>
    <tile/>
    <tile/>
    <tile/>
@@ -3373,8 +3373,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="262"/>
+   <tile gid="262"/>
    <tile/>
    <tile/>
    <tile/>
@@ -4060,8 +4060,8 @@
     <property name="teleportid" type="int" value="2"/>
    </properties>
   </object>
-  <object id="116" type="blocker" x="914" y="176" width="28" height="16"/>
-  <object id="117" type="blocker" x="914" y="96" width="28" height="16"/>
+  <object id="116" type="blocker" x="912" y="188" width="32" height="4"/>
+  <object id="117" type="blocker" x="912" y="108" width="32" height="4"/>
   <object id="118" type="trigger" x="1079" y="128" width="2" height="64">
    <properties>
     <property name="linkid" type="int" value="3"/>
@@ -4164,5 +4164,7 @@
    </properties>
    <point/>
   </object>
+  <object id="146" type="tile" x="912" y="96" width="32" height="12"/>
+  <object id="148" type="tile" x="912" y="176" width="32" height="12"/>
  </objectgroup>
 </map>
