@@ -3,10 +3,29 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/test.tmx",
+    "activeFile": "maps/credits.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "maps/Credits.tmx": {
+            "scale": 0.74255859375,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 1153.4443304663455,
+                "y": 102.3488255872063
+            }
+        },
+        "maps/credits.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 2,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 69.25,
+                "y": 147.5
+            }
+        },
         "maps/level1.tmx": {
             "expandedGroupLayers": [
                 5
@@ -14,11 +33,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2,
+            "scale": 1.5,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1703.25,
-                "y": 137
+                "x": 976.3333333333333,
+                "y": 127.66666666666669
             }
         },
         "maps/level2.tmx": {
@@ -28,11 +47,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 8,
+            "scale": 3,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 2492.3125,
-                "y": 116.75
+                "x": 1280.1666666666665,
+                "y": 127.83333333333334
             }
         },
         "maps/test.tmx": {
@@ -45,8 +64,8 @@
             "scale": 2,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 206,
-                "y": -92
+                "x": 800.25,
+                "y": 127.75
             }
         },
         "tilesets/Chess.tsx": {
@@ -70,15 +89,18 @@
         "maps/test.tmx",
         "maps/level1.tmx",
         "maps/level2.tmx",
-        "tilesets/Chess.tsx"
+        "tilesets/Chess.tsx",
+        "maps/credits.tmx"
     ],
     "project": "lovejam2026.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "maps/test.tmx",
+        "maps/level1.tmx",
         "maps/level2.tmx",
         "tilesets/Chess.tsx",
-        "maps/level1.tmx",
-        "maps/test.tmx"
+        "maps/credits.tmx",
+        "maps/Credits.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

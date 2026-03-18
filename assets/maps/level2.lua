@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 170,
+  nextobjectid = 175,
   properties = {},
   tilesets = {
     {
@@ -1126,6 +1126,71 @@ return {
             ["linkid"] = 200,
             ["text"] = "worship him."
           }
+        },
+        {
+          id = 170,
+          name = "",
+          type = "tile",
+          shape = "rectangle",
+          x = 160,
+          y = -32,
+          width = 80,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 171,
+          name = "",
+          type = "tile",
+          shape = "rectangle",
+          x = 544,
+          y = -32,
+          width = 96,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 172,
+          name = "",
+          type = "tile",
+          shape = "rectangle",
+          x = 800,
+          y = -32,
+          width = 96,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 173,
+          name = "",
+          type = "tile",
+          shape = "rectangle",
+          x = 1136,
+          y = -32,
+          width = 224,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 174,
+          name = "",
+          type = "tile",
+          shape = "rectangle",
+          x = 1488,
+          y = -32,
+          width = 80,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

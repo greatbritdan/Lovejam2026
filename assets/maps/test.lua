@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 32,
+  nextobjectid = 35,
   properties = {},
   tilesets = {
     {
@@ -476,6 +476,45 @@ return {
           y = 128,
           width = 96,
           height = 12,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 32,
+          name = "",
+          type = "grate",
+          shape = "rectangle",
+          x = 176,
+          y = 128,
+          width = 16,
+          height = 6,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 33,
+          name = "",
+          type = "grate",
+          shape = "rectangle",
+          x = 192,
+          y = 128,
+          width = 16,
+          height = 6,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 34,
+          name = "",
+          type = "grate",
+          shape = "rectangle",
+          x = 160,
+          y = 128,
+          width = 16,
+          height = 6,
           rotation = 0,
           visible = true,
           properties = {}
