@@ -37,8 +37,8 @@ function counter:Land()
         -- if a tree falls in the forest and no one is around to hear it, does it make a sound?
         if self.X > GAME.SX and self.X < GAME.SX+ENV.width then
             playsound(Landsounds[math.random(#Landsounds)])
-            neweffect(self.X+2, self.Y+self.H-4, "dustl")
-            neweffect(self.X+2, self.Y+self.H-4, "dustr")
+            neweffect(self.X-4, self.Y+self.H-4, "dustl")
+            neweffect(self.X+8, self.Y+self.H-4, "dustr")
         end
     end
 end

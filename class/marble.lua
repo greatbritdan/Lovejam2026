@@ -2,6 +2,7 @@ local marble = Class("marble", OBJECTS.base)
 
 function marble:initialize(world, x, y, w, h, props)
     OBJECTS.base.initialize(self, world, x, y, w, h)
+    self.R = 0
 
     self.static = false
     self.grounded = true
@@ -13,11 +14,23 @@ function marble:initialize(world, x, y, w, h, props)
 end
 
 function marble:Update(dt)
-end
+    self.R = self.R + (self.VX/8)*dt
+end 
 
 function marble:Draw()
     love.graphics.setColor(1,1,1)
-    love.graphics.draw(Marbleimg, self.X+6, self.Y+10, 0, 1, 1, 8, 8)
+    love.graphics.draw(Marbleimg, self.X+6, self.Y+6, self.R, 1, 1, 8, 8)
+end
+
+function marble:Land()
+    if self.grounded then
+        -- if a tree falls in the forest and no one is around to hear it, does it make a sound?
+        if self.X > GAME.SX and self.X < GAME.SX+ENV.width then
+            playsound(Landsounds[math.random(#Landsounds)])
+            neweffect(self.X-4, self.Y+self.H-4, "dustl")
+            neweffect(self.X+8, self.Y+self.H-4, "dustr")
+        end
+    end
 end
 
 OBJECTS.marble = marble

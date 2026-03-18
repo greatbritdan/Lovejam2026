@@ -18,7 +18,7 @@ local tooltip = require(__BritUI.requirepath..".elements.tooltip")
 
 local core = {
     hover=nil, focus=nil, scroll=nil, _tooltip={ui=nil, element=nil},
-    loaded={}, radios={}, settings={useunstablefeatures=false}
+    loaded={}, radios={}, settings={useunstablefeatures=false}, joytarget=nil
 }
 
 function core:RegisterUI(data,_style)
@@ -81,6 +81,14 @@ end
 
 function core:Update(dt)
     self:SetHover()
+
+    if IN._activeDevice == "joy" and self.joytarget then
+        if self.joytarget.JoyClick then
+            self.joytarget:JoyClick()
+        end
+        print(self.joytarget.id)
+    end
+    
     self:Propigate("BaseUpdate",{dt,true})
     if ((not self.hover) or self.hover ~= self._tooltip.element) and self._tooltip.element then
         self:CreateTooltip()

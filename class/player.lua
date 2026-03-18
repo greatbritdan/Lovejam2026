@@ -132,8 +132,8 @@ end
 function player:Land()
     if self.grounded then
         playsound(Landsounds[math.random(#Landsounds)])
-        neweffect(self.X+2, self.Y+self.H-4, "dustl")
-        neweffect(self.X+2, self.Y+self.H-4, "dustr")
+        neweffect(self.X-4, self.Y+self.H-4, "dustl")
+        neweffect(self.X+8, self.Y+self.H-4, "dustr")
     end
 end
 
@@ -178,6 +178,10 @@ function player:Hop()
             self.jumping = 1/self.turnspeed
             playsound(Jumpsound)
             self:UpdateHeight()
+            for i = 1,3 do
+                local x = math.random(10)
+                neweffect(self.X-3+x, self.Y+self.H-4, "dustj")
+            end
         end
     end
 end

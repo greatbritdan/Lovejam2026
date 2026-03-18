@@ -46,6 +46,9 @@ function base:initialize(core,data,_style)
     end
 
     self.hover, self.click = nil, nil
+    if data.joy then
+        self.joy = DeepCopy(data.joy)
+    end
 
     self._text = nil
     self.elements = {}

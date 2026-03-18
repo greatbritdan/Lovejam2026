@@ -6,10 +6,14 @@ function EFFECT:initialize(x, y, t)
     self.VX, self.VY = 0, 0
 
     self.color = {1,1,1,1}
-    if t == "dustl" or t == "dustr" then
+    if t == "dustl" or t == "dustr" or t == "dustj" then
         self.frames = {frames={1,2,3,4}, frame=1, timer=0, time=0.1}
         self.lifetime = 0.4
         self.VX = (t == "dustr") and 32 or -32
+        if t == "dustj" then
+            self.VX = 0
+            self.VY = 32
+        end
         self.fade = true
     end
     if t == "telein" or t == "teleout" then
