@@ -48,6 +48,7 @@ UI.Callback = function(e)
             SCENE:StartTransition("menu")
         end
         
+        if id == "reset" then SCENE:StartTransition("game") end
         if id == "continue" then changestate(GAME) end
         if id == "pauseoptions" then changestate(GAME,"OPTIONS") end
         if id == "exit" then SCENE:StartTransition("menu") end

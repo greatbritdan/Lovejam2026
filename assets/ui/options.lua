@@ -16,12 +16,12 @@ return {type="layout", size={x=12,y=12,w=ENV.width-24,h=ENV.height-24}, flow="y"
             {type="text", size=21, text="", id="volumesfxlabel"},
         }},
 
-        {type="text", size=11, text="pixel perfect rendering:"},
+        --[[{type="text", size=11, text="pixel perfect rendering: (warning: unstable ui)"},
         {type="layout", size=21, flow="x", spacing=4, margin=0, {
             {type="spacer", size=21},
             {type="toggle", size=50, id="pixelperfect", square=true},
             {type="text", size=21, text="off", id="pixelperfectlabel"},
-        }},
+        }},]]
 
         {type="text", size=11, text="reset save data: (no undo)"},
         {type="layout", size=21, flow="x", spacing=4, margin=0, {
