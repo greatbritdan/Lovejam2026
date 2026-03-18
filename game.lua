@@ -48,10 +48,10 @@ function scene.Update(dt)
         local esl = GAME.OPTIONS:Find("strict",{{"id","volumesfxlabel"}})
         esl[1]:SetText(esv[1]:GetValue(true))
 
-        local epv = GAME.OPTIONS:Find("strict",{{"id","pixelperfect"}})
+        --[[local epv = GAME.OPTIONS:Find("strict",{{"id","pixelperfect"}})
         local epl = GAME.OPTIONS:Find("strict",{{"id","pixelperfectlabel"}})
         local t = epv[1]:GetValue(true) and "on" or "off"
-        epl[1]:SetText(t)
+        epl[1]:SetText(t)]]
         return 
     end
 
