@@ -19,8 +19,6 @@ function love.load()
     Effectimg, Effectquads = LoadSprites{path="assets/graphics/effects.png", xquads=8}
     Blockerimg = LoadSprites{path="assets/graphics/blocker.png", noquads=true}
 
-    Grateimg, Gratequads = LoadSprites{path="assets/graphics/grate.png", xquads=4}
-
     Shadowimg = LoadSprites{path="assets/backgrounds/shadow.png", noquads=true}
     Font = love.graphics.newImageFont("assets/graphics/newfont.png","abcdefghijklmnopqrstuvwxyz1234567890.,!? /():'",1)
     love.graphics.setFont(Font)
