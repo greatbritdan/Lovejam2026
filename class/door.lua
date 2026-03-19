@@ -14,7 +14,8 @@ function door:initialize(world, x, y, w, h, props)
     self.startY = self.Y
     self.dist = props.dist or 4
 
-    local qg = (MAPNAME == "level2") and 2 or 1
+    local lookup = {level2=2, level3=3}
+    local qg = lookup[MAPNAME] or 1
     self.batch = love.graphics.newSpriteBatch(Doorimg, self.H/16)
     for i = 1, self.H/16 do
         local q = (i == 1 and 1) or (i == self.H/16 and 3) or 2

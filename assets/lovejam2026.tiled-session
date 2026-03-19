@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/test.tmx",
+    "activeFile": "maps/level3.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -50,19 +50,19 @@
             "scale": 3,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1886.8333333333333,
-                "y": 121.66666666666664
+                "x": 1754.4999999999998,
+                "y": 113
             }
         },
         "maps/level3.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 5.5,
-            "selectedLayer": 5,
+            "scale": 4,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 22.45454545454544,
-                "y": 168.90909090909093
+                "x": 122.375,
+                "y": 130
             }
         },
         "maps/test.tmx": {
@@ -75,8 +75,8 @@
             "scale": 3,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 324.16666666666663,
-                "y": 86.66666666666664
+                "x": 800.1666666666666,
+                "y": 127.83333333333334
             }
         },
         "tilesets/Chess.tsx": {
@@ -84,7 +84,12 @@
             "scaleInEditor": 8
         },
         "tilesets/Connect.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/Dice.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 4
         }
     },
     "last.exportedFilePath": "C:/Users/alway/Desktop/Lovejam2026/assets/maps",
@@ -100,17 +105,22 @@
         "maps/test.tmx",
         "maps/level1.tmx",
         "maps/level2.tmx",
-        "tilesets/Chess.tsx",
-        "maps/credits.tmx"
+        "maps/level3.tmx",
+        "maps/credits.tmx",
+        "tilesets/Dice.tsx",
+        "tilesets/Connect.tsx"
     ],
     "project": "lovejam2026.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "tilesets/Chess.tsx",
-        "maps/credits.tmx",
-        "maps/level2.tmx",
-        "maps/level1.tmx",
         "maps/test.tmx",
+        "maps/level1.tmx",
+        "maps/level2.tmx",
+        "tilesets/Connect.tsx",
+        "tilesets/Dice.tsx",
+        "maps/credits.tmx",
+        "maps/level3.tmx",
+        "tilesets/Chess.tsx",
         "maps/Credits.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",

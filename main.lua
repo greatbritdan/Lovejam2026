@@ -12,7 +12,7 @@ function love.load()
     Counterimg, Counterquads = LoadSprites{path="assets/graphics/counter.png", xquads=3, yquads=3, xquadnames={"counter","rook","knight"}}
     Cuteimg, Cutequads = LoadSprites{path="assets/graphics/cute.png", xquads=3}
     Switchimg, Switchquads = LoadSprites{path="assets/graphics/switch.png", xquads=3}
-    Doorimg, Doorquads = LoadSprites{path="assets/graphics/door.png", yquads=3, xquads=2}
+    Doorimg, Doorquads = LoadSprites{path="assets/graphics/door.png", yquads=3, xquads=3}
     Marbleimg = LoadSprites{path="assets/graphics/marble.png", noquads=true}
     Promptsimg, Promptsquads = LoadSprites{path="assets/graphics/prompts.png", xquads=7, yquads=4, xquadnames={"left","right","up","down","jump","split","merge"}, yquadnames={"kbm","kbm_alt","joy","joy_stick"}}
     Teleporterimg, Teleporterquads = LoadSprites{path="assets/graphics/teleporter.png", xquads=3}

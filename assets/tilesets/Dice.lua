@@ -119,6 +119,18 @@ return {
       }
     },
     {
+      id = 22,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
+      id = 23,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
       id = 32,
       properties = {
         ["collision"] = true
@@ -155,10 +167,76 @@ return {
       }
     },
     {
+      id = 38,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
+      id = 39,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
       id = 48,
       properties = {
         ["collision"] = true,
         ["oneway"] = "up"
+      }
+    },
+    {
+      id = 64,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
+      id = 65,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
+      id = 66,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
+      id = 80,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
+      id = 81,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
+      id = 82,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
+      id = 96,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
+      id = 97,
+      properties = {
+        ["collision"] = true
+      }
+    },
+    {
+      id = 98,
+      properties = {
+        ["collision"] = true
       }
     }
   }
