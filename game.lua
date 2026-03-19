@@ -103,6 +103,11 @@ function scene.Draw()
     end
 
     love.graphics.setColor(1,1,1)
+    if layers["logo"] then
+        layers["logo"]:Draw(GAME.SX, GAME.SY)
+    end
+
+    love.graphics.setColor(1,1,1)
     love.graphics.draw(Shadowimg, 0, 0)
 
     if GAME.INFO then

@@ -3,7 +3,7 @@ return {
   luaversion = "5.1",
   tiledversion = "1.11.2",
   name = "Chess",
-  class = "",
+  class = "chess",
   tilewidth = 16,
   tileheight = 16,
   spacing = 0,

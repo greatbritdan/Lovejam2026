@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="160" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="179">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="160" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="180">
  <editorsettings>
   <export target="level3.lua" format="lua"/>
  </editorsettings>
@@ -18,6 +18,9 @@
   </imagelayer>
  </group>
  <layer id="3" name="Tiles (Background)" class="tilesback" width="160" height="16" opacity="0.5">
+  <properties>
+   <property name="batch" type="bool" value="true"/>
+  </properties>
   <data>
    <tile gid="721"/>
    <tile gid="722"/>
@@ -2582,6 +2585,9 @@
   </data>
  </layer>
  <layer id="4" name="Tiles" class="tiles" width="160" height="16">
+  <properties>
+   <property name="batch" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>

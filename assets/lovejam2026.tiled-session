@@ -19,11 +19,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2,
-            "selectedLayer": 6,
+            "scale": 4,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 232.25,
-                "y": 131
+                "x": 156.375,
+                "y": 143.75
             }
         },
         "maps/level1.tmx": {
@@ -33,11 +33,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 1.5,
-            "selectedLayer": 6,
+            "scale": 2,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 976.3333333333333,
-                "y": 127.66666666666669
+                "x": 329.25,
+                "y": 110.5
             }
         },
         "maps/level2.tmx": {
@@ -48,21 +48,21 @@
                 2
             ],
             "scale": 3,
-            "selectedLayer": 6,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 1754.4999999999998,
-                "y": 113
+                "x": 405.16666666666663,
+                "y": 178
             }
         },
         "maps/level3.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 4,
-            "selectedLayer": 6,
+            "scale": 3,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 122.375,
-                "y": 130
+                "x": 222.16666666666666,
+                "y": 132.33333333333334
             }
         },
         "maps/test.tmx": {
@@ -73,10 +73,10 @@
                 2
             ],
             "scale": 3,
-            "selectedLayer": 6,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 800.1666666666666,
-                "y": 127.83333333333334
+                "x": 324.16666666666663,
+                "y": 86.66666666666664
             }
         },
         "tilesets/Chess.tsx": {
@@ -111,11 +111,11 @@
         "tilesets/Connect.tsx"
     ],
     "project": "lovejam2026.tiled-project",
-    "property.type": "string",
+    "property.type": "bool",
     "recentFiles": [
+        "maps/level2.tmx",
         "maps/test.tmx",
         "maps/level1.tmx",
-        "maps/level2.tmx",
         "tilesets/Connect.tsx",
         "tilesets/Dice.tsx",
         "maps/credits.tmx",

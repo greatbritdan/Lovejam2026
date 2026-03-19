@@ -116,9 +116,15 @@ function _layer:initialize(map, d)
         self.image = love.graphics.newImage(fixrelativepath(self.map.path, d.image))
         self.image:setWrap("repeat","repeat")
         self.PX, self.PY = d.parallaxx, d.parallaxy
-        local qw = ENV.width+((self.map.W*self.map.TW-ENV.width)*self.PX)
-        local qh = ENV.height+((self.map.H*self.map.TH-ENV.height)*self.PY)
+        local qw, qh = self.image:getWidth(), self.image:getHeight()
+        if d.repeatx then
+            qw = ENV.width+((self.map.W*self.map.TW-ENV.width)*self.PX)
+        end
+        if d.repeaty then
+            qh = ENV.height+((self.map.H*self.map.TH-ENV.height)*self.PY)
+        end
         self.quad = love.graphics.newQuad(0,0,qw,qh,self.image:getWidth(),self.image:getHeight())
+        self.OX, self.OY = d.offsetx, d.offsety
     end
 end
 
@@ -215,7 +221,7 @@ function _layer:Draw(scrollx, scrolly, debug)
         if debug then self:Run("PhysicsDraw") end
         love.graphics.pop()
     elseif self.type == "imagelayer" then
-        love.graphics.draw(self.image, self.quad, -(scrollx*self.PX), -(scrolly*self.PY))
+        love.graphics.draw(self.image, self.quad, self.OX-(scrollx*self.PX), self.OY-(scrolly*self.PY))
     end
 end
 

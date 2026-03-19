@@ -3,7 +3,7 @@ return {
   luaversion = "5.1",
   tiledversion = "1.11.2",
   name = "Dice",
-  class = "",
+  class = "dice",
   tilewidth = 16,
   tileheight = 16,
   spacing = 0,
@@ -183,6 +183,12 @@ return {
       properties = {
         ["collision"] = true,
         ["oneway"] = "up"
+      }
+    },
+    {
+      id = 49,
+      properties = {
+        ["collision"] = true
       }
     },
     {

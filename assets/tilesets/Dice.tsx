@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.11.2" name="Dice" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+<tileset version="1.10" tiledversion="1.11.2" name="Dice" class="dice" tilewidth="16" tileheight="16" tilecount="256" columns="16">
  <editorsettings>
   <export target="Dice.lua" format="lua"/>
  </editorsettings>
@@ -133,6 +133,11 @@
   <properties>
    <property name="collision" type="bool" value="true"/>
    <property name="oneway" value="up"/>
+  </properties>
+ </tile>
+ <tile id="49">
+  <properties>
+   <property name="collision" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="64">

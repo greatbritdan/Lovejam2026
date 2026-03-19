@@ -41,6 +41,13 @@ function player:initialize(world, x, y, w, h, props)
 
     self.blinktimer = math.random(3, 7)
 
+    self.credits = props.credits or false
+    if self.credits then
+        self.controlsenabled = false
+        self.F = nil -- no friction
+        self.VX = 64
+    end
+
     self.anim = nil
     self.animtime = nil
     self.animcheck = nil
@@ -61,6 +68,8 @@ function player:Update(dt)
                 self:Hop()
             end
         end
+    elseif self.credits then
+        self:MovementCredits(dt)
     end
     self:UpdateRook(dt)
     self:UpdateKnight(dt)
@@ -131,7 +140,9 @@ end
 
 function player:Land()
     if self.grounded then
-        playsound(Landsounds[math.random(#Landsounds)])
+        if not self.credits then
+            playsound(Landsounds[math.random(#Landsounds)])
+        end
         neweffect(self.X-4, self.Y+self.H-4, "dustl")
         neweffect(self.X+8, self.Y+self.H-4, "dustr")
     end
@@ -167,6 +178,14 @@ function player:Movement(dt)
     if (left and self.VX > 0) or (right and self.VX < 0) then
         self.F = self.tunrfriction
     end
+end
+
+function player:MovementCredits(dt)
+    if (not self.moving) then
+        self.moving = 1/self.turnspeed
+        self.movingdir = 1
+    end
+    self.DIR = 1
 end
 
 function player:Hop()

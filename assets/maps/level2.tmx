@@ -17,6 +17,9 @@
   </imagelayer>
  </group>
  <layer id="3" name="Tiles (Background)" class="tilesback" width="160" height="16" opacity="0.5">
+  <properties>
+   <property name="batch" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -2581,6 +2584,9 @@
   </data>
  </layer>
  <layer id="4" name="Tiles" class="tiles" width="160" height="16">
+  <properties>
+   <property name="batch" type="bool" value="true"/>
+  </properties>
   <data>
    <tile/>
    <tile/>

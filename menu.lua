@@ -4,7 +4,8 @@ MENU = {}
 function scene.LoadScene()
     CHECKPOINT = nil
 
-    MENU.MAP = MAP:new("assets/maps/level1.lua",{menu=true})
+    local mapname = "level"..math.random(3)
+    MENU.MAP = MAP:new("assets/maps/"..mapname..".lua",{menu=true})
     layers = MENU.MAP.layers
     MENU.SX = 0
 
