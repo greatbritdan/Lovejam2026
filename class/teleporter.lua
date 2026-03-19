@@ -33,17 +33,15 @@ function teleporter:Update(dt)
 end
 
 function teleporter:Draw()
-    love.graphics.setColor(1,1,1,.2)
-    if self.teleactive then
-        love.graphics.setColor(1,1,1)
+    if self.X+self.W+2 > GAME.SX and self.X-2 < GAME.SX+ENV.width then
+        love.graphics.setColor(1,1,1,.2)
+        if self.teleactive then
+            love.graphics.setColor(1,1,1)
+        end
+        love.graphics.draw(Teleporterimg, Teleporterquads[1], self.X+6, self.Y+6, self.R, math.sin(self.R), 1, 6, 6)
+        love.graphics.draw(Teleporterimg, Teleporterquads[2], self.X+6, self.Y+6, -self.R, 1, math.cos(self.R), 6, 6)
+        love.graphics.draw(Teleporterimg, Teleporterquads[3], self.X+6, self.Y+6, self.R/4, 1, 1, 6, 6)
     end
-    love.graphics.draw(Teleporterimg, Teleporterquads[1], self.X+6, self.Y+6, self.R, math.sin(self.R), 1, 6, 6)
-    love.graphics.draw(Teleporterimg, Teleporterquads[2], self.X+6, self.Y+6, -self.R, 1, math.cos(self.R), 6, 6)
-    love.graphics.draw(Teleporterimg, Teleporterquads[3], self.X+6, self.Y+6, self.R/4, 1, 1, 6, 6)
-end
-function teleporter:DebugDraw()
-    love.graphics.setColor(0,0,1,1)
-    love.graphics.rectangle("line", self.X+3, self.Y+3, 6, 6)
 end
 
 OBJECTS.teleporter = teleporter

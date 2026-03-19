@@ -89,10 +89,6 @@ function player:Draw()
     love.graphics.setColor(1,1,1)
     self:DrawSelf(self.X, self.Y)
 end
-function player:DebugDraw()
-    love.graphics.setColor(0,0,1,1)
-    love.graphics.rectangle("line", self.X+5, self.Y+self.H-3, 2, 2)
-end
 
 function player:DrawSelf(x, y)
     x, y = x+6, y+(self.H-4)+2

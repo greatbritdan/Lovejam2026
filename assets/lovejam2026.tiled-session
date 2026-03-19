@@ -20,10 +20,10 @@
                 2
             ],
             "scale": 4,
-            "selectedLayer": 5,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 156.375,
-                "y": 143.75
+                "x": 157.875,
+                "y": 125.25
             }
         },
         "maps/level1.tmx": {
@@ -47,22 +47,22 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 3,
-            "selectedLayer": 4,
+            "scale": 2,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 405.16666666666663,
-                "y": 178
+                "x": 307.75,
+                "y": 154.5
             }
         },
         "maps/level3.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 3,
-            "selectedLayer": 4,
+            "scale": 5.5,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 222.16666666666666,
-                "y": 132.33333333333334
+                "x": 273.1818181818182,
+                "y": 78
             }
         },
         "maps/test.tmx": {

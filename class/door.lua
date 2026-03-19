@@ -42,8 +42,10 @@ function door:Update(dt)
 end
 
 function door:Draw()
-    love.graphics.setColor(1,1,1)
-    love.graphics.draw(self.batch, self.X, self.Y)
+    if self.X+self.W > GAME.SX and self.X < GAME.SX+ENV.width then
+        love.graphics.setColor(1,1,1)
+        love.graphics.draw(self.batch, self.X, self.Y)
+    end
 end
 
 function door:Trigger(id, state)

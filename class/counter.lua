@@ -17,8 +17,10 @@ function counter:initialize(world, x, y, w, h, props)
 end
 
 function counter:Draw()
-    love.graphics.setColor(1,1,1)
-    self:DrawSelf(self.X, self.Y)
+    if self.X+self.W+2 > GAME.SX and self.X-2 < GAME.SX+ENV.width then
+        love.graphics.setColor(1,1,1)
+        self:DrawSelf(self.X, self.Y)
+    end
 end
 
 function counter:DrawSelf(x, y)
@@ -35,7 +37,7 @@ end
 function counter:Land()
     if self.grounded then
         -- if a tree falls in the forest and no one is around to hear it, does it make a sound?
-        if self.X > GAME.SX and self.X < GAME.SX+ENV.width then
+        if self.X+self.W > GAME.SX and self.X < GAME.SX+ENV.width then
             playsound(Landsounds[math.random(#Landsounds)])
             neweffect(self.X-4, self.Y+self.H-4, "dustl")
             neweffect(self.X+8, self.Y+self.H-4, "dustr")
