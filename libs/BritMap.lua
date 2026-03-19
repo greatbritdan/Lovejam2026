@@ -86,6 +86,7 @@ function _layer:initialize(map, d)
     self.data = d
     self.type, self.class = d.type, d.class
 
+    self.OX, self.OY = d.offsetx, d.offsety
     if self.type == "tilelayer" then
         self.W, self.H = d.width, d.height
         self.grid = {}
@@ -124,7 +125,6 @@ function _layer:initialize(map, d)
             qh = ENV.height+((self.map.H*self.map.TH-ENV.height)*self.PY)
         end
         self.quad = love.graphics.newQuad(0,0,qw,qh,self.image:getWidth(),self.image:getHeight())
-        self.OX, self.OY = d.offsetx, d.offsety
     end
 end
 
@@ -202,21 +202,21 @@ function _layer:Draw(scrollx, scrolly, debug)
     if self.type == "tilelayer" then
         if self.batches then
             for _,tsb in pairs(self.batches) do
-                love.graphics.draw(tsb, -scrollx, -scrolly)
+                love.graphics.draw(tsb, self.OX-scrollx, self.OY-scrolly)
             end
         else
             for y = 1, self.H do
                 for x = 1, self.W do
                     if self.grid[y][x] then
                         local tile = self.grid[y][x]
-                        love.graphics.draw(tile.image, tile.quad, tile.X-scrollx, tile.Y-scrolly)
+                        love.graphics.draw(tile.image, tile.quad, self.OX+tile.X-scrollx, self.OY+tile.Y-scrolly)
                     end
                 end
             end
         end
     elseif self.type == "objectgroup" then
         love.graphics.push()
-        love.graphics.translate(-scrollx, -scrolly)
+        love.graphics.translate(self.OX-scrollx, self.OY-scrolly)
         self:Run("Draw")
         if debug then self:Run("PhysicsDraw") end
         love.graphics.pop()

@@ -125,12 +125,12 @@ function player:Collide(other, nx, ny)
         end
         return other:Collide(self, -nx, -ny)
     end
-    if other.collideid == "marble" then
+    --[[if other.collideid == "marble" then
         if nx ~= 0 then
             other.VX = (self.VX/2)
             return true, false
         end
-    end
+    end]]
     return false, false
 end
 

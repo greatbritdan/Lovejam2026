@@ -14,12 +14,16 @@ function switch:initialize(world, x, y, w, h, props)
 end
 
 function switch:Update(dt)
-    local hits = self:PhysicsCheckAABB{Y=self.Y-1, include={"player","counter"}}
+    local hits = self:PhysicsCheckAABB{Y=self.Y-1, include={"player","counter","marble"}}
     local c = 0
     for i, v in pairs(hits) do
-        c = c + v.counters
-        if v.counterspecial then c = c + 1 end
-        if v.collideid == "player" then c = c + 1 end
+        if v.collideid == "marble" then
+            c = c + 1
+        else
+            c = c + v.counters
+            if v.counterspecial then c = c + 1 end
+            if v.collideid == "player" then c = c + 1 end
+        end
         -- Yeah sure, players on counters should count.
         if v.rider and v.rider.counters then
             c = c + v.rider.counters

@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 10,
-  nextobjectid = 113,
+  nextobjectid = 114,
   properties = {},
   tilesets = {
     {
@@ -331,7 +331,7 @@ return {
           type = "text",
           shape = "point",
           x = 720,
-          y = 156,
+          y = 148,
           width = 0,
           height = 0,
           rotation = 0,
@@ -347,7 +347,7 @@ return {
           type = "text",
           shape = "point",
           x = 720,
-          y = 164,
+          y = 156,
           width = 0,
           height = 0,
           rotation = 0,
@@ -432,7 +432,23 @@ return {
           visible = true,
           properties = {
             ["linkid"] = 0,
-            ["text"] = "all code, art & sound"
+            ["text"] = "and audio"
+          }
+        },
+        {
+          id = 113,
+          name = "",
+          type = "text",
+          shape = "point",
+          x = 432,
+          y = 140,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["linkid"] = 0,
+            ["text"] = "all code, art"
           }
         }
       }

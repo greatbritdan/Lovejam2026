@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="122" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="113">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="122" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="114">
  <editorsettings>
   <export target="credits.lua" format="lua"/>
  </editorsettings>
@@ -3983,14 +3983,14 @@
    </properties>
    <point/>
   </object>
-  <object id="106" type="text" x="720" y="156">
+  <object id="106" type="text" x="720" y="148">
    <properties>
     <property name="linkid" type="int" value="0"/>
     <property name="text" value="made for:"/>
    </properties>
    <point/>
   </object>
-  <object id="107" type="text" x="720" y="164">
+  <object id="107" type="text" x="720" y="156">
    <properties>
     <property name="linkid" type="int" value="0"/>
     <property name="text" value="the love2d game jam (2026)"/>
@@ -4022,7 +4022,14 @@
   <object id="112" type="text" x="432" y="148">
    <properties>
     <property name="linkid" type="int" value="0"/>
-    <property name="text" value="all code, art &amp; sound"/>
+    <property name="text" value="and audio"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="113" type="text" x="432" y="140">
+   <properties>
+    <property name="linkid" type="int" value="0"/>
+    <property name="text" value="all code, art"/>
    </properties>
    <point/>
   </object>
