@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 175,
+  nextobjectid = 176,
   properties = {},
   tilesets = {
     {
@@ -1072,7 +1072,7 @@ return {
           type = "teleporter",
           shape = "rectangle",
           x = 1698,
-          y = 154,
+          y = 162,
           width = 12,
           height = 12,
           rotation = 0,
@@ -1188,6 +1188,19 @@ return {
           y = -32,
           width = 80,
           height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 175,
+          name = "",
+          type = "blocker",
+          shape = "rectangle",
+          x = 1296,
+          y = 144,
+          width = 32,
+          height = 48,
           rotation = 0,
           visible = true,
           properties = {}

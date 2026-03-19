@@ -10,7 +10,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 96,
+  nextobjectid = 97,
   properties = {},
   tilesets = {
     {
@@ -175,7 +175,7 @@ return {
           name = "",
           type = "player",
           shape = "rectangle",
-          x = 18,
+          x = 34,
           y = 188,
           width = 12,
           height = 4,
@@ -183,6 +183,23 @@ return {
           visible = true,
           properties = {
             ["counters"] = 0
+          }
+        },
+        {
+          id = 96,
+          name = "",
+          type = "trigger",
+          shape = "rectangle",
+          x = 80,
+          y = 144,
+          width = 48,
+          height = 48,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["linkid"] = 0,
+            ["linkinfo"] = "nextlevel",
+            ["mode"] = "on"
           }
         }
       }

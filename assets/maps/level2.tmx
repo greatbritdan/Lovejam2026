@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="160" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="175">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="160" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="176">
  <editorsettings>
   <export target="level2.lua" format="lua"/>
  </editorsettings>
@@ -5420,7 +5420,7 @@
   </object>
   <object id="163" type="tile" x="1552" y="-16" width="16" height="16"/>
   <object id="164" type="tile" x="1488" y="-16" width="16" height="16"/>
-  <object id="166" type="teleporter" x="1698" y="154" width="12" height="12">
+  <object id="166" type="teleporter" x="1698" y="162" width="12" height="12">
    <properties>
     <property name="active" type="bool" value="false"/>
     <property name="teleportid" type="int" value="4"/>
@@ -5445,5 +5445,6 @@
   <object id="172" type="tile" x="800" y="-32" width="96" height="16"/>
   <object id="173" type="tile" x="1136" y="-32" width="224" height="16"/>
   <object id="174" type="tile" x="1488" y="-32" width="80" height="16"/>
+  <object id="175" type="blocker" x="1296" y="144" width="32" height="48"/>
  </objectgroup>
 </map>

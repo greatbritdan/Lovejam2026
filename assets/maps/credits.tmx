@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="122" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="96">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="122" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="97">
  <editorsettings>
   <export target="credits.lua" format="lua"/>
  </editorsettings>
@@ -3928,9 +3928,16 @@
   </data>
  </layer>
  <objectgroup id="2" name="Objects" class="objects">
-  <object id="95" type="player" x="18" y="188" width="12" height="4">
+  <object id="95" type="player" x="34" y="188" width="12" height="4">
    <properties>
     <property name="counters" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="96" type="trigger" x="80" y="144" width="48" height="48">
+   <properties>
+    <property name="linkid" type="int" value="0"/>
+    <property name="linkinfo" value="nextlevel"/>
+    <property name="mode" value="on"/>
    </properties>
   </object>
  </objectgroup>
