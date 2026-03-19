@@ -165,6 +165,8 @@ end
 function _layer:RemoveObject(object)
     for i,obj in pairs(self.objects) do
         if obj == object then
+            object.__DELETED = true
+            object:Release()
             table.remove(self.objects, i)
             return i
         end

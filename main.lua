@@ -48,6 +48,7 @@ function love.load()
     Opensound = love.audio.newSource("assets/audio/open.ogg","static")
     Closesound = love.audio.newSource("assets/audio/close.ogg","static")
     Teleportsound = love.audio.newSource("assets/audio/teleport.ogg","static")
+    Shootsound = love.audio.newSource("assets/audio/shoot.ogg","static")
     Successsound = love.audio.newSource("assets/audio/success.ogg","static")
 
     Music = love.audio.newSource("assets/audio/music.ogg","stream")

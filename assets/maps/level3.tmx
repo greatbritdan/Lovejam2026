@@ -3260,11 +3260,11 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="611"/>
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="611"/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -3420,11 +3420,11 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="611"/>
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="611"/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -3580,11 +3580,11 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="611"/>
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="611"/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -3734,19 +3734,19 @@
    <tile gid="611"/>
    <tile gid="513"/>
    <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="611"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="611"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -4536,8 +4536,8 @@
    <tile gid="513"/>
    <tile gid="513"/>
    <tile gid="513"/>
-   <tile gid="613"/>
-   <tile gid="614"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile gid="513"/>
    <tile gid="513"/>
    <tile gid="513"/>
@@ -5152,7 +5152,7 @@
   </data>
  </layer>
  <objectgroup id="2" name="Objects" class="objects">
-  <object id="176" type="player" x="363" y="188" width="12" height="4">
+  <object id="176" type="player" x="408" y="187" width="12" height="4">
    <properties>
     <property name="counters" type="int" value="0"/>
    </properties>
@@ -5189,27 +5189,5 @@
    </properties>
    <point/>
   </object>
-  <object id="188" type="door" x="501" y="128" width="5.81818" height="64">
-   <properties>
-    <property name="dist" type="int" value="64"/>
-    <property name="inverted" type="bool" value="true"/>
-    <property name="linkid" type="int" value="2"/>
-   </properties>
-  </object>
-  <object id="189" type="door" x="565" y="128" width="5.81818" height="64">
-   <properties>
-    <property name="dist" type="int" value="64"/>
-    <property name="linkid" type="int" value="2"/>
-   </properties>
-  </object>
-  <object id="190" type="switch" x="432" y="192" width="32" height="9">
-   <properties>
-    <property name="counters" type="int" value="1"/>
-    <property name="linkid" type="int" value="2"/>
-   </properties>
-  </object>
-  <object id="192" type="marble" x="474" y="180" width="12" height="12"/>
-  <object id="193" type="blocker" x="400" y="128" width="2" height="64"/>
-  <object id="194" type="blocker" x="494" y="128" width="2" height="64"/>
  </objectgroup>
 </map>

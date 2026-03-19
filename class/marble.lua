@@ -17,6 +17,9 @@ end
 
 function marble:Update(dt)
     self.R = self.R + (self.VX/8)*dt
+    if self.Y > (GAME.MAP.H*GAME.MAP.TH) then
+        GAME.MAP.layers["objects"]:RemoveObject(self)
+    end
 end 
 
 function marble:Draw()
@@ -44,3 +47,41 @@ function marble:Collide(other, nx, ny)
 end
 
 OBJECTS.marble = marble
+
+---------------------------------------------
+
+local marblespawner = Class("marble", OBJECTS.base)
+
+function marblespawner:initialize(world, x, y, w, h, props)
+    OBJECTS.base.initialize(self, world, x, y, w, h)
+
+    self.speed = props.speed or 32
+
+    self.collideid = "tile"
+    self.collidelookup = {"player","counter"}
+end
+
+function marblespawner:Spawn()
+    -- Only spawn when on screen (or close enough)
+    if self.X+self.W+2 > GAME.SX and self.X-2 < GAME.SX+ENV.width then
+        self.child = GAME.MAP.layers["objects"]:AddObject("marble", self.X+2, self.Y+4, 12, 12, {})
+        self.child.VX = self.speed
+        self.child.grounded = true
+        playsound(Shootsound)
+    end
+end 
+
+function marblespawner:Update(dt)
+    if (not self.child) or self.child.__DELETED then
+        self:Spawn()
+    end
+end 
+
+function marblespawner:Draw()
+    if self.X+self.W+2 > GAME.SX and self.X-2 < GAME.SX+ENV.width then
+        love.graphics.setColor(1,1,1)
+        love.graphics.rectangle("fill", self.X, self.Y, self.W, self.H)
+    end
+end
+
+OBJECTS.marblespawner = marblespawner
