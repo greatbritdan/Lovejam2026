@@ -133,9 +133,9 @@ function debug:Keypressed(key)
         end
     end
 
-    if key == "f11" then self.hitbox = not self.hitbox; self.skipti = true end
-    if key == "f16" then self.frameadvance = 0; self.skipti = true end
-    if key == "f15" then self.frameadvance = 1; self.framespeed = 1; self.skipti = true end
+    if key == "f10" then self.hitbox = not self.hitbox; self.skipti = true end
+    if key == "f11" then self.frameadvance = 0; self.skipti = true end
+    if key == "f12" then self.frameadvance = 1; self.framespeed = 1; self.skipti = true end
 
     if self.commands[key] then
         self.commands[key]()
