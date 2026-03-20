@@ -46,12 +46,6 @@ function counter:Land()
 end
 
 function counter:Collide(other, nx, ny)
-    if other.collideid == "player" then
-        if ny == -1 then
-            self.owX = other.X+other.W
-            return true, "ignore"
-        end
-    end
     if other.collideid == "counter" and ny ~= 0 then
         if (not self.counterspecial) and (not other.counterspecial) then
             -- Merge counters

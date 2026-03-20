@@ -118,19 +118,6 @@ end
 
 function player:Collide(other, nx, ny)
     if self.rookdouble then self.rookcollide = true end
-    if other.collideid == "counter" then
-        if nx ~= 0 then
-            other.VX = (self.VX/2)
-            return true, false
-        end
-        return other:Collide(self, -nx, -ny)
-    end
-    --[[if other.collideid == "marble" then
-        if nx ~= 0 then
-            other.VX = (self.VX/2)
-            return true, false
-        end
-    end]]
     return false, false
 end
 
@@ -291,39 +278,32 @@ end
 function player:SplitCounters()
     if not self.grounded then return end
     if self.counters <= 0 then return end
-    if #self:PhysicsCheckAABB{include={"blocker"}} > 0 then return end -- don't split in counter blockers
-
-    local t
-    if IN:down("up") then
-        t = 1 -- just 1
-    elseif IN:down("down") then
-        t = self.counters -- all
-    else
-        t = math.floor(self.counters/2) -- half
+    -- don't split in counter blockers
+    if #self:PhysicsCheckAABB{include={"blocker"}} == 0 then 
+        local t = self.counters
+        local obj = GAME.MAP.layers["objects"]:AddObject("counter", self.X, self.Y+self.H-(t*4), 12, t*4, {counters=t})
+        obj.grounded = true
+        self:AddCounters(-t)
+        self:UpdateHeight(true)
+        playsound(Splitsounds[math.random(#Splitsounds)])
     end
-    if t == 0 then t = 1 end
-
-    local obj = GAME.MAP.layers["objects"]:AddObject("counter", self.X, self.Y+self.H-(t*4), 12, t*4, {counters=t})
-    obj.grounded = true
-    self:AddCounters(-t)
-    self:UpdateHeight(true)
-    playsound(Splitsounds[math.random(#Splitsounds)])
 end
 
 function player:MergeCounters()
-    if self.riding and self.riding.collideid == "counter" then
-        local t
-        if self.riding.counters > 0 then
-            t = self.riding.counters
-        elseif self.riding.counterspecial then
-            t = self.riding.counterspecial
+    local cols = self:PhysicsCheckAABB{Y=self.Y+1, include={"counter"}}
+    for i,v in pairs(cols) do
+        local t = v.counters
+        if v.counterspecial then
+            t = v.counterspecial
         end
-        self.X = self.riding.X
-        self.world:update(self, self.X, self.Y, self.W, self.H)
-        GAME.MAP.layers["objects"]:RemoveObject(self.riding)
+        self.X = v.X
+        GAME.MAP.layers["objects"]:RemoveObject(v)
         self:AddCounters(t)
-        self:UpdateHeight(true)
+    end
+    if #cols > 0 then
+        self.world:update(self, self.X, self.Y, self.W, self.H)
         playsound(Mergesounds[math.random(#Mergesounds)])
+        self:UpdateHeight(true)
     end
 end
 

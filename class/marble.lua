@@ -2,7 +2,6 @@ local marble = Class("marble", OBJECTS.base)
 
 function marble:initialize(world, x, y, w, h, props)
     OBJECTS.base.initialize(self, world, x, y, w, h)
-    self.DIR = -1
     self.R = 0
 
     self.static = false
@@ -24,7 +23,7 @@ end
 
 function marble:Draw()
     love.graphics.setColor(1,1,1)
-    love.graphics.draw(Marbleimg, self.X+6, self.Y+6, self.R, self.DIR, 1, 8, 8)
+    love.graphics.draw(Marbleimg, self.X+6, self.Y+6, self.R, 1, 1, 8, 8)
 end
 
 function marble:Land()
@@ -41,7 +40,6 @@ end
 function marble:Collide(other, nx, ny)
     if nx ~= 0 then
         self.VX = -self.VX
-        self.DIR = -self.DIR
         return true
     end
 end

@@ -5274,8 +5274,6 @@
     <property name="teleportid" type="int" value="2"/>
    </properties>
   </object>
-  <object id="116" type="blocker" x="912" y="188" width="32" height="4"/>
-  <object id="117" type="blocker" x="912" y="108" width="32" height="4"/>
   <object id="118" type="trigger" x="1079" y="128" width="2" height="64">
    <properties>
     <property name="linkid" type="int" value="3"/>

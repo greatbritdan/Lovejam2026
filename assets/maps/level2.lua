@@ -550,32 +550,6 @@ return {
           }
         },
         {
-          id = 116,
-          name = "",
-          type = "blocker",
-          shape = "rectangle",
-          x = 912,
-          y = 188,
-          width = 32,
-          height = 4,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 117,
-          name = "",
-          type = "blocker",
-          shape = "rectangle",
-          x = 912,
-          y = 108,
-          width = 32,
-          height = 4,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 118,
           name = "",
           type = "trigger",
