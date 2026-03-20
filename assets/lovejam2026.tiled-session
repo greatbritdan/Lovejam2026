@@ -61,8 +61,8 @@
             "scale": 4,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1280.125,
-                "y": 127.875
+                "x": 585.375,
+                "y": 133
             }
         },
         "maps/test.tmx": {
@@ -72,11 +72,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 5.5,
+            "scale": 2,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1409.3636363636365,
-                "y": 182.54545454545456
+                "x": 1213.75,
+                "y": 142.5
             }
         },
         "tilesets/Chess.tsx": {

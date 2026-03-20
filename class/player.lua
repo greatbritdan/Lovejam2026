@@ -118,12 +118,6 @@ end
 
 function player:Collide(other, nx, ny)
     if self.rookdouble then self.rookcollide = true end
-    if other.collideid == "counter" then
-        if nx ~= 0 then
-            other.VX = (self.VX/2)
-            return true, false
-        end
-    end
     return false, false
 end
 

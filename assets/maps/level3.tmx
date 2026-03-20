@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="160" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="195">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="160" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="198">
  <editorsettings>
   <export target="level3.lua" format="lua"/>
  </editorsettings>
@@ -2615,16 +2615,16 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -2775,16 +2775,16 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -2935,16 +2935,16 @@
    <tile gid="577"/>
    <tile gid="578"/>
    <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -3094,17 +3094,17 @@
    <tile gid="513"/>
    <tile gid="609"/>
    <tile gid="610"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -3254,17 +3254,17 @@
    <tile gid="611"/>
    <tile gid="513"/>
    <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -3414,6 +3414,8 @@
    <tile gid="611"/>
    <tile gid="529"/>
    <tile gid="530"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -3421,10 +3423,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -3574,6 +3574,8 @@
    <tile gid="611"/>
    <tile gid="519"/>
    <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -3581,10 +3583,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -3734,6 +3734,7 @@
    <tile gid="611"/>
    <tile gid="513"/>
    <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -3742,16 +3743,15 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="561"/>
+   <tile gid="561"/>
+   <tile gid="561"/>
+   <tile gid="561"/>
    <tile/>
    <tile/>
    <tile/>
@@ -3903,8 +3903,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -4059,12 +4059,12 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -4218,9 +4218,9 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -4377,10 +4377,10 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -4541,12 +4541,12 @@
    <tile gid="513"/>
    <tile gid="513"/>
    <tile gid="513"/>
+   <tile gid="613"/>
+   <tile gid="614"/>
    <tile gid="513"/>
    <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
+   <tile gid="613"/>
+   <tile gid="614"/>
    <tile gid="513"/>
    <tile gid="513"/>
    <tile gid="513"/>
@@ -5152,7 +5152,7 @@
   </data>
  </layer>
  <objectgroup id="2" name="Objects" class="objects">
-  <object id="176" type="player" x="408" y="187" width="12" height="4">
+  <object id="176" type="player" x="402" y="188" width="12" height="4">
    <properties>
     <property name="counters" type="int" value="0"/>
    </properties>
@@ -5188,6 +5188,23 @@
     <property name="linkid" type="int" value="101"/>
    </properties>
    <point/>
+  </object>
+  <object id="195" type="scale" x="512" y="96" width="32" height="9">
+   <properties>
+    <property name="scaleid" type="int" value="1"/>
+    <property name="scaleside" value="left"/>
+   </properties>
+  </object>
+  <object id="196" type="scale" x="576" y="192" width="32" height="9">
+   <properties>
+    <property name="scaleid" type="int" value="1"/>
+    <property name="scaleside" value="right"/>
+   </properties>
+  </object>
+  <object id="197" type="counter" x="618" y="188" width="12" height="4">
+   <properties>
+    <property name="counters" type="int" value="4"/>
+   </properties>
   </object>
  </objectgroup>
 </map>
