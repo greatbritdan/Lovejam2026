@@ -188,7 +188,7 @@ end
 -------------------------
 
 function base:CountersCheck()
-    local hits = self:PhysicsCheckAABB{Y=self.Y-1, include={"player","counter","marble"}}
+    local hits = self:PhysicsCheckAABB{Y=self.Y-1, H=1, include={"player","counter","marble"}}
     local c = 0
     for i, v in pairs(hits) do
         if v.collideid == "marble" then
