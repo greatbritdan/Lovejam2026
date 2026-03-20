@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="100" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="42">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="100" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="49">
  <editorsettings>
   <export target="test.lua" format="lua"/>
  </editorsettings>
@@ -1722,7 +1722,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="611"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1822,7 +1822,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="611"/>
    <tile/>
    <tile/>
    <tile/>
@@ -1922,7 +1922,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="611"/>
    <tile/>
    <tile/>
    <tile/>
@@ -2411,19 +2411,19 @@
    <tile gid="611"/>
    <tile gid="513"/>
    <tile gid="513"/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="613"/>
+   <tile gid="614"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="613"/>
+   <tile gid="614"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
+   <tile gid="513"/>
    <tile/>
    <tile/>
    <tile/>
@@ -3232,9 +3232,9 @@
   </data>
  </layer>
  <objectgroup id="2" name="Objects" class="objects">
-  <object id="2" type="player" x="1546" y="156" width="12" height="4">
+  <object id="2" type="player" x="1378" y="108" width="12" height="4">
    <properties>
-    <property name="counters" type="int" value="8"/>
+    <property name="counters" type="int" value="0"/>
    </properties>
   </object>
   <object id="9" type="counter" x="170" y="64" width="12" height="16">
@@ -3354,9 +3354,39 @@
     <property name="linkid" type="int" value="12"/>
    </properties>
   </object>
-  <object id="38" type="marble" x="1178" y="180" width="12" height="12"/>
+  <object id="38" type="marble" x="1179" y="95" width="12" height="12"/>
   <object id="39" type="blocker" x="1104" y="128" width="2" height="64"/>
   <object id="40" type="blocker" x="1198" y="128" width="2" height="64"/>
   <object id="41" type="blocker" x="1328" y="192" width="176" height="4"/>
+  <object id="42" type="scale" x="1312" y="16" width="32" height="9">
+   <properties>
+    <property name="linkid" type="int" value="13"/>
+    <property name="scaleid" type="int" value="1"/>
+    <property name="scaleside" value="left"/>
+   </properties>
+  </object>
+  <object id="44" type="scale" x="1424" y="112" width="32" height="9">
+   <properties>
+    <property name="linkid" type="int" value="13"/>
+    <property name="scaleid" type="int" value="1"/>
+    <property name="scaleside" value="right"/>
+   </properties>
+  </object>
+  <object id="45" type="counter" x="1410" y="96" width="12" height="16">
+   <properties>
+    <property name="counters" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="46" type="counter" x="1346" y="96" width="12" height="16">
+   <properties>
+    <property name="counters" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="48" type="door" x="1493" y="48" width="5.81818" height="64">
+   <properties>
+    <property name="dist" type="int" value="64"/>
+    <property name="linkid" type="int" value="13"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

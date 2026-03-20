@@ -31,7 +31,7 @@ function player:initialize(world, x, y, w, h, props)
     self.specialcooldown = nil
 
     self.collideid = "player"
-    self.collidelookup = {"tile","counter","switch","door","marble"}
+    self.collidelookup = {"tile","counter","switch","door","marble","scale"}
 
     self.counters = 0
     self.counterspecial = nil
@@ -118,6 +118,12 @@ end
 
 function player:Collide(other, nx, ny)
     if self.rookdouble then self.rookcollide = true end
+    if other.collideid == "counter" then
+        if nx ~= 0 then
+            other.VX = (self.VX/2)
+            return true, false
+        end
+    end
     return false, false
 end
 
@@ -133,7 +139,6 @@ end
 
 function player:Movement(dt)
     local left, right = IN:down("left"), IN:down("right")
-    
     self.F = self.idlefriction
     if left and (not right) then
         self.VX = math.max(self.VX - (self.moveacc * dt), -self.movespeed)

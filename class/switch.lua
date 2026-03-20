@@ -1,20 +1,5 @@
-local switch = Class("switch", OBJECTS.base)
-
-function switch:initialize(world, x, y, w, h, props)
-    OBJECTS.base.initialize(self, world, x, y, w, h)
-
-    self.collideid = "switch"
-    self.collidelookup = {"player","counter","marble"}
-
-    self.countersgot = 0
-    self.countersneeded = props.counters or 3
-    
-    self.triggered = false
-    self.triggerid = props.linkid or 0
-end
-
-function switch:Update(dt)
-    local hits = self:PhysicsCheckAABB{Y=self.Y-1, include={"player","counter","marble"}}
+local function querycounters(obj)
+    local hits = obj:PhysicsCheckAABB{Y=obj.Y-1, include={"player","counter","marble"}}
     local c = 0
     for i, v in pairs(hits) do
         if v.collideid == "marble" then
@@ -31,6 +16,26 @@ function switch:Update(dt)
             if v.rider.collideid == "player" then c = c + 1 end
         end
     end
+    return c
+end
+
+local switch = Class("switch", OBJECTS.base)
+
+function switch:initialize(world, x, y, w, h, props)
+    OBJECTS.base.initialize(self, world, x, y, w, h)
+
+    self.collideid = "switch"
+    self.collidelookup = {"player","counter","marble"}
+
+    self.countersgot = 0
+    self.countersneeded = props.counters or 3
+    
+    self.triggered = false
+    self.triggerid = props.linkid or 0
+end
+
+function switch:Update(dt)
+    local c = self:CountersCheck()
     if c >= self.countersneeded and (not self.triggered) then
         self:SendTrigger(true)
     end

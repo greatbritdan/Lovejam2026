@@ -3,6 +3,9 @@ GAME = {}
 
 local layers
 function scene.LoadScene()
+    EFFECTS = {}
+    CONTROLLERS = {}
+
     GAME.WORLD = BUMP.newWorld(16)
     MAPNAME = MAPNAME or "level1"
     GAME.MAP = MAP:new("assets/maps/"..MAPNAME..".lua")
@@ -12,6 +15,10 @@ function scene.LoadScene()
     GAME.SX, GAME.SY = GAME.PLAYER.X-(ENV.width/2)+(GAME.PLAYER.W/2), 0
     if FORCEDFORM then
         GAME.PLAYER:AddCounters(FORCEDFORM)
+    end
+
+    for i,v in pairs(CONTROLLERS) do
+        v:Setup()
     end
 
     local theme = UI:RegisterStyle("assets/ui/theme.lua")
@@ -77,6 +84,11 @@ function scene.Update(dt)
     end
 
     layers["objects"]:Run("Update",{dt})
+
+    for i,v in pairs(CONTROLLERS) do
+        v:Update(dt)
+    end
+
     layers["objects"]:Run("PhysicsUpdate",{dt})
 
     for i = #EFFECTS, 1, -1 do

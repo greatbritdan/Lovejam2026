@@ -11,7 +11,7 @@ function marble:initialize(world, x, y, w, h, props)
     self.VX = -32
 
     self.collideid = "marble"
-    self.collidelookup = {"tile","blocker","door","player","counter","switch","marble"}
+    self.collidelookup = {"tile","blocker","door","player","counter","switch","marble","scale"}
 end
 
 function marble:Update(dt)
@@ -23,7 +23,7 @@ end
 
 function marble:Draw()
     love.graphics.setColor(1,1,1)
-    love.graphics.draw(Marbleimg, self.X+6, self.Y+6, self.R, 1, 1, 8, 8)
+    love.graphics.draw(Marbleimg, Marblequads[1], self.X+6, self.Y+6, self.R, 1, 1, 8, 8)
 end
 
 function marble:Land()
@@ -78,7 +78,7 @@ end
 function marblespawner:Draw()
     if self.X+self.W+2 > GAME.SX and self.X-2 < GAME.SX+ENV.width then
         love.graphics.setColor(1,1,1)
-        love.graphics.rectangle("fill", self.X, self.Y, self.W, self.H)
+        love.graphics.draw(Marbleimg, Marblequads[2], self.X, self.Y)
     end
 end
 

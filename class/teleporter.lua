@@ -45,4 +45,4 @@ function teleporter:Draw()
     end
 end
 
-OBJECTS.teleporter = teleporter
+OBJECTS.teleporter = teleporterz

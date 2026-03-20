@@ -13,11 +13,12 @@ function love.load()
     Cuteimg, Cutequads = LoadSprites{path="assets/graphics/cute.png", xquads=3}
     Switchimg, Switchquads = LoadSprites{path="assets/graphics/switch.png", xquads=3}
     Doorimg, Doorquads = LoadSprites{path="assets/graphics/door.png", yquads=3, xquads=3}
-    Marbleimg = LoadSprites{path="assets/graphics/marble.png", noquads=true}
+    Marbleimg, Marblequads = LoadSprites{path="assets/graphics/marble.png", xquads=2}
     Promptsimg, Promptsquads = LoadSprites{path="assets/graphics/prompts.png", xquads=7, yquads=4, xquadnames={"left","right","up","down","jump","split","merge"}, yquadnames={"kbm","kbm_alt","joy","joy_stick"}}
     Teleporterimg, Teleporterquads = LoadSprites{path="assets/graphics/teleporter.png", xquads=3, yquads=2}
     Effectimg, Effectquads = LoadSprites{path="assets/graphics/effects.png", xquads=8}
     Blockerimg = LoadSprites{path="assets/graphics/blocker.png", noquads=true}
+    Scaleimg, Scalequads = LoadSprites{path="assets/graphics/scale.png", xquads=2}
 
     Shadowimg = LoadSprites{path="assets/backgrounds/shadow.png", noquads=true}
     Font = love.graphics.newImageFont("assets/graphics/newfont.png","abcdefghijklmnopqrstuvwxyz1234567890.,!? /():'",1)
@@ -76,13 +77,15 @@ function love.load()
 
     LEVELORDER = {"level1","level2","level3","credits"}
     
-    OBJECTS = {}
+    OBJECTS = {}    
     EFFECTS = {}
+    CONTROLLERS = {}
     require("class.base")
     require("class.tile")
     require("class.counter")
     require("class.player")
     require("class.switch")
+    require("class.scale")
     require("class.door")
     require("class.marble")
     require("class.teleporter")
