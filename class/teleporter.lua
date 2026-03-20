@@ -5,6 +5,7 @@ function teleporter:initialize(world, x, y, w, h, props)
     self.R = 0
     self.checkignore = true
 
+    self.varient = props.varient or 1
     self.teleactive = props.active or false
     self.teleid = props.teleportid or 0
 end
@@ -38,9 +39,9 @@ function teleporter:Draw()
         if self.teleactive then
             love.graphics.setColor(1,1,1)
         end
-        love.graphics.draw(Teleporterimg, Teleporterquads[1], self.X+6, self.Y+6, self.R, math.sin(self.R), 1, 6, 6)
-        love.graphics.draw(Teleporterimg, Teleporterquads[2], self.X+6, self.Y+6, -self.R, 1, math.cos(self.R), 6, 6)
-        love.graphics.draw(Teleporterimg, Teleporterquads[3], self.X+6, self.Y+6, self.R/4, 1, 1, 6, 6)
+        love.graphics.draw(Teleporterimg, Teleporterquads[self.varient][1], self.X+6, self.Y+6, self.R, math.sin(self.R), 1, 6, 6)
+        love.graphics.draw(Teleporterimg, Teleporterquads[self.varient][2], self.X+6, self.Y+6, -self.R, 1, math.cos(self.R), 6, 6)
+        love.graphics.draw(Teleporterimg, Teleporterquads[self.varient][3], self.X+6, self.Y+6, self.R/4, 1, 1, 6, 6)
     end
 end
 

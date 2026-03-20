@@ -112,7 +112,7 @@
         "tilesets/Connect.tsx"
     ],
     "project": "lovejam2026.tiled-project",
-    "property.type": "float",
+    "property.type": "int",
     "recentFiles": [
         "tilesets/Connect.tsx",
         "tilesets/Dice.tsx",
