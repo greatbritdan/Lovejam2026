@@ -66,7 +66,7 @@ local scale = Class("scale", OBJECTS.base)
 function scale:initialize(world, x, y, w, h, props)
     OBJECTS.base.initialize(self, world, x, y, w, h)
     self.static = false
-    self.oneway = "up"
+    --self.oneway = "up"
 
     self.collideid = "scale"
     self.collidelookup = {"player","counter","marble"}

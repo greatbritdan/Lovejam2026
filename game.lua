@@ -62,6 +62,8 @@ function scene.Update(dt)
         return 
     end
 
+    if love.keyboard.isDown("`") then print("") end
+
     if GAME.INFO then
         GAME.INFO:Update(dt)
         if GAME.INFO.DONE then GAME.INFO = nil end

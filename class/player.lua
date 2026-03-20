@@ -118,6 +118,11 @@ end
 
 function player:Collide(other, nx, ny)
     if self.rookdouble then self.rookcollide = true end
+    if other.collideid == "scale" then
+        if nx ~= 0 or ny == 1 or (ny == -1 and self.Y > other.Y) then
+            return true, true
+        end
+    end
     return false, false
 end
 

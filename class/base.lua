@@ -65,7 +65,7 @@ function base:PhysicsUpdate(dt)
 
     self:PhysicsMove(newx, newy)
 
-    if (not wasgrounded) and self.grounded and oldvy > 20 and self.Land then self:Land(); print(oldvy) end
+    if (not wasgrounded) and self.grounded and oldvy > 20 and self.Land then self:Land() end
     if wasgrounded and (not self.grounded) and self.Fall then self:Fall() end
     self.movedX, self.movedY = self.X - self.oldX, self.Y - self.oldY
 end
@@ -74,10 +74,10 @@ function base:PhysicsFilter(other)
     if other.collideid and (not TableContains(self.collideid, other.collidelookup)) or (not TableContains(other.collideid, self.collidelookup)) then
         return false
     end
-    if other.oneway == "up" and self.Y+self.H > other.Y then return false end
-    if other.oneway == "down" and self.Y < other.Y+other.H then return false end
-    if other.oneway == "left" and self.X-self.W > other.X then return false end
-    if other.oneway == "right" and self.X < other.X+other.W then return false end
+    if other.oneway == "up" and self.oldY+self.H > other.Y then return false end
+    if other.oneway == "down" and self.oldY < other.Y+other.H then return false end
+    if other.oneway == "left" and self.oldX-self.W > other.X then return false end
+    if other.oneway == "right" and self.oldX < other.X+other.W then return false end
     return self.movement
 end
 
@@ -191,20 +191,23 @@ function base:CountersCheck()
     local hits = self:PhysicsCheckAABB{Y=self.Y-1, H=1, include={"player","counter","marble"}}
     local c = 0
     for i, v in pairs(hits) do
-        if v.collideid == "marble" then
-            c = c + 1
-        else
-            c = c + v.counters
-            if v.counterspecial then c = c + 1 end
-            if v.collideid == "player" then c = c + 1 end
-        end
-        v.grounded = true
-        -- Yeah sure, players on counters should count.
-        if v.rider and v.rider.counters then
-            c = c + v.rider.counters
-            if v.rider.counterspecial then c = c + 1 end
-            if v.rider.collideid == "player" then c = c + 1 end
-            v.rider.grounded = true
+        -- must be fully over for scales
+        if (self.collideid ~= "scale" or v.VY == 0) then
+            if v.collideid == "marble" then
+                c = c + 1
+            else
+                c = c + v.counters
+                if v.counterspecial then c = c + 1 end
+                if v.collideid == "player" then c = c + 1 end
+            end
+            v.grounded = true
+            -- Yeah sure, players on counters should count.
+            if v.rider and v.rider.counters then
+                c = c + v.rider.counters
+                if v.rider.counterspecial then c = c + 1 end
+                if v.rider.collideid == "player" then c = c + 1 end
+                v.rider.grounded = true
+            end
         end
     end
     return c
