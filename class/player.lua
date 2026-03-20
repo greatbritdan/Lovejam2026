@@ -320,7 +320,6 @@ function player:MergeCounters()
         end
         self.X = self.riding.X
         self.world:update(self, self.X, self.Y, self.W, self.H)
-        self.riding:Release()
         GAME.MAP.layers["objects"]:RemoveObject(self.riding)
         self:AddCounters(t)
         self:UpdateHeight(true)

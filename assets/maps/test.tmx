@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="100" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="41">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="100" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="42">
  <editorsettings>
   <export target="test.lua" format="lua"/>
  </editorsettings>
@@ -2914,15 +2914,15 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
    <tile gid="513"/>
    <tile gid="513"/>
    <tile gid="513"/>
@@ -3014,15 +3014,15 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
    <tile gid="513"/>
    <tile gid="513"/>
    <tile gid="513"/>
@@ -3114,15 +3114,15 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
    <tile gid="513"/>
    <tile gid="513"/>
    <tile gid="513"/>
@@ -3212,17 +3212,17 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
-   <tile gid="513"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
    <tile gid="513"/>
    <tile gid="513"/>
    <tile gid="513"/>
@@ -3232,7 +3232,7 @@
   </data>
  </layer>
  <objectgroup id="2" name="Objects" class="objects">
-  <object id="2" type="player" x="1378" y="188" width="12" height="4">
+  <object id="2" type="player" x="1546" y="156" width="12" height="4">
    <properties>
     <property name="counters" type="int" value="8"/>
    </properties>
@@ -3357,5 +3357,6 @@
   <object id="38" type="marble" x="1178" y="180" width="12" height="12"/>
   <object id="39" type="blocker" x="1104" y="128" width="2" height="64"/>
   <object id="40" type="blocker" x="1198" y="128" width="2" height="64"/>
+  <object id="41" type="blocker" x="1328" y="192" width="176" height="4"/>
  </objectgroup>
 </map>
