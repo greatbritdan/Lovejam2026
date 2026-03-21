@@ -114,6 +114,7 @@ end
 function base:PhysicsCheck(args)
     args = args or {}
     local filter = function(self, other)
+        if other.collideid == "scale" and self.oldY+self.H > other.Y then return false end
         return self:PhysicsFilter(other)
     end
 

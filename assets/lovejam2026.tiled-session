@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/credits.tmx",
+    "activeFile": "maps/level3.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -22,8 +22,8 @@
             "scale": 4,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 245.75,
-                "y": 148.5
+                "x": 672.125,
+                "y": 127.875
             }
         },
         "maps/level1.tmx": {
@@ -47,8 +47,8 @@
             "scale": 8,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1280.0625,
-                "y": 128.0625
+                "x": 1280.125,
+                "y": 128.125
             }
         },
         "maps/level3.tmx": {
@@ -58,11 +58,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 0.75,
-            "selectedLayer": 5,
+            "scale": 4,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 802.6666666666667,
-                "y": -174.66666666666663
+                "x": 900,
+                "y": 126
             }
         },
         "maps/test.tmx": {
@@ -72,11 +72,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2,
+            "scale": 1.5,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 800.25,
-                "y": 127.75
+                "x": 800.3333333333333,
+                "y": 127.66666666666669
             }
         },
         "tilesets/Chess.tsx": {
@@ -117,11 +117,11 @@
         "maps/test.tmx",
         "maps/level1.tmx",
         "maps/level2.tmx",
-        "maps/level3.tmx",
         "tilesets/Connect.tsx",
         "tilesets/Dice.tsx",
         "tilesets/Chess.tsx",
         "maps/credits.tmx",
+        "maps/level3.tmx",
         "maps/Credits.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",

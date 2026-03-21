@@ -19,10 +19,12 @@ function scalecontroller:Setup()
     self.dist = self.endY - self.startY
     self.balanceY = self.startY + (self.dist/2)
 
-    l.Y = self.startY+(self.dist/2)
-    r.Y = self.startY+(self.dist/2)
-    l.world:update(l, l.X, l.Y, l.W, l.H)
-    r.world:update(r, r.X, r.Y, r.W, r.H)
+    if (not l.startdown) and (not r.startdown) then
+        l.Y = self.startY+(self.dist/2)
+        r.Y = self.startY+(self.dist/2)
+        l.world:update(l, l.X, l.Y, l.W, l.H)
+        r.world:update(r, r.X, r.Y, r.W, r.H)
+    end
 end
 
 function scalecontroller:Update(dt)
@@ -38,6 +40,9 @@ function scalecontroller:Update(dt)
         if r.Y > self.balanceY then r.VY = -r.scalespeed end
     end
     self.balanced = (l.countersgot == r.countersgot)
+    if self.balanced and l.countersgot == 0 then
+        self.balanced = false
+    end
     self:ScaleUpdate(l)
     self:ScaleUpdate(r)
 end
@@ -74,6 +79,7 @@ function scale:initialize(world, x, y, w, h, props)
     self.scalespeed = 32
     self.scaleid = props.scaleid or 0
     self.scaleside = props.scaleside or "left"
+    self.startdown = props.startdown or false
 
     self.triggered = false
     self.triggerid = props.linkid or 0
