@@ -192,7 +192,7 @@ function base:CountersCheck()
     local c = 0
     for i, v in pairs(hits) do
         -- must be fully over for scales
-        if (self.collideid ~= "scale" or v.VY == 0) then
+        if (self.collideid ~= "scale" or (v.VY == 0 and v.X >= self.X and v.X+v.W <= self.X+self.W)) then
             if v.collideid == "marble" then
                 c = c + 1
             else

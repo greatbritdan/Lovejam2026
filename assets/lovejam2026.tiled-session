@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/test.tmx",
+    "activeFile": "maps/credits.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -19,11 +19,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 1.5,
+            "scale": 4,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 976.3333333333333,
-                "y": 127.66666666666669
+                "x": 245.75,
+                "y": 148.5
             }
         },
         "maps/level1.tmx": {
@@ -44,11 +44,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 4,
+            "scale": 8,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1280.125,
-                "y": 127.875
+                "x": 1280.0625,
+                "y": 128.0625
             }
         },
         "maps/level3.tmx": {
@@ -58,11 +58,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 4,
-            "selectedLayer": 6,
+            "scale": 0.75,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 1280.125,
-                "y": 127.875
+                "x": 802.6666666666667,
+                "y": -174.66666666666663
             }
         },
         "maps/test.tmx": {
@@ -75,8 +75,8 @@
             "scale": 2,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1348.25,
-                "y": 123.5
+                "x": 800.25,
+                "y": 127.75
             }
         },
         "tilesets/Chess.tsx": {
@@ -89,7 +89,7 @@
         },
         "tilesets/Dice.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 3
+            "scaleInEditor": 8
         }
     },
     "last.exportedFilePath": "C:/Users/alway/Desktop/Lovejam2026/assets/maps",
@@ -114,14 +114,14 @@
     "project": "lovejam2026.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "maps/test.tmx",
+        "maps/level1.tmx",
+        "maps/level2.tmx",
+        "maps/level3.tmx",
         "tilesets/Connect.tsx",
         "tilesets/Dice.tsx",
         "tilesets/Chess.tsx",
         "maps/credits.tmx",
-        "maps/level3.tmx",
-        "maps/level2.tmx",
-        "maps/level1.tmx",
-        "maps/test.tmx",
         "maps/Credits.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",

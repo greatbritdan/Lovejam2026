@@ -3354,7 +3354,7 @@
     <property name="linkid" type="int" value="12"/>
    </properties>
   </object>
-  <object id="38" type="marble" x="1179" y="95" width="12" height="12"/>
+  <object id="38" type="marble" x="1186" y="180" width="12" height="12"/>
   <object id="39" type="blocker" x="1104" y="128" width="2" height="64"/>
   <object id="40" type="blocker" x="1198" y="128" width="2" height="64"/>
   <object id="41" type="blocker" x="1328" y="192" width="176" height="4"/>
