@@ -19,11 +19,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 4,
+            "scale": 5.5,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 1091.75,
-                "y": 154
+                "x": 1112.3636363636365,
+                "y": 151.0909090909091
             }
         },
         "maps/level1.tmx": {
