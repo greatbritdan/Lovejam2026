@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="160" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="184">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="160" height="16" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="185">
  <editorsettings>
   <export target="level2.lua" format="lua"/>
  </editorsettings>
@@ -4404,8 +4404,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="262"/>
-   <tile gid="262"/>
+   <tile gid="261"/>
+   <tile gid="261"/>
    <tile/>
    <tile/>
    <tile/>
@@ -5340,7 +5340,6 @@
    </properties>
    <point/>
   </object>
-  <object id="148" type="tile" x="896" y="176" width="32" height="12"/>
   <object id="149" type="door" x="1749" y="128" width="5.81818" height="64">
    <properties>
     <property name="dist" type="int" value="64"/>

@@ -756,23 +756,6 @@ return {
           }
         },
         {
-          id = 80,
-          name = "",
-          type = "trigger",
-          shape = "rectangle",
-          x = 728,
-          y = 48,
-          width = 16,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["linkid"] = 0,
-            ["linkinfo"] = "down",
-            ["mode"] = "on"
-          }
-        },
-        {
           id = 81,
           name = "",
           type = "trigger",

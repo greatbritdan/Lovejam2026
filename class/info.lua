@@ -1,6 +1,7 @@
 local info = Class("info")
 
 function info:initialize(id)
+    self.text = {{"incorrect"},{"id given"}}
     if id == "movement" then
         self.text = {
             {"press ","!left"," or ","!right"," to move,"},
@@ -9,13 +10,13 @@ function info:initialize(id)
     elseif id == "merge" then
         self.text = {
             {"press ","!merge"," to merge with counters, (must be standing on top)"},
-            {"press ","!split"," to split into two half stacks!"},
+            {"press ","!split"," to split from the counters you've merged with"},
         }
-    elseif id == "down" then
+    --[[elseif id == "down" then
         self.text = {
             {"top tip, you can hold ","!down"," while splitting to drop all counters,"},
             {"and you can hold ","!up"," while splitting to drop just one!"},
-        }
+        }]]
     elseif id == "platform" then
         self.text = {
             {"top tip, you can press ","!down"," while holding ","!jump"},
@@ -25,6 +26,11 @@ function info:initialize(id)
         self.text = {
             {"these blue orbs are teleporters, jump into them to teleport!"},
             {"you'll teleport to the last used teleporter."},
+        }
+    elseif id == "marble" then
+        self.text = {
+            {"marbles can spawn from tunnels, they can be used"},
+            {"as platforms to reach higher areas."},
         }
     end
     self.duration = 6

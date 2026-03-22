@@ -4150,13 +4150,6 @@
     <property name="mode" value="on"/>
    </properties>
   </object>
-  <object id="80" type="trigger" x="728" y="48" width="16" height="128">
-   <properties>
-    <property name="linkid" type="int" value="0"/>
-    <property name="linkinfo" value="down"/>
-    <property name="mode" value="on"/>
-   </properties>
-  </object>
   <object id="81" type="trigger" x="1776" y="168" width="48" height="16">
    <properties>
     <property name="linkid" type="int" value="0"/>

@@ -12,9 +12,14 @@ function marble:initialize(world, x, y, w, h, props)
 
     self.collideid = "marble"
     self.collidelookup = {"tile","blocker","door","player","counter","switch","marble","scale"}
+
+    self.colortimer = 0
 end
 
 function marble:Update(dt)
+    if self.parent then
+        self.colortimer = self.colortimer + dt*3
+    end
     self.R = self.R + (self.VX/8)*dt
     if self.Y > (GAME.MAP.H*GAME.MAP.TH) then
         GAME.MAP.layers["objects"]:RemoveObject(self)
@@ -22,7 +27,11 @@ function marble:Update(dt)
 end 
 
 function marble:Draw()
-    love.graphics.setColor(1,1,1)
+    if self.parent then
+        love.graphics.setColor(self.colortimer,self.colortimer,self.colortimer)
+    else
+        love.graphics.setColor(1,1,1)
+    end
     love.graphics.draw(Marbleimg, Marblequads[1], self.X+6, self.Y+6, self.R, 1, 1, 8, 8)
 end
 
@@ -57,21 +66,26 @@ function marblespawner:initialize(world, x, y, w, h, props)
 
     self.collideid = "tile"
     self.collidelookup = {"player","counter"}
+
+    self.spawntimer = 0
 end
 
 function marblespawner:Spawn()
-    -- Only spawn when on screen (or close enough)
-    if self.X+self.W+2 > GAME.SX and self.X-2 < GAME.SX+ENV.width then
-        self.child = GAME.MAP.layers["objects"]:AddObject("marble", self.X+2, self.Y+4, 12, 12, {})
-        self.child.VX = self.speed
-        self.child.grounded = true
-        playsound(Shootsound)
-    end
+    self.child = GAME.MAP.layers["objects"]:AddObject("marble", self.X+2, self.Y+4, 12, 12, {})
+    self.child.VX = self.speed
+    self.child.grounded = true
+    self.child.parent = self
+    playsound(Shootsound)
 end 
 
 function marblespawner:Update(dt)
-    if (not self.child) or self.child.__DELETED then
-        self:Spawn()
+    -- Only spawn when on screen (or close enough)
+    if ((not self.child) or self.child.__DELETED) and self.X+self.W+2 > GAME.SX and self.X-2 < GAME.SX+ENV.width then
+        self.spawntimer = self.spawntimer + dt
+        if self.spawntimer >= 1.5 then
+            self:Spawn()
+            self.spawntimer = 0
+        end
     end
 end 
 
