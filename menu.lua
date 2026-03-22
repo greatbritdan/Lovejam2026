@@ -7,7 +7,7 @@ function scene.LoadScene()
     local mapname = "level"..math.random(3)
     MENU.MAP = MAP:new("assets/maps/"..mapname..".lua",{menu=true})
     layers = MENU.MAP.layers
-    MENU.SX = 0
+    MENU.SX = {speed=20, pos=0, dir=1, pause=0}
 
     local theme = UI:RegisterStyle("assets/ui/theme.lua")
     if SETTINGS:GetInside("codes","oldschool") then
@@ -38,9 +38,18 @@ function scene.UnloadScene()
 end
 
 function scene.Update(dt)
-    MENU.SX = MENU.SX + dt*16
-    if MENU.SX > (MENU.MAP.W*MENU.MAP.TW)-ENV.width then
-        MENU.SX = 0
+    MENU.SX.pause = MENU.SX.pause - dt
+    if MENU.SX.pause <= 0 then
+        MENU.SX.pos = MENU.SX.pos + dt*MENU.SX.dir*MENU.SX.speed
+        if MENU.SX.dir == 1 and MENU.SX.pos >= (MENU.MAP.W*MENU.MAP.TW)-ENV.width then
+            MENU.SX.dir = -1
+            MENU.SX.pos = (MENU.MAP.W*MENU.MAP.TW)-ENV.width
+            MENU.SX.pause = 1
+        elseif MENU.SX.dir == -1 and MENU.SX.pos <= 0 then
+            MENU.SX.dir = 1
+            MENU.SX.pos = 0
+            MENU.SX.pause = 1
+        end
     end
     
     local emv = MENU.OPTIONS:Find("strict",{{"id","volumemusic"}})
@@ -59,12 +68,12 @@ end
 
 function scene.Draw()
     love.graphics.setColor(.4,.4,.4)
-    layers["background3"]:Draw(MENU.SX, 0)
-    layers["background2"]:Draw(MENU.SX, 0)
-    layers["background1"]:Draw(MENU.SX, 0)
+    layers["background3"]:Draw(MENU.SX.pos, 0)
+    layers["background2"]:Draw(MENU.SX.pos, 0)
+    layers["background1"]:Draw(MENU.SX.pos, 0)
     
-    layers["tilesback"]:Draw(MENU.SX, 0)
-    layers["tiles"]:Draw(MENU.SX, 0)
+    layers["tilesback"]:Draw(MENU.SX.pos, 0)
+    layers["tiles"]:Draw(MENU.SX.pos, 0)
     love.graphics.setColor(.4,.4,.4)
     love.graphics.draw(Shadowimg, 0, 0)
     
