@@ -15,11 +15,16 @@ function EFFECT:initialize(x, y, t)
             self.VY = 32
         end
         self.fade = true
-    end
-    if t == "telein" or t == "teleout" then
+    elseif t == "telein" or t == "teleout" then
         self.frames = {frames={5,6,7,8}, frame=1, timer=0, time=0.1}
         if t == "telein" then 
             self.frames = {frames={8,7,6,5}, frame=1, timer=0, time=0.1}
+        end
+        self.lifetime = 0.4
+    elseif t == "teleinred" or t == "teleoutred" then
+        self.frames = {frames={9,10,11,12}, frame=1, timer=0, time=0.1}
+        if t == "teleinred" then 
+            self.frames = {frames={12,11,10,9}, frame=1, timer=0, time=0.1}
         end
         self.lifetime = 0.4
     end

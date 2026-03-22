@@ -31,7 +31,7 @@ function player:initialize(world, x, y, w, h, props)
     self.specialcooldown = nil
 
     self.collideid = "player"
-    self.collidelookup = {"tile","counter","switch","door","marble","scale"}
+    self.collidelookup = {"tile","blocker","counter","switch","door","marble","scale"}
 
     self.counters = 0
     self.counterspecial = nil
@@ -262,6 +262,7 @@ function player:Respawn()
         self.X = self.startX
         self.Y = self.startY
     end
+    self.VX, self.VY = 0, 0
     self.world:update(self, self.X, self.Y, self.W, self.H)
 end
 

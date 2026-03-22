@@ -22,8 +22,8 @@
             "scale": 4,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 672.125,
-                "y": 127.875
+                "x": 672.25,
+                "y": 127.75
             }
         },
         "maps/level1.tmx": {
@@ -33,8 +33,8 @@
             "scale": 4,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1142.5,
-                "y": 76.25
+                "x": 976.125,
+                "y": 127.875
             }
         },
         "maps/level2.tmx": {
@@ -44,11 +44,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 5.5,
-            "selectedLayer": 5,
+            "scale": 0.75,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 918.3636363636365,
-                "y": 147.63636363636363
+                "x": 1813.333333333333,
+                "y": -21.333333333333258
             }
         },
         "maps/level3.tmx": {
@@ -58,11 +58,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 0.33,
-            "selectedLayer": 6,
+            "scale": 4,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 2500,
-                "y": 533.3333333333333
+                "x": 2136.5,
+                "y": 171.75
             }
         },
         "maps/test.tmx": {
@@ -72,11 +72,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 1.5,
+            "scale": 3,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 800.3333333333333,
-                "y": 127.66666666666669
+                "x": 1646,
+                "y": 130.33333333333334
             }
         },
         "tilesets/Chess.tsx": {
@@ -114,6 +114,7 @@
     "project": "lovejam2026.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "maps/level3.tmx",
         "maps/test.tmx",
         "maps/level1.tmx",
         "maps/level2.tmx",
@@ -121,7 +122,6 @@
         "tilesets/Dice.tsx",
         "tilesets/Chess.tsx",
         "maps/credits.tmx",
-        "maps/level3.tmx",
         "maps/Credits.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",

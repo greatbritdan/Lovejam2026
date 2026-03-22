@@ -16,7 +16,7 @@ function love.load()
     Marbleimg, Marblequads = LoadSprites{path="assets/graphics/marble.png", xquads=2}
     Promptsimg, Promptsquads = LoadSprites{path="assets/graphics/prompts.png", xquads=7, yquads=4, xquadnames={"left","right","up","down","jump","split","merge"}, yquadnames={"kbm","kbm_alt","joy","joy_stick"}}
     Teleporterimg, Teleporterquads = LoadSprites{path="assets/graphics/teleporter.png", xquads=3, yquads=2}
-    Effectimg, Effectquads = LoadSprites{path="assets/graphics/effects.png", xquads=8}
+    Effectimg, Effectquads = LoadSprites{path="assets/graphics/effects.png", xquads=12}
     Blockerimg = LoadSprites{path="assets/graphics/blocker.png", noquads=true}
     Scaleimg, Scalequads = LoadSprites{path="assets/graphics/scale.png", xquads=2}
 

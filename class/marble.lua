@@ -11,7 +11,7 @@ function marble:initialize(world, x, y, w, h, props)
     self.VX = -32
 
     self.collideid = "marble"
-    self.collidelookup = {"tile","blocker","door","player","counter","switch","marble","scale"}
+    self.collidelookup = {"tile","door","player","counter","switch","marble","scale"}
 
     self.colortimer = 0
 end
@@ -20,7 +20,16 @@ function marble:Update(dt)
     if self.parent then
         self.colortimer = self.colortimer + dt*3
     end
+    
     self.R = self.R + (self.VX/8)*dt
+
+    if self.teleportimmunity then
+        self.teleportimmunity = self.teleportimmunity - dt
+        if self.teleportimmunity <= 0 then
+            self.teleportimmunity = nil
+        end
+    end
+
     if self.Y > (GAME.MAP.H*GAME.MAP.TH) then
         GAME.MAP.layers["objects"]:RemoveObject(self)
     end

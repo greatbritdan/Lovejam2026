@@ -12,23 +12,42 @@ end
 
 function teleporter:Update(dt)
     self.R = self.R + (math.pi*dt)
-
     if self.teleactive then return end
 
-    local p = GAME.PLAYER
-    if (not p.teleportimmunity) and AABB(p.X+5, p.Y+p.H-3, 2, 2, self.X+3, self.Y+3, 6, 6) then
+    self:TryTeleport(GAME.PLAYER)
+    -- Marble teleporting
+    for _,obj in pairs(GAME.MAP.layers["objects"].objects) do
+        if obj.collideid == "marble" then
+            self:TryTeleport(obj, true)
+        end
+    end
+end
+
+function teleporter:TryTeleport(obj, marble)
+    local aabb
+    if marble then
+        aabb = AABB(obj.X+3, obj.Y+3, 6, 6, self.X+3, self.Y+3, 6, 6)
+    else
+        aabb = AABB(obj.X+5, obj.Y+obj.H-3, 2, 2, self.X+3, self.Y+3, 6, 6)
+    end
+    if (not obj.teleportimmunity) and aabb then
         local t = self:Find("strict",{{"teleactive",true},{"teleid",self.teleid}})
         if t then
             local other = t[1]
             local dx, dy = other.X-self.X, other.Y-self.Y
-            p.teleportimmunity = .6
-            p.X, p.Y = p.X+dx, p.Y+dy
-            p.world:update(p, p.X, p.Y, p.W, p.H)
+            obj.teleportimmunity = .6
+            obj.X, obj.Y = obj.X+dx, obj.Y+dy
+            obj.world:update(obj, obj.X, obj.Y, obj.W, obj.H)
             other.teleactive = false
             self.teleactive = true
             playsound(Teleportsound)
-            neweffect(self.X+2, self.Y+2, "telein")
-            neweffect(other.X+2, other.Y+2, "teleout")
+            if self.varient == 2 then
+                neweffect(self.X+2, self.Y+2, "teleinred")
+                neweffect(other.X+2, other.Y+2, "teleoutred")
+            else
+                neweffect(self.X+2, self.Y+2, "telein")
+                neweffect(other.X+2, other.Y+2, "teleout")
+            end
         end
     end
 end

@@ -27,10 +27,20 @@ function info:initialize(id)
             {"these blue orbs are teleporters, jump into them to teleport!"},
             {"you'll teleport to the last used teleporter."},
         }
+    elseif id == "color" then
+        self.text = {
+            {"red teleporters are the same as blue teleporters,"},
+            {"a red teleporter will only take your to other reds too."},
+        }
     elseif id == "marble" then
         self.text = {
             {"marbles can spawn from tunnels, they can be used"},
             {"as platforms to reach higher areas."},
+        }
+    elseif id == "blocker" then
+        self.text = {
+            {"these red striped regions can only let marbles through"},
+            {"counters and the player can interact with them!"},
         }
     end
     self.duration = 6
