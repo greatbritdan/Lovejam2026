@@ -262,8 +262,12 @@ function player:Respawn()
         self.X = self.startX
         self.Y = self.startY
     end
-    self.VX, self.VY = 0, 0
     self.world:update(self, self.X, self.Y, self.W, self.H)
+
+    self.VX, self.VY = 0, 0
+    if self.credits then
+        self.VX = 64
+    end
 end
 
 --------------
