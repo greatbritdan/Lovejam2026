@@ -23,11 +23,10 @@ function scene.LoadScene()
     loadsetting(MENU, "volumemusic")
     loadsetting(MENU, "pixelperfect")
 
-    if SETTINGS:Get("lastlevel") ~= "level1" then
-        local stb = MENU.MENU:Find("strict",{{"id","start"}})
-        if stb[1] then
-            stb[1]:SetText("continue")
-        end
+    local text = {level1="start new game", level2="continue (2)", level3="continue (3)", credits="continue (credits)"}
+    local stb = MENU.MENU:Find("strict",{{"id","start"}})
+    if stb[1] then
+        stb[1]:SetText(text[SETTINGS:Get("lastlevel")])
     end
 
     playmusic(Music)
