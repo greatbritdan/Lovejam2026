@@ -42,6 +42,11 @@ function info:initialize(id)
             {"these red striped regions can only let marbles through"},
             {"counters and the player can interact with them!"},
         }
+    elseif id == "pause" then
+        self.text = {
+            {"get stuck? you can press ","!pause"," to pause"},
+            {"from there you can exit or respawn!"},
+        }
     end
     self.duration = 6
 

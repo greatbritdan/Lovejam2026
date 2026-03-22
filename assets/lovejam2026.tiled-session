@@ -58,11 +58,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 3,
+            "scale": 0.5,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1800.333333333333,
-                "y": 154.33333333333334
+                "x": 1980,
+                "y": -110
             }
         },
         "maps/test.tmx": {
