@@ -95,7 +95,7 @@ function info:Draw()
         q = "kbm_alt"
     end
 
-    love.graphics.setColor(0,0,0,.4)
+    love.graphics.setColor(29/255, 11/255, 18/255, 178/255)
     love.graphics.rectangle("fill", 0, ENV.height-54, ENV.width, 54)
 
     love.graphics.setColor(1,1,1)

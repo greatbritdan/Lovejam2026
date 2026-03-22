@@ -74,9 +74,9 @@ function scene.Draw()
     
     layers["tilesback"]:Draw(MENU.SX.pos, 0)
     layers["tiles"]:Draw(MENU.SX.pos, 0)
-    love.graphics.setColor(.4,.4,.4)
     love.graphics.draw(Shadowimg, 0, 0)
     
+    love.graphics.setColor(1,1,1)
     UI:Draw(DEBUG.hitbox)
 end
 

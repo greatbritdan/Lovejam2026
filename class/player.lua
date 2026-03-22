@@ -172,6 +172,7 @@ function player:MovementCredits(dt)
         self.moving = 1/self.turnspeed
         self.movingdir = 1
     end
+    self.VX = 64 -- incase something stops the player
     self.DIR = 1
 end
 
