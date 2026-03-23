@@ -40,7 +40,6 @@ function base:PhysicsUpdate(dt)
     if self.F then
         if self.VX > 0 then self.VX = math.max(0, self.VX - (self.F * dt)) end
         if self.VX < 0 then self.VX = math.min(0, self.VX + (self.F * dt)) end
-        print(self.VX)
         --if math.abs(self.VX) < 1 then self.VX = 0 end
     end
 

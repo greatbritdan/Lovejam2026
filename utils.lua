@@ -47,6 +47,7 @@ UI.Callback = function(e)
             SETTINGS:SetInside("codes","rookymistake",false)
             SETTINGS:SetInside("codes","boundarybreak",false)
             SETTINGS:SAVE()
+            updatecodes()
             SCENE:StartTransition("menu")
         end
         
