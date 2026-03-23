@@ -16,7 +16,7 @@ function player:initialize(world, x, y, w, h, props)
     self.movefriction = nil
     self.idlefriction = 384
     self.tunrfriction = 512
-    self.hopspeed = 196
+    self.hopspeed = 200
     self.turnspeed = 3
     self.movehopspeed = 92
 
