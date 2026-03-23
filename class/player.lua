@@ -74,7 +74,7 @@ function player:Update(dt)
     self:UpdateRook(dt)
     self:UpdateKnight(dt)
     self:UpdateState(dt)
-    if math.abs(self.R) < 0.05 then self.R = 0 end
+    --if math.abs(self.R) < 0.05 then self.R = 0 end
 end
 
 function player:Draw()
@@ -215,6 +215,7 @@ function player:UpdateState(dt)
         self.R = math.pi*(-self.DIR)*self.jumping*self.turnspeed
         if self.jumping <= 0 then
             self.jumping = nil
+            self.R = 0
             self:UpdateHeight()
         end
     elseif self.moving then
@@ -222,6 +223,7 @@ function player:UpdateState(dt)
         self.R = math.pi*(-self.movingdir)*self.moving*self.turnspeed
         if self.moving <= 0 then
             self.moving = nil
+            self.R = 0
             self:Land()
         end 
     end
