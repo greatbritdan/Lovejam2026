@@ -19,7 +19,7 @@ function info:initialize(id)
         }]]
     elseif id == "platform" then
         self.text = {
-            {"top tip, you can press ","!down"," while holding ","!jump"},
+            {"top tip, you can press ","!jump"," while holding ","!down"},
             {"to fall back through one way platforms!"},
         }
     elseif id == "teleport" then

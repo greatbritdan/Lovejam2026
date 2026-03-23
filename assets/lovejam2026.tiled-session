@@ -22,8 +22,8 @@
             "scale": 5.5,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 1112.3636363636365,
-                "y": 151.0909090909091
+                "x": 672.090909090909,
+                "y": 128.09090909090912
             }
         },
         "maps/level1.tmx": {
@@ -47,8 +47,8 @@
             "scale": 2,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 2167.5,
-                "y": 35.5
+                "x": 1280.25,
+                "y": 127.75
             }
         },
         "maps/level3.tmx": {
@@ -72,11 +72,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 3,
+            "scale": 0.75,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1646,
-                "y": 130.33333333333334
+                "x": 1190.6666666666667,
+                "y": 320
             }
         },
         "tilesets/Chess.tsx": {
